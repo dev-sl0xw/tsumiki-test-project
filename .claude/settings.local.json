@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__awslabs_cdk-mcp-server__CDKGeneralGuidance",
+      "mcp__awslabs_cdk-mcp-server__GetAwsSolutionsConstructPattern",
+      "Skill(tsumiki:kairo-design)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "awslabs.core-mcp-server",
+    "awslabs.cdk-mcp-server",
+    "awslabs.frontend-mcp-server"
+  ]
+}
