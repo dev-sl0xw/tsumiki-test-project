@@ -3,7 +3,13 @@
     "allow": [
       "mcp__awslabs_cdk-mcp-server__CDKGeneralGuidance",
       "mcp__awslabs_cdk-mcp-server__GetAwsSolutionsConstructPattern",
-      "Skill(tsumiki:kairo-design)"
+      "Skill(tsumiki:kairo-design)",
+      "Skill(tsumiki:kairo-tasknote)",
+      "Skill(tsumiki:kairo-implement)",
+      "Bash(cdk init:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx cdk synth)"
     ]
   },
   "enabledMcpjsonServers": [
