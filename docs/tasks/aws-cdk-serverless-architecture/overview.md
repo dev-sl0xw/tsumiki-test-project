@@ -52,7 +52,7 @@
 | 状態 | タスク | 工数 | タイプ | 信頼性 |
 |------|--------|------|--------|--------|
 | [x] | [TASK-0001: CDK プロジェクト初期化](TASK-0001.md) | 4h | DIRECT | 🔵 |
-| [ ] | [TASK-0002: VPC Construct 実装](TASK-0002.md) | 8h | TDD | 🔵 |
+| [x] | [TASK-0002: VPC Construct 実装](TASK-0002.md) | 8h | TDD | 🔵 |
 | [ ] | [TASK-0003: VPC Endpoints Construct 実装](TASK-0003.md) | 6h | TDD | 🔵 |
 | [ ] | [TASK-0004: VPC Stack 統合](TASK-0004.md) | 4h | TDD | 🔵 |
 | [ ] | [TASK-0005: Security Group Construct 実装](TASK-0005.md) | 6h | TDD | 🔵 |
