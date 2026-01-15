@@ -9,9 +9,22 @@
       "Bash(cdk init:*)",
       "Bash(npm install:*)",
       "Bash(npm run build:*)",
-      "Bash(npx cdk synth)"
+      "Bash(npx cdk synth)",
+      "Skill(tsumiki:tdd-tasknote)",
+      "Skill(tsumiki:tdd-requirements)",
+      "Skill(tsumiki:tdd-testcases)",
+      "Bash(npm test:*)",
+      "Skill(tsumiki:tdd-green)",
+      "Skill(tsumiki:tdd-refactor)",
+      "Bash(npx tsc --noEmit)",
+      "Skill(tsumiki:tdd-verify-complete)",
+      "Bash(npx cdk synth --quiet)",
+      "Bash(git checkout:*)",
+      "Bash(gh auth login:*)",
+      "Bash(gh pr create:*)"
     ]
   },
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "awslabs.core-mcp-server",
     "awslabs.cdk-mcp-server",
