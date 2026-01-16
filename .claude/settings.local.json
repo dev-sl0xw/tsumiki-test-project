@@ -21,7 +21,8 @@
       "Bash(npx cdk synth --quiet)",
       "Bash(git checkout:*)",
       "Bash(gh auth login:*)",
-      "Bash(gh pr create:*)"
+      "Bash(gh pr create:*)",
+      "Skill(tsumiki:tdd-red)"
     ]
   },
   "enableAllProjectMcpServers": true,
