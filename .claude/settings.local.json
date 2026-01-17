@@ -22,7 +22,10 @@
       "Bash(git checkout:*)",
       "Bash(gh auth login:*)",
       "Bash(gh pr create:*)",
-      "Skill(tsumiki:tdd-red)"
+      "Skill(tsumiki:tdd-red)",
+      "Bash(find:*)",
+      "Bash(npx ts-node:*)",
+      "mcp__sequential-thinking__sequentialthinking"
     ]
   },
   "enableAllProjectMcpServers": true,
