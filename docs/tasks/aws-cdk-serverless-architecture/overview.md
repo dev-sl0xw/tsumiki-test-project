@@ -28,7 +28,7 @@
 
 ## 全体進捗
 
-- [ ] Phase 1: 基盤構築
+- [x] Phase 1: 基盤構築 ✅ (2026-01-18完了)
 - [ ] Phase 2: セキュリティ・データベース
 - [ ] Phase 3: アプリケーション
 - [ ] Phase 4: 配信・運用
@@ -54,9 +54,9 @@
 | [x] | [TASK-0001: CDK プロジェクト初期化](TASK-0001.md) | 4h | DIRECT | 🔵 |
 | [x] | [TASK-0002: VPC Construct 実装](TASK-0002.md) | 8h | TDD | 🔵 |
 | [x] | [TASK-0003: VPC Endpoints Construct 実装](TASK-0003.md) | 6h | TDD | 🔵 |
-| [ ] | [TASK-0004: VPC Stack 統合](TASK-0004.md) | 4h | TDD | 🔵 |
-| [ ] | [TASK-0005: Security Group Construct 実装](TASK-0005.md) | 6h | TDD | 🔵 |
-| [ ] | [TASK-0006: IAM Role Construct 実装](TASK-0006.md) | 4h | TDD | 🔵 |
+| [x] | [TASK-0004: VPC Stack 統合](TASK-0004.md) | 4h | TDD | 🔵 |
+| [x] | [TASK-0005: Security Group Construct 実装](TASK-0005.md) | 6h | TDD | 🔵 |
+| [x] | [TASK-0006: IAM Role Construct 実装](TASK-0006.md) | 4h | TDD | 🔵 |
 
 ### 依存関係
 
