@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SecurityStack TC-SS-01: スナップショットテスト CloudFormation テンプレートのスナップショットテスト 1`] = `
+{
+  "Outputs": {
+    "AlbSecurityGroupId": {
+      "Description": "Security Group ID for ALB",
+      "Export": {
+        "Name": "dev-AlbSecurityGroupId",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "SecurityGroupsAlbSecurityGroup9F78329C",
+          "GroupId",
+        ],
+      },
+    },
+    "AuroraSecurityGroupId": {
+      "Description": "Security Group ID for Aurora MySQL",
+      "Export": {
+        "Name": "dev-AuroraSecurityGroupId",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "SecurityGroupsAuroraSecurityGroupFFB0DFC6",
+          "GroupId",
+        ],
+      },
+    },
+    "EcsSecurityGroupId": {
+      "Description": "Security Group ID for ECS Fargate tasks",
+      "Export": {
+        "Name": "dev-EcsSecurityGroupId",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "SecurityGroupsEcsSecurityGroup4A45070C",
+          "GroupId",
+        ],
+      },
+    },
+    "EcsTaskExecutionRoleArn": {
+      "Description": "IAM Role ARN for ECS task execution",
+      "Export": {
+        "Name": "dev-EcsTaskExecutionRoleArn",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "IamRolesEcsTaskExecutionRole21EF04C6",
+          "Arn",
+        ],
+      },
+    },
+    "EcsTaskRoleArn": {
+      "Description": "IAM Role ARN for ECS tasks",
+      "Export": {
+        "Name": "dev-EcsTaskRoleArn",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "IamRolesEcsTaskRoleAAA6C429",
+          "Arn",
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "IamRolesEcsTaskExecutionRole21EF04C6": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ecs-tasks.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Description": "IAM role for ECS task execution",
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "IamRolesEcsTaskRoleAAA6C429": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ecs-tasks.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Description": "IAM role for ECS Fargate tasks",
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonSSMManagedInstanceCore",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "IamRolesEcsTaskRoleDefaultPolicy0942A3AB": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "secretsmanager:GetSecretValue",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "IamRolesEcsTaskRoleDefaultPolicy0942A3AB",
+        "Roles": [
+          {
+            "Ref": "IamRolesEcsTaskRoleAAA6C429",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "SecurityGroupsAlbSecurityGroup9F78329C": {
+      "Properties": {
+        "GroupDescription": "Security Group for ALB - allows HTTP and HTTPS from internet",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow HTTP from anywhere",
+            "FromPort": 80,
+            "IpProtocol": "tcp",
+            "ToPort": 80,
+          },
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow HTTPS from anywhere",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443,
+          },
+        ],
+        "VpcId": {
+          "Fn::ImportValue": "SnapshotVpcStack:ExportsOutputRefSnapshotVpc5F69D8488FF04CC9",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "SecurityGroupsAuroraSecurityGroupFFB0DFC6": {
+      "Properties": {
+        "GroupDescription": "Security Group for Aurora MySQL Database",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "255.255.255.255/32",
+            "Description": "Disallow all traffic",
+            "FromPort": 252,
+            "IpProtocol": "icmp",
+            "ToPort": 86,
+          },
+        ],
+        "VpcId": {
+          "Fn::ImportValue": "SnapshotVpcStack:ExportsOutputRefSnapshotVpc5F69D8488FF04CC9",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "SecurityGroupsAuroraSecurityGroupfromSnapshotSecurityStackSecurityGroupsEcsSecurityGroupF00D4358330613EBA217": {
+      "Properties": {
+        "Description": "Allow MySQL connection from ECS only",
+        "FromPort": 3306,
+        "GroupId": {
+          "Fn::GetAtt": [
+            "SecurityGroupsAuroraSecurityGroupFFB0DFC6",
+            "GroupId",
+          ],
+        },
+        "IpProtocol": "tcp",
+        "SourceSecurityGroupId": {
+          "Fn::GetAtt": [
+            "SecurityGroupsEcsSecurityGroup4A45070C",
+            "GroupId",
+          ],
+        },
+        "ToPort": 3306,
+      },
+      "Type": "AWS::EC2::SecurityGroupIngress",
+    },
+    "SecurityGroupsEcsSecurityGroup4A45070C": {
+      "Properties": {
+        "GroupDescription": "Security Group for ECS Fargate tasks",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "VpcId": {
+          "Fn::ImportValue": "SnapshotVpcStack:ExportsOutputRefSnapshotVpc5F69D8488FF04CC9",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "SecurityGroupsEcsSecurityGroupfromSnapshotSecurityStackSecurityGroupsAlbSecurityGroup7E94F85480733C02D7": {
+      "Properties": {
+        "Description": "Allow traffic from ALB on port 80",
+        "FromPort": 80,
+        "GroupId": {
+          "Fn::GetAtt": [
+            "SecurityGroupsEcsSecurityGroup4A45070C",
+            "GroupId",
+          ],
+        },
+        "IpProtocol": "tcp",
+        "SourceSecurityGroupId": {
+          "Fn::GetAtt": [
+            "SecurityGroupsAlbSecurityGroup9F78329C",
+            "GroupId",
+          ],
+        },
+        "ToPort": 80,
+      },
+      "Type": "AWS::EC2::SecurityGroupIngress",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
