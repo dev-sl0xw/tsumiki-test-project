@@ -25,7 +25,8 @@
       "Skill(tsumiki:tdd-red)",
       "Bash(find:*)",
       "Bash(npx ts-node:*)",
-      "mcp__sequential-thinking__sequentialthinking"
+      "mcp__sequential-thinking__sequentialthinking",
+      "Bash(node:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
