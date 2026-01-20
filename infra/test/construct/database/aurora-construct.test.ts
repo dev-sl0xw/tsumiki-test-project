@@ -2,29 +2,34 @@
  * Aurora Construct テスト
  *
  * TASK-0008: Aurora Construct 実装
+ * TASK-0009: Secrets Manager 統合
  * フェーズ: TDD Refactor Phase - テストコード品質改善
  *
  * 【テスト概要】:
  * Aurora Serverless v2 MySQL クラスターを構築する CDK Construct のテスト。
  * 要件定義書 REQ-022〜027 に基づき、機能要件・非機能要件を検証する。
+ * TASK-0009 で追加された Secrets Manager 統合機能を含む。
  *
  * 【テストケース分類】:
  * - TC-AU-01 〜 TC-AU-13: 正常系テストケース（コア機能、セキュリティ機能）
  * - TC-AU-14 〜 TC-AU-17: バリエーションテストケース（パラメータカスタマイズ）
  * - TC-AU-18 〜 TC-AU-20: エッジケーステストケース（境界値テスト）
  * - TC-AU-21 〜 TC-AU-24: 公開プロパティテストケース（API 検証）
+ * - TC-SM-01 〜 TC-SM-10: Secrets Manager 統合テストケース（TASK-0009）
  *
  * 【改善内容】:
  * - ヘルパー関数の共通化（createTestVpc, createTestSecurityGroup）
  * - 定数の抽出（テスト用アカウント、リージョン）
  * - JSDoc コメントの強化
  * - セクション区切りコメントの統一
+ * - Secrets Manager 統合テストの追加（TASK-0009）
  *
- * 🔵 信頼性: 要件定義書 REQ-022〜027 に基づくテスト
+ * 🔵 信頼性: 要件定義書 REQ-022〜027、SMR-001〜007 に基づくテスト
  */
 
 import * as cdk from 'aws-cdk-lib';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
+import * as ecs from 'aws-cdk-lib/aws-ecs';
 import { Template, Match } from 'aws-cdk-lib/assertions';
 import { AuroraConstruct } from '../../../lib/construct/database/aurora-construct';
 
@@ -1062,6 +1067,407 @@ describe('AuroraConstruct', () => {
         // 【検証項目】: securityGroup プロパティの存在
         // 🔵 信頼性: requirements.md より
         expect(auroraConstruct.securityGroup).toBeDefined(); // 【確認内容】: securityGroup プロパティが定義されている
+      });
+    });
+  });
+
+  // ============================================================================
+  // TASK-0009: Secrets Manager 統合テストケース
+  // ============================================================================
+  describe('Secrets Manager 統合テストケース（TASK-0009）', () => {
+    // ========================================================================
+    // TC-SM-01: Secrets Manager シークレット作成確認
+    // 🔵 信頼性: SMR-001, REQ-022 より
+    // ========================================================================
+    describe('TC-SM-01: Secrets Manager シークレット作成確認', () => {
+      // 【テスト目的】: Aurora クラスター作成時に Secrets Manager シークレットが自動生成されることを検証
+      // 【テスト内容】: AuroraConstruct インスタンス化後、Secret リソースの存在を確認
+      // 【期待される動作】: 1 つの Secrets Manager シークレットが作成される
+      // 🔵 信頼性: SMR-001, REQ-022 より
+
+      beforeEach(() => {
+        auroraConstruct = new AuroraConstruct(stack, 'TestAurora', {
+          vpc,
+          securityGroup: auroraSg,
+          envName: TEST_ENV_NAME,
+        });
+        template = Template.fromStack(stack);
+      });
+
+      test('AWS::SecretsManager::Secret リソースが 1 つ作成されること', () => {
+        // 【テスト目的】: シークレットリソースの存在確認
+        // 【テスト内容】: CloudFormation テンプレートに Secret が含まれる
+        // 【期待される動作】: 1 つの Secret リソースが作成される
+        // 🔵 信頼性: SMR-001 より
+
+        // 【検証項目】: Secret リソースの数
+        // 🔵 信頼性: SMR-001 より
+        template.resourceCountIs('AWS::SecretsManager::Secret', 1);
+      });
+    });
+
+    // ========================================================================
+    // TC-SM-02: シークレットと Aurora クラスター関連付け確認
+    // 🔵 信頼性: SMR-002, REQ-022 より
+    // ========================================================================
+    describe('TC-SM-02: シークレットと Aurora クラスター関連付け確認', () => {
+      // 【テスト目的】: シークレットが Aurora クラスターの認証情報として正しく関連付けられていることを検証
+      // 【テスト内容】: aurora.secret プロパティが定義され、MasterUserPassword がシークレット参照になっている
+      // 【期待される動作】: シークレットが Aurora クラスターに関連付けられている
+      // 🔵 信頼性: SMR-002, REQ-022 より
+      // 【実装メモ】: CDK の credentials.fromGeneratedSecret() は MasterUserPassword を使用して
+      //              シークレット参照を設定する。MasterUserSecret は manageMasterUserPassword オプション使用時のみ。
+
+      beforeEach(() => {
+        auroraConstruct = new AuroraConstruct(stack, 'TestAurora', {
+          vpc,
+          securityGroup: auroraSg,
+          envName: TEST_ENV_NAME,
+        });
+        template = Template.fromStack(stack);
+      });
+
+      test('aurora.secret プロパティが定義されていること', () => {
+        // 【テスト目的】: secret プロパティの存在確認
+        // 【テスト内容】: プロパティが undefined でない
+        // 【期待される動作】: secret が定義される
+        // 🔵 信頼性: SMR-002 より
+
+        expect(auroraConstruct.secret).toBeDefined();
+      });
+
+      test('DBCluster の MasterUserPassword がシークレット参照であること', () => {
+        // 【テスト目的】: MasterUserPassword 関連付けの確認
+        // 【テスト内容】: DBCluster に MasterUserPassword がシークレット参照として設定されている
+        // 【期待される動作】: シークレットが Aurora に関連付けられている
+        // 🔵 信頼性: SMR-002 より
+        // 【実装メモ】: CDK の fromGeneratedSecret() は MasterUserPassword に
+        //              Fn::Join を使用してシークレット ARN への参照を設定する
+
+        template.hasResourceProperties('AWS::RDS::DBCluster', {
+          MasterUserPassword: Match.anyValue(),
+        });
+      });
+    });
+
+    // ========================================================================
+    // TC-SM-03: シークレット暗号化確認
+    // 🔵 信頼性: SMR-007, REQ-026, NFR-102 より
+    // ========================================================================
+    describe('TC-SM-03: シークレット暗号化確認', () => {
+      // 【テスト目的】: シークレットが暗号化されていることを検証
+      // 【テスト内容】: Aurora の DatabaseSecret が作成され、暗号化が有効であることを確認
+      // 【期待される動作】: シークレットが暗号化されている
+      // 🔵 信頼性: SMR-007, REQ-026, NFR-102 より
+      // 【実装メモ】: Aurora の credentials.fromGeneratedSecret() で作成されるシークレットは
+      //              AWS マネージドキー (aws/secretsmanager) で自動暗号化される。
+      //              KmsKeyId は明示的に指定されない場合、CloudFormation テンプレートには出力されない。
+
+      beforeEach(() => {
+        auroraConstruct = new AuroraConstruct(stack, 'TestAurora', {
+          vpc,
+          securityGroup: auroraSg,
+          envName: TEST_ENV_NAME,
+        });
+        template = Template.fromStack(stack);
+      });
+
+      test('AWS::SecretsManager::Secret が作成されていること（暗号化はデフォルトで有効）', () => {
+        // 【テスト目的】: シークレットの存在確認（AWS マネージドキーで自動暗号化）
+        // 【テスト内容】: シークレットリソースが作成されている
+        // 【期待される動作】: Secrets Manager シークレットが存在し、暗号化されている
+        // 🔵 信頼性: SMR-007, NFR-102 より
+        // 【実装メモ】: AWS Secrets Manager はデフォルトで aws/secretsmanager
+        //              マネージドキーを使用して暗号化する
+
+        template.resourceCountIs('AWS::SecretsManager::Secret', 1);
+      });
+
+      test('ストレージ暗号化用の KMS キーが別途作成されていること', () => {
+        // 【テスト目的】: Aurora ストレージ暗号化用 KMS キーの確認
+        // 【テスト内容】: カスタマーマネージドキーが作成されている
+        // 【期待される動作】: Aurora のストレージ暗号化に KMS キーが使用されている
+        // 🔵 信頼性: REQ-026, NFR-102 より
+
+        template.resourceCountIs('AWS::KMS::Key', 1);
+      });
+    });
+
+    // ========================================================================
+    // TC-SM-04: シークレット構造確認（JSON フィールド）
+    // 🟡 信頼性: SMR-003 からの妥当な推測
+    // ========================================================================
+    describe('TC-SM-04: シークレット構造確認（JSON フィールド）', () => {
+      // 【テスト目的】: シークレットの JSON 構造が username, password を含むことを検証
+      // 【テスト内容】: GenerateSecretString テンプレートが設定されている
+      // 【期待される動作】: Aurora DatabaseSecret は自動的に必要なフィールドを含む
+      // 🟡 信頼性: SMR-003 からの妥当な推測
+
+      beforeEach(() => {
+        auroraConstruct = new AuroraConstruct(stack, 'TestAurora', {
+          vpc,
+          securityGroup: auroraSg,
+          envName: TEST_ENV_NAME,
+        });
+        template = Template.fromStack(stack);
+      });
+
+      test('シークレットの GenerateSecretString が設定されていること', () => {
+        // 【テスト目的】: シークレット生成テンプレートの確認
+        // 【テスト内容】: GenerateSecretString が設定されている
+        // 【期待される動作】: パスワードが自動生成される
+        // 🟡 信頼性: SMR-003 より
+
+        template.hasResourceProperties('AWS::SecretsManager::Secret', {
+          GenerateSecretString: Match.objectLike({
+            SecretStringTemplate: Match.anyValue(),
+            GenerateStringKey: 'password',
+            ExcludeCharacters: Match.anyValue(),
+          }),
+        });
+      });
+    });
+
+    // ========================================================================
+    // TC-SM-05: ECS タスクからのシークレット参照可能性確認
+    // 🟡 信頼性: SMR-004, REQ-018 からの妥当な推測
+    // ========================================================================
+    describe('TC-SM-05: ECS タスクからのシークレット参照可能性確認', () => {
+      // 【テスト目的】: Aurora Construct の secret プロパティが ECS シークレット参照に使用可能であることを検証
+      // 【テスト内容】: secret プロパティが ISecret 型で、secretArn が取得可能
+      // 【期待される動作】: ECS タスクからシークレットを参照できる
+      // 🟡 信頼性: SMR-004, REQ-018 からの妥当な推測
+
+      beforeEach(() => {
+        auroraConstruct = new AuroraConstruct(stack, 'TestAurora', {
+          vpc,
+          securityGroup: auroraSg,
+          envName: TEST_ENV_NAME,
+        });
+        template = Template.fromStack(stack);
+      });
+
+      test('aurora.secret が ISecret 型で取得可能であること', () => {
+        // 【テスト目的】: シークレット型の確認
+        // 【テスト内容】: secret プロパティが存在する
+        // 【期待される動作】: ISecret として使用可能
+        // 🟡 信頼性: SMR-004 より
+
+        expect(auroraConstruct.secret).toBeDefined();
+      });
+
+      test('aurora.secret.secretArn が定義されていること', () => {
+        // 【テスト目的】: secretArn プロパティの確認
+        // 【テスト内容】: secretArn が取得可能
+        // 【期待される動作】: ECS タスクで ARN を使用してシークレットを参照可能
+        // 🟡 信頼性: SMR-004 より
+
+        expect(auroraConstruct.secret.secretArn).toBeDefined();
+      });
+    });
+
+    // ========================================================================
+    // TC-SM-06: getSecretsForEcs() メソッド存在確認
+    // 🟡 信頼性: SMR-006 からの妥当な推測
+    // 【注意】: このテストは Red フェーズで失敗する想定（メソッド未実装）
+    // ========================================================================
+    describe('TC-SM-06: getSecretsForEcs() メソッド存在確認', () => {
+      // 【テスト目的】: Aurora Construct に getSecretsForEcs() メソッドが実装されていることを検証
+      // 【テスト内容】: メソッドが存在し、呼び出し可能である
+      // 【期待される動作】: メソッドが存在し、Record<string, ecs.Secret> を返す
+      // 🟡 信頼性: SMR-006 からの妥当な推測
+      // 【Red フェーズ注意】: メソッド未実装のため、このテストは失敗する想定
+
+      beforeEach(() => {
+        auroraConstruct = new AuroraConstruct(stack, 'TestAurora', {
+          vpc,
+          securityGroup: auroraSg,
+          envName: TEST_ENV_NAME,
+        });
+        template = Template.fromStack(stack);
+      });
+
+      test('getSecretsForEcs メソッドが存在すること', () => {
+        // 【テスト目的】: メソッドの存在確認
+        // 【テスト内容】: getSecretsForEcs が関数として存在する
+        // 【期待される動作】: メソッドが呼び出し可能
+        // 🟡 信頼性: SMR-006 より
+        // 【Red フェーズ】: メソッド未実装のため失敗する想定
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        expect(typeof (auroraConstruct as any).getSecretsForEcs).toBe('function');
+      });
+
+      test('getSecretsForEcs() が値を返すこと', () => {
+        // 【テスト目的】: メソッドの戻り値確認
+        // 【テスト内容】: getSecretsForEcs() が undefined でない値を返す
+        // 【期待される動作】: Record<string, ecs.Secret> を返す
+        // 🟡 信頼性: SMR-006 より
+        // 【Red フェーズ】: メソッド未実装のため失敗する想定
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const secrets = (auroraConstruct as any).getSecretsForEcs();
+        expect(secrets).toBeDefined();
+      });
+    });
+
+    // ========================================================================
+    // TC-SM-07: getSecretsForEcs() が正しいキーを返す確認
+    // 🟡 信頼性: SMR-006 からの妥当な推測
+    // 【注意】: このテストは Red フェーズで失敗する想定（メソッド未実装）
+    // ========================================================================
+    describe('TC-SM-07: getSecretsForEcs() が正しいキーを返す確認', () => {
+      // 【テスト目的】: getSecretsForEcs() が DB_PASSWORD, DB_USERNAME, DB_HOST キーを含むことを検証
+      // 【テスト内容】: 返されるオブジェクトに必要なキーが含まれる
+      // 【期待される動作】: DB_PASSWORD, DB_USERNAME, DB_HOST キーが存在する
+      // 🟡 信頼性: SMR-006 からの妥当な推測
+      // 【Red フェーズ注意】: メソッド未実装のため、このテストは失敗する想定
+
+      beforeEach(() => {
+        auroraConstruct = new AuroraConstruct(stack, 'TestAurora', {
+          vpc,
+          securityGroup: auroraSg,
+          envName: TEST_ENV_NAME,
+        });
+        template = Template.fromStack(stack);
+      });
+
+      test('DB_PASSWORD キーが含まれること', () => {
+        // 【テスト目的】: DB_PASSWORD キーの存在確認
+        // 【テスト内容】: 返されるオブジェクトに DB_PASSWORD キーが存在する
+        // 【期待される動作】: パスワード参照用のキーが存在
+        // 🟡 信頼性: SMR-006 より
+        // 【Red フェーズ】: メソッド未実装のため失敗する想定
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const secrets = (auroraConstruct as any).getSecretsForEcs();
+        expect(Object.keys(secrets)).toContain('DB_PASSWORD');
+      });
+
+      test('DB_USERNAME キーが含まれること', () => {
+        // 【テスト目的】: DB_USERNAME キーの存在確認
+        // 【テスト内容】: 返されるオブジェクトに DB_USERNAME キーが存在する
+        // 【期待される動作】: ユーザー名参照用のキーが存在
+        // 🟡 信頼性: SMR-006 より
+        // 【Red フェーズ】: メソッド未実装のため失敗する想定
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const secrets = (auroraConstruct as any).getSecretsForEcs();
+        expect(Object.keys(secrets)).toContain('DB_USERNAME');
+      });
+
+      test('DB_HOST キーが含まれること', () => {
+        // 【テスト目的】: DB_HOST キーの存在確認
+        // 【テスト内容】: 返されるオブジェクトに DB_HOST キーが存在する
+        // 【期待される動作】: ホスト名参照用のキーが存在
+        // 🟡 信頼性: SMR-006 より
+        // 【Red フェーズ】: メソッド未実装のため失敗する想定
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const secrets = (auroraConstruct as any).getSecretsForEcs();
+        expect(Object.keys(secrets)).toContain('DB_HOST');
+      });
+    });
+
+    // ========================================================================
+    // TC-SM-08: DB_PASSWORD が password フィールドを参照確認
+    // 🟡 信頼性: SMR-005 からの妥当な推測
+    // 【注意】: このテストは Red フェーズで失敗する想定（メソッド未実装）
+    // ========================================================================
+    describe('TC-SM-08: DB_PASSWORD が password フィールドを参照確認', () => {
+      // 【テスト目的】: DB_PASSWORD がシークレットの password フィールドを正しく参照することを検証
+      // 【テスト内容】: DB_PASSWORD が ecs.Secret 型で定義されている
+      // 【期待される動作】: シークレットの password フィールドを参照している
+      // 🟡 信頼性: SMR-005 からの妥当な推測
+      // 【Red フェーズ注意】: メソッド未実装のため、このテストは失敗する想定
+
+      beforeEach(() => {
+        auroraConstruct = new AuroraConstruct(stack, 'TestAurora', {
+          vpc,
+          securityGroup: auroraSg,
+          envName: TEST_ENV_NAME,
+        });
+        template = Template.fromStack(stack);
+      });
+
+      test('DB_PASSWORD が定義されていること', () => {
+        // 【テスト目的】: DB_PASSWORD の定義確認
+        // 【テスト内容】: DB_PASSWORD が undefined でない
+        // 【期待される動作】: パスワードシークレット参照が存在
+        // 🟡 信頼性: SMR-005 より
+        // 【Red フェーズ】: メソッド未実装のため失敗する想定
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const secrets = (auroraConstruct as any).getSecretsForEcs();
+        expect(secrets.DB_PASSWORD).toBeDefined();
+      });
+    });
+
+    // ========================================================================
+    // TC-SM-09: DB_USERNAME が username フィールドを参照確認
+    // 🟡 信頼性: SMR-005 からの妥当な推測
+    // 【注意】: このテストは Red フェーズで失敗する想定（メソッド未実装）
+    // ========================================================================
+    describe('TC-SM-09: DB_USERNAME が username フィールドを参照確認', () => {
+      // 【テスト目的】: DB_USERNAME がシークレットの username フィールドを正しく参照することを検証
+      // 【テスト内容】: DB_USERNAME が ecs.Secret 型で定義されている
+      // 【期待される動作】: シークレットの username フィールドを参照している
+      // 🟡 信頼性: SMR-005 からの妥当な推測
+      // 【Red フェーズ注意】: メソッド未実装のため、このテストは失敗する想定
+
+      beforeEach(() => {
+        auroraConstruct = new AuroraConstruct(stack, 'TestAurora', {
+          vpc,
+          securityGroup: auroraSg,
+          envName: TEST_ENV_NAME,
+        });
+        template = Template.fromStack(stack);
+      });
+
+      test('DB_USERNAME が定義されていること', () => {
+        // 【テスト目的】: DB_USERNAME の定義確認
+        // 【テスト内容】: DB_USERNAME が undefined でない
+        // 【期待される動作】: ユーザー名シークレット参照が存在
+        // 🟡 信頼性: SMR-005 より
+        // 【Red フェーズ】: メソッド未実装のため失敗する想定
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const secrets = (auroraConstruct as any).getSecretsForEcs();
+        expect(secrets.DB_USERNAME).toBeDefined();
+      });
+    });
+
+    // ========================================================================
+    // TC-SM-10: DB_HOST が host フィールドを参照確認
+    // 🟡 信頼性: SMR-005 からの妥当な推測
+    // 【注意】: このテストは Red フェーズで失敗する想定（メソッド未実装）
+    // ========================================================================
+    describe('TC-SM-10: DB_HOST が host フィールドを参照確認', () => {
+      // 【テスト目的】: DB_HOST がシークレットの host フィールドを正しく参照することを検証
+      // 【テスト内容】: DB_HOST が ecs.Secret 型で定義されている
+      // 【期待される動作】: シークレットの host フィールドを参照している
+      // 🟡 信頼性: SMR-005 からの妥当な推測
+      // 【Red フェーズ注意】: メソッド未実装のため、このテストは失敗する想定
+
+      beforeEach(() => {
+        auroraConstruct = new AuroraConstruct(stack, 'TestAurora', {
+          vpc,
+          securityGroup: auroraSg,
+          envName: TEST_ENV_NAME,
+        });
+        template = Template.fromStack(stack);
+      });
+
+      test('DB_HOST が定義されていること', () => {
+        // 【テスト目的】: DB_HOST の定義確認
+        // 【テスト内容】: DB_HOST が undefined でない
+        // 【期待される動作】: ホスト名シークレット参照が存在
+        // 🟡 信頼性: SMR-005 より
+        // 【Red フェーズ】: メソッド未実装のため失敗する想定
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const secrets = (auroraConstruct as any).getSecretsForEcs();
+        expect(secrets.DB_HOST).toBeDefined();
       });
     });
   });
