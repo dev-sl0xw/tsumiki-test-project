@@ -2,11 +2,12 @@
  * Aurora Construct 実装
  *
  * TASK-0008: Aurora Construct 実装
+ * TASK-0009: Secrets Manager 統合
  * フェーズ: TDD Refactor Phase - コード品質改善
  *
  * 【機能概要】: Aurora Serverless v2 MySQL クラスターを構築する CDK Construct
  * 【実装方針】: 最小権限の原則に基づき、セキュアなデータベースを構築
- * 【テスト対応】: TC-AU-01 〜 TC-AU-24 の全テストケースに対応
+ * 【テスト対応】: TC-AU-01 〜 TC-AU-24、TC-SM-01 〜 TC-SM-10 の全テストケースに対応
  * 【リファクタ内容】: 定数抽出、バリデーション強化、JSDoc 改善、セクション区切りコメント追加
  *
  * 構成内容:
@@ -15,6 +16,7 @@
  * - 自動バックアップ（デフォルト 7 日間）
  * - Private Isolated Subnet 配置
  * - Secrets Manager による認証情報管理
+ * - ECS タスク用シークレット取得メソッド（TASK-0009）
  *
  * 参照した要件:
  * - REQ-022: Aurora MySQL Serverless v2 を使用
@@ -23,6 +25,7 @@
  * - REQ-025: ECS SG からの 3306 のみ許可
  * - REQ-026: Storage Encryption 有効化
  * - REQ-027: 自動バックアップ有効化
+ * - SMR-001〜007: Secrets Manager 統合（TASK-0009）
  *
  * 🔵 信頼性レベル: 要件定義書に基づく実装
  *
@@ -31,6 +34,7 @@
 
 import * as cdk from 'aws-cdk-lib';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
+import * as ecs from 'aws-cdk-lib/aws-ecs';
 import * as kms from 'aws-cdk-lib/aws-kms';
 import * as rds from 'aws-cdk-lib/aws-rds';
 import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
@@ -64,6 +68,47 @@ const BACKUP_RETENTION_MIN_DAYS = 1;
  * 🔵 信頼性: AWS RDS 仕様より
  */
 const BACKUP_RETENTION_MAX_DAYS = 35;
+
+// ============================================================================
+// 【定数定義】: ECS シークレット環境変数キー名
+// 🔵 信頼性: TASK-0009 Secrets Manager 統合、SMR-005, SMR-006 より
+// ============================================================================
+
+/**
+ * 【ECS 環境変数キー】: データベースパスワード
+ * 🔵 信頼性: SMR-005 より（ECS タスク定義で使用）
+ */
+const ECS_SECRET_KEY_DB_PASSWORD = 'DB_PASSWORD';
+
+/**
+ * 【ECS 環境変数キー】: データベースユーザー名
+ * 🔵 信頼性: SMR-005 より（ECS タスク定義で使用）
+ */
+const ECS_SECRET_KEY_DB_USERNAME = 'DB_USERNAME';
+
+/**
+ * 【ECS 環境変数キー】: データベースホスト
+ * 🔵 信頼性: SMR-005 より（ECS タスク定義で使用）
+ */
+const ECS_SECRET_KEY_DB_HOST = 'DB_HOST';
+
+/**
+ * 【シークレット JSON フィールド】: パスワードフィールド名
+ * 🔵 信頼性: Aurora DatabaseSecret の標準フィールド
+ */
+const SECRET_FIELD_PASSWORD = 'password';
+
+/**
+ * 【シークレット JSON フィールド】: ユーザー名フィールド名
+ * 🔵 信頼性: Aurora DatabaseSecret の標準フィールド
+ */
+const SECRET_FIELD_USERNAME = 'username';
+
+/**
+ * 【シークレット JSON フィールド】: ホストフィールド名
+ * 🔵 信頼性: Aurora DatabaseSecret の標準フィールド
+ */
+const SECRET_FIELD_HOST = 'host';
 
 // ============================================================================
 // 【定数定義】: デフォルト値
@@ -447,5 +492,101 @@ export class AuroraConstruct extends Construct {
     // 【認証情報 Secret】: Secrets Manager のシークレット
     // 🔵 信頼性: note.md CDK 実装制約より（credentials.fromGeneratedSecret で自動生成）
     this.secret = this.cluster.secret!;
+  }
+
+  // ==========================================================================
+  // 【公開メソッド】: ECS タスク用シークレット取得
+  // 🔵 信頼性: TASK-0009 Secrets Manager 統合、SMR-006 より
+  // ==========================================================================
+
+  /**
+   * ECS タスク定義で使用するシークレットを取得
+   *
+   * 【機能概要】:
+   * Aurora の認証情報を ECS タスクで使用可能な形式で返します。
+   * Secrets Manager に保存された Aurora DatabaseSecret から、
+   * 特定のフィールド（password, username, host）を参照する ecs.Secret オブジェクトを生成します。
+   *
+   * 【用途】:
+   * ECS タスク定義の secrets プロパティに設定することで、
+   * コンテナ起動時に環境変数としてデータベース接続情報が注入されます。
+   *
+   * 【返されるキー】:
+   * | キー名       | 参照フィールド | 説明                           |
+   * |--------------|----------------|--------------------------------|
+   * | DB_PASSWORD  | password       | データベース接続パスワード     |
+   * | DB_USERNAME  | username       | データベース接続ユーザー名     |
+   * | DB_HOST      | host           | Aurora クラスターエンドポイント |
+   *
+   * 【セキュリティ】:
+   * - シークレット値はコンテナ起動時に ECS によって安全に注入されます
+   * - 平文での認証情報の受け渡しを回避し、セキュリティを向上させます
+   * - IAM ポリシーによるアクセス制御が適用されます
+   *
+   * 🔵 信頼性レベル: TASK-0009 Secrets Manager 統合、SMR-005, SMR-006 より
+   *
+   * @returns {Record<string, ecs.Secret>} ECS シークレットのマップ
+   *   - キーは環境変数名として使用されます
+   *   - 値は ecs.Secret オブジェクト（Secrets Manager への参照）
+   *
+   * @example
+   * ```typescript
+   * // Aurora Construct のインスタンス化
+   * const aurora = new AuroraConstruct(this, 'Aurora', {
+   *   vpc: props.vpc,
+   *   securityGroup: props.auroraSecurityGroup,
+   *   envName: 'dev',
+   * });
+   *
+   * // シークレット取得
+   * const secrets = aurora.getSecretsForEcs();
+   *
+   * // ECS タスク定義で使用
+   * const taskDefinition = new ecs.FargateTaskDefinition(this, 'TaskDef', {
+   *   cpu: 256,
+   *   memoryLimitMiB: 512,
+   * });
+   *
+   * taskDefinition.addContainer('App', {
+   *   image: ecs.ContainerImage.fromEcrRepository(repo),
+   *   // シークレットを環境変数として注入
+   *   secrets: secrets,
+   *   // または個別に指定
+   *   // secrets: {
+   *   //   DB_PASSWORD: secrets.DB_PASSWORD,
+   *   //   DB_USERNAME: secrets.DB_USERNAME,
+   *   //   DB_HOST: secrets.DB_HOST,
+   *   // },
+   * });
+   *
+   * // アプリケーション側では以下の環境変数として参照可能:
+   * // - process.env.DB_PASSWORD
+   * // - process.env.DB_USERNAME
+   * // - process.env.DB_HOST
+   * ```
+   *
+   * @see {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs.Secret.html} ECS Secret
+   * @see {@link https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data-secrets.html} ECS Secrets Manager 統合
+   */
+  public getSecretsForEcs(): Record<string, ecs.Secret> {
+    return {
+      // 【DB_PASSWORD】: シークレットの password フィールドを参照
+      // 🔵 信頼性: SMR-005 より
+      [ECS_SECRET_KEY_DB_PASSWORD]: ecs.Secret.fromSecretsManager(
+        this.secret,
+        SECRET_FIELD_PASSWORD
+      ),
+
+      // 【DB_USERNAME】: シークレットの username フィールドを参照
+      // 🔵 信頼性: SMR-005 より
+      [ECS_SECRET_KEY_DB_USERNAME]: ecs.Secret.fromSecretsManager(
+        this.secret,
+        SECRET_FIELD_USERNAME
+      ),
+
+      // 【DB_HOST】: シークレットの host フィールドを参照
+      // 🔵 信頼性: SMR-005 より
+      [ECS_SECRET_KEY_DB_HOST]: ecs.Secret.fromSecretsManager(this.secret, SECRET_FIELD_HOST),
+    };
   }
 }
