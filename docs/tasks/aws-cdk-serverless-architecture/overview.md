@@ -83,7 +83,7 @@ TASK-0001 (プロジェクト初期化)
 | [x] | [TASK-0007: Security Stack 統合](TASK-0007.md) | 4h | TDD | 🔵 |
 | [x] | [TASK-0008: Aurora Construct 実装](TASK-0008.md) | 8h | TDD | 🔵 |
 | [x] | [TASK-0009: Secrets Manager 統合](TASK-0009.md) | 4h | TDD | 🟡 |
-| [ ] | [TASK-0010: Database Stack 統合](TASK-0010.md) | 4h | TDD | 🔵 |
+| [x] | [TASK-0010: Database Stack 統合](TASK-0010.md) | 4h | TDD | 🔵 |
 | [ ] | [TASK-0011: WAF Construct 実装](TASK-0011.md) | 6h | TDD | 🔵 |
 
 ### 依存関係
