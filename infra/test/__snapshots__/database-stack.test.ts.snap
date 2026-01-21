@@ -1,0 +1,235 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatabaseStack TC-DS-01: スナップショットテスト CloudFormation テンプレートのスナップショットテスト 1`] = `
+{
+  "Outputs": {
+    "AuroraClusterArn": {
+      "Description": "Aurora cluster ARN",
+      "Export": {
+        "Name": "dev-AuroraClusterArn",
+      },
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "arn:",
+            {
+              "Ref": "AWS::Partition",
+            },
+            ":rds:ap-northeast-1:123456789012:cluster:",
+            {
+              "Ref": "AuroraAuroraCluster557FDB85",
+            },
+          ],
+        ],
+      },
+    },
+    "DbEndpoint": {
+      "Description": "Aurora cluster writer endpoint",
+      "Export": {
+        "Name": "dev-DbEndpoint",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "AuroraAuroraCluster557FDB85",
+          "Endpoint.Address",
+        ],
+      },
+    },
+    "DbPort": {
+      "Description": "Aurora cluster port",
+      "Export": {
+        "Name": "dev-DbPort",
+      },
+      "Value": "3306",
+    },
+    "DbSecretArn": {
+      "Description": "Aurora database secret ARN",
+      "Export": {
+        "Name": "dev-DbSecretArn",
+      },
+      "Value": {
+        "Ref": "AuroraAuroraClusterSecretAttachment47B4605C",
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AuroraAuroraCluster557FDB85": {
+      "DeletionPolicy": "Snapshot",
+      "Properties": {
+        "BackupRetentionPeriod": 7,
+        "CopyTagsToSnapshot": true,
+        "DBClusterParameterGroupName": "default.aurora-mysql8.0",
+        "DBSubnetGroupName": {
+          "Ref": "AuroraAuroraClusterSubnets5E3C5430",
+        },
+        "DatabaseName": "appdb",
+        "Engine": "aurora-mysql",
+        "EngineVersion": "8.0.mysql_aurora.3.05.2",
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "AuroraAuroraEncryptionKey619D6BD6",
+            "Arn",
+          ],
+        },
+        "MasterUserPassword": {
+          "Fn::Join": [
+            "",
+            [
+              "{{resolve:secretsmanager:",
+              {
+                "Ref": "SnapshotDatabaseStackAuroraAuroraClusterSecret56F35C3E3fdaad7efa858a3daf9490cf0a702aeb",
+              },
+              ":SecretString:password::}}",
+            ],
+          ],
+        },
+        "MasterUsername": "dbadmin",
+        "ServerlessV2ScalingConfiguration": {
+          "MaxCapacity": 2,
+          "MinCapacity": 0.5,
+        },
+        "StorageEncrypted": true,
+        "VpcSecurityGroupIds": [
+          {
+            "Fn::ImportValue": "SnapshotVpcStack:ExportsOutputFnGetAttTestAuroraSg3A00D41EGroupIdBE294615",
+          },
+        ],
+      },
+      "Type": "AWS::RDS::DBCluster",
+      "UpdateReplacePolicy": "Snapshot",
+    },
+    "AuroraAuroraClusterSecretAttachment47B4605C": {
+      "Properties": {
+        "SecretId": {
+          "Ref": "SnapshotDatabaseStackAuroraAuroraClusterSecret56F35C3E3fdaad7efa858a3daf9490cf0a702aeb",
+        },
+        "TargetId": {
+          "Ref": "AuroraAuroraCluster557FDB85",
+        },
+        "TargetType": "AWS::RDS::DBCluster",
+      },
+      "Type": "AWS::SecretsManager::SecretTargetAttachment",
+    },
+    "AuroraAuroraClusterSubnets5E3C5430": {
+      "Properties": {
+        "DBSubnetGroupDescription": "Subnets for AuroraCluster database",
+        "SubnetIds": [
+          {
+            "Fn::ImportValue": "SnapshotVpcStack:ExportsOutputRefTestVpcPrivateDbSubnet1SubnetAE759A7220AEB35A",
+          },
+          {
+            "Fn::ImportValue": "SnapshotVpcStack:ExportsOutputRefTestVpcPrivateDbSubnet2Subnet3BC4B0DB9F849BB7",
+          },
+        ],
+      },
+      "Type": "AWS::RDS::DBSubnetGroup",
+    },
+    "AuroraAuroraClusterWriterC1877242": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "DBClusterIdentifier": {
+          "Ref": "AuroraAuroraCluster557FDB85",
+        },
+        "DBInstanceClass": "db.serverless",
+        "Engine": "aurora-mysql",
+        "PromotionTier": 0,
+        "PubliclyAccessible": false,
+      },
+      "Type": "AWS::RDS::DBInstance",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "AuroraAuroraEncryptionKey619D6BD6": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "Description": "Aurora encryption key for dev",
+        "EnableKeyRotation": true,
+        "KeyPolicy": {
+          "Statement": [
+            {
+              "Action": "kms:*",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::123456789012:root",
+                    ],
+                  ],
+                },
+              },
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::KMS::Key",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "SnapshotDatabaseStackAuroraAuroraClusterSecret56F35C3E3fdaad7efa858a3daf9490cf0a702aeb": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Description": {
+          "Fn::Join": [
+            "",
+            [
+              "Generated by the CDK for stack: ",
+              {
+                "Ref": "AWS::StackName",
+              },
+            ],
+          ],
+        },
+        "GenerateSecretString": {
+          "ExcludeCharacters": " %+~\`#$&*()|[]{}:;<>?!'/@"\\",
+          "GenerateStringKey": "password",
+          "PasswordLength": 30,
+          "SecretStringTemplate": "{"username":"dbadmin"}",
+        },
+      },
+      "Type": "AWS::SecretsManager::Secret",
+      "UpdateReplacePolicy": "Delete",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
