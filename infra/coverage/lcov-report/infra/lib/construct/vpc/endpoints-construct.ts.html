@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for infra/lib/construct/security/iam-role-construct.ts</title>
+    <title>Code coverage report for infra/lib/construct/vpc/endpoints-construct.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">infra/lib/construct/security</a> iam-role-construct.ts</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">infra/lib/construct/vpc</a> endpoints-construct.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
@@ -299,7 +299,183 @@
 <a name='L234'></a><a href='#L234'>234</a>
 <a name='L235'></a><a href='#L235'>235</a>
 <a name='L236'></a><a href='#L236'>236</a>
-<a name='L237'></a><a href='#L237'>237</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L237'></a><a href='#L237'>237</a>
+<a name='L238'></a><a href='#L238'>238</a>
+<a name='L239'></a><a href='#L239'>239</a>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a>
+<a name='L243'></a><a href='#L243'>243</a>
+<a name='L244'></a><a href='#L244'>244</a>
+<a name='L245'></a><a href='#L245'>245</a>
+<a name='L246'></a><a href='#L246'>246</a>
+<a name='L247'></a><a href='#L247'>247</a>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a>
+<a name='L260'></a><a href='#L260'>260</a>
+<a name='L261'></a><a href='#L261'>261</a>
+<a name='L262'></a><a href='#L262'>262</a>
+<a name='L263'></a><a href='#L263'>263</a>
+<a name='L264'></a><a href='#L264'>264</a>
+<a name='L265'></a><a href='#L265'>265</a>
+<a name='L266'></a><a href='#L266'>266</a>
+<a name='L267'></a><a href='#L267'>267</a>
+<a name='L268'></a><a href='#L268'>268</a>
+<a name='L269'></a><a href='#L269'>269</a>
+<a name='L270'></a><a href='#L270'>270</a>
+<a name='L271'></a><a href='#L271'>271</a>
+<a name='L272'></a><a href='#L272'>272</a>
+<a name='L273'></a><a href='#L273'>273</a>
+<a name='L274'></a><a href='#L274'>274</a>
+<a name='L275'></a><a href='#L275'>275</a>
+<a name='L276'></a><a href='#L276'>276</a>
+<a name='L277'></a><a href='#L277'>277</a>
+<a name='L278'></a><a href='#L278'>278</a>
+<a name='L279'></a><a href='#L279'>279</a>
+<a name='L280'></a><a href='#L280'>280</a>
+<a name='L281'></a><a href='#L281'>281</a>
+<a name='L282'></a><a href='#L282'>282</a>
+<a name='L283'></a><a href='#L283'>283</a>
+<a name='L284'></a><a href='#L284'>284</a>
+<a name='L285'></a><a href='#L285'>285</a>
+<a name='L286'></a><a href='#L286'>286</a>
+<a name='L287'></a><a href='#L287'>287</a>
+<a name='L288'></a><a href='#L288'>288</a>
+<a name='L289'></a><a href='#L289'>289</a>
+<a name='L290'></a><a href='#L290'>290</a>
+<a name='L291'></a><a href='#L291'>291</a>
+<a name='L292'></a><a href='#L292'>292</a>
+<a name='L293'></a><a href='#L293'>293</a>
+<a name='L294'></a><a href='#L294'>294</a>
+<a name='L295'></a><a href='#L295'>295</a>
+<a name='L296'></a><a href='#L296'>296</a>
+<a name='L297'></a><a href='#L297'>297</a>
+<a name='L298'></a><a href='#L298'>298</a>
+<a name='L299'></a><a href='#L299'>299</a>
+<a name='L300'></a><a href='#L300'>300</a>
+<a name='L301'></a><a href='#L301'>301</a>
+<a name='L302'></a><a href='#L302'>302</a>
+<a name='L303'></a><a href='#L303'>303</a>
+<a name='L304'></a><a href='#L304'>304</a>
+<a name='L305'></a><a href='#L305'>305</a>
+<a name='L306'></a><a href='#L306'>306</a>
+<a name='L307'></a><a href='#L307'>307</a>
+<a name='L308'></a><a href='#L308'>308</a>
+<a name='L309'></a><a href='#L309'>309</a>
+<a name='L310'></a><a href='#L310'>310</a>
+<a name='L311'></a><a href='#L311'>311</a>
+<a name='L312'></a><a href='#L312'>312</a>
+<a name='L313'></a><a href='#L313'>313</a>
+<a name='L314'></a><a href='#L314'>314</a>
+<a name='L315'></a><a href='#L315'>315</a>
+<a name='L316'></a><a href='#L316'>316</a>
+<a name='L317'></a><a href='#L317'>317</a>
+<a name='L318'></a><a href='#L318'>318</a>
+<a name='L319'></a><a href='#L319'>319</a>
+<a name='L320'></a><a href='#L320'>320</a>
+<a name='L321'></a><a href='#L321'>321</a>
+<a name='L322'></a><a href='#L322'>322</a>
+<a name='L323'></a><a href='#L323'>323</a>
+<a name='L324'></a><a href='#L324'>324</a>
+<a name='L325'></a><a href='#L325'>325</a>
+<a name='L326'></a><a href='#L326'>326</a>
+<a name='L327'></a><a href='#L327'>327</a>
+<a name='L328'></a><a href='#L328'>328</a>
+<a name='L329'></a><a href='#L329'>329</a>
+<a name='L330'></a><a href='#L330'>330</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -327,7 +503,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -338,19 +513,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -413,7 +585,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -448,74 +619,83 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66x</span>
+<span class="cline-any cline-yes">66x</span>
+<span class="cline-any cline-yes">66x</span>
+<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -524,251 +704,350 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * IAM Role Construct 実装
+ * VPC Endpoints Construct 実装
  *
- * TASK-0006: IAM Role Construct 実装
- * フェーズ: Refactor フェーズ - コード品質改善
+ * TASK-0003: VPC Endpoints Construct 実装
+ * フェーズ: TDD Refactor Phase - コード品質の改善
  *
- * 【機能概要】: ECS Fargate タスクの実行に必要な IAM Role を作成する CDK Construct
- * 【実装方針】: 最小権限の原則に基づき、2つの IAM Role を作成
- * 【テスト対応】: TC-IAM-01 〜 TC-IAM-15 の全16テストケースに対応
- * 【リファクタ内容】: JSDoc 強化、信頼性レベル表記の統一
+ * 【機能概要】: VPC Endpoint を一元管理する CDK Construct
+ * 【設計方針】: AWS サービスへの VPC 内部通信を最適化し、NAT Gateway 経由のコストを削減
+ * 【テスト対応】: TC-VPCE-01 〜 TC-VPCE-18 の 29 テストケースに対応
+ * 【改善内容】: Endpoint ID の定数化、JSDoc コメントの強化
+ * 🔵 信頼性レベル: 要件定義書 REQ-008 〜 REQ-011 に基づく実装
  *
- * 構成内容:
- * - ECS Task Role: タスク実行中のアプリケーションが使用する権限
- *   - AmazonSSMManagedInstanceCore（ECS Exec 用）
- *   - secretsmanager:GetSecretValue（DB 認証情報取得用）
- * - ECS Task Execution Role: タスク起動時に ECS エージェントが使用する権限
- *   - AmazonECSTaskExecutionRolePolicy（ECR Pull, CloudWatch Logs 用）
- *
- * 参照した要件:
- * - REQ-018: Task Role に AmazonSSMManagedInstanceCore 権限を付与
- * - REQ-019: ECS Exec を有効化（Service 側で設定）
- *
- * 🔵 信頼性レベル: 要件定義書 REQ-018、タスク定義 TASK-0006.md に基づく実装
- *
- * @module IamRoleConstruct
+ * @module EndpointsConstruct
  */
 &nbsp;
+import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import { Construct } from 'constructs';
-import * as iam from 'aws-cdk-lib/aws-iam';
 &nbsp;
 // ============================================================================
-// 【定数定義】: IAM Role 説明文
-// 🔵 信頼性: CDK ベストプラクティスより（監査・トラブルシューティング時に役立つ）
-// ============================================================================
-&nbsp;
-/**
- * 【ECS Task Role 説明】: ECS Fargate タスク用 IAM Role の説明文
- * 🔵 信頼性: note.md CDKベストプラクティスより
- */
-const DESCRIPTION_TASK_ROLE = 'IAM role for ECS Fargate tasks';
-&nbsp;
-/**
- * 【ECS Task Execution Role 説明】: ECS タスク実行用 IAM Role の説明文
- * 🔵 信頼性: note.md CDKベストプラクティスより
- */
-const DESCRIPTION_EXECUTION_ROLE = 'IAM role for ECS task execution';
-&nbsp;
-/**
- * 【デフォルト Secret ARN】: secretArns 未指定または空配列時のデフォルト値
- * 🟡 信頼性: requirements.md エッジケース EC-01 より（妥当な推測を含む）
- */
-const DEFAULT_SECRET_ARNS = ['*'];
-&nbsp;
-// ============================================================================
-// 【インターフェース定義】
+// 【定数定義】: Endpoint ID の定数化 (DRY 原則)
+// 🔵 信頼性: Refactor フェーズで追加した保守性向上のための定数
 // ============================================================================
 &nbsp;
 /**
- * IamRoleConstruct の Props インターフェース
+ * VPC Endpoint の CDK Construct ID を定義する定数オブジェクト
  *
- * 【設計方針】: secretArns はオプショナルでデフォルト値を提供
- * 【再利用性】: 異なる Secrets Manager ARN に対応可能
- * 🔵 信頼性: タスクノート note.md、TASK-0006.md 型定義より
- *
- * @interface IamRoleConstructProps
+ * 【設計方針】: ハードコーディングを避け、一元管理することで保守性を向上
+ * 【用途】: vpc.addInterfaceEndpoint() / vpc.addGatewayEndpoint() の ID パラメータ
+ * 🔵 信頼性: Refactor フェーズで追加
  */
-export interface IamRoleConstructProps {
+const ENDPOINT_IDS = {
+  /** SSM Session Manager API 用 Endpoint ID */
+  SSM: 'SsmEndpoint',
+  /** SSM Session Manager メッセージ用 Endpoint ID */
+  SSM_MESSAGES: 'SsmMessagesEndpoint',
+  /** SSM エージェントメッセージ用 Endpoint ID */
+  EC2_MESSAGES: 'Ec2MessagesEndpoint',
+  /** ECR API 用 Endpoint ID */
+  ECR_API: 'EcrApiEndpoint',
+  /** ECR Docker レジストリ用 Endpoint ID */
+  ECR_DKR: 'EcrDkrEndpoint',
+  /** CloudWatch Logs 用 Endpoint ID */
+  LOGS: 'LogsEndpoint',
+  /** S3 Gateway Endpoint ID */
+  S3: 'S3Endpoint',
+} as const;
+&nbsp;
+/**
+ * EndpointsConstruct の Props インターフェース
+ *
+ * 【設計方針】: VPC を必須とし、各 Endpoint の有効化フラグをオプションで提供
+ * 【デフォルト値】: すべてのフラグはデフォルトで true（全 Endpoint を作成）
+ * 🔵 信頼性: note.md の実装インターフェースより
+ *
+ * @interface EndpointsConstructProps
+ */
+export interface EndpointsConstructProps {
   /**
-   * Secrets Manager Secret ARN のリスト（オプション）
-   *
-   * 【用途】: Task Role に Secrets Manager アクセス権限を付与する際の ARN
-   * 【デフォルト】: ['*'] - 全ての Secret にアクセス可能（開発環境向け）
-   * 【本番推奨】: 特定の Secret ARN を指定してアクセスを制限
-   * 🔵 信頼性: タスクノート note.md セキュリティ考慮事項より
-   *
-   * @default ['*']
-   * @type {string[]}
+   * VPC への参照（必須）
+   * 🔵 信頼性: 要件定義書より必須パラメータ
    */
-  readonly secretArns?: string[];
+  readonly vpc: ec2.IVpc;
+&nbsp;
+  /**
+   * SSM Endpoints を作成するかどうか
+   * @default true
+   * 🟡 信頼性: 実装設計から妥当な推測
+   */
+  readonly enableSsm?: boolean;
+&nbsp;
+  /**
+   * ECR Endpoints を作成するかどうか
+   * @default true
+   * 🟡 信頼性: 実装設計から妥当な推測
+   */
+  readonly enableEcr?: boolean;
+&nbsp;
+  /**
+   * CloudWatch Logs Endpoint を作成するかどうか
+   * @default true
+   * 🟡 信頼性: 実装設計から妥当な推測
+   */
+  readonly enableLogs?: boolean;
+&nbsp;
+  /**
+   * S3 Gateway Endpoint を作成するかどうか
+   * @default true
+   * 🟡 信頼性: 実装設計から妥当な推測
+   */
+  readonly enableS3?: boolean;
 }
 &nbsp;
 /**
- * IAM Role Construct
+ * VPC Endpoints Construct
  *
- * 【機能概要】: 2つの IAM Role (Task Role, Execution Role) を作成する Construct
- * 【実装方針】: 最小権限の原則に基づき、必要最小限のポリシーのみ付与
- * 【テスト対応】: TC-IAM-01 〜 TC-IAM-15 の全テストケースを通すための実装
+ * 【機能概要】: VPC Endpoint を一元管理する Construct
+ * 【実装方針】: AWS CDK の VPC メソッドを使用して各種 Endpoint を作成
+ * 【テスト対応】: TC-VPCE-01 〜 TC-VPCE-18 の全テストケースに対応
  *
- * セキュリティ設計:
- * - Task Role: ecs-tasks.amazonaws.com を信頼、AmazonSSMManagedInstanceCore + secretsmanager:GetSecretValue
- * - Execution Role: ecs-tasks.amazonaws.com を信頼、AmazonECSTaskExecutionRolePolicy
+ * 作成する Endpoint:
+ * - SSM Interface Endpoints: ssm, ssmmessages, ec2messages (REQ-008)
+ * - ECR Interface Endpoints: ecr.api, ecr.dkr (REQ-009)
+ * - CloudWatch Logs Interface Endpoint: logs (REQ-010)
+ * - S3 Gateway Endpoint (REQ-011)
  *
- * 🔵 信頼性レベル: 要件定義書 REQ-018 に基づく実装
+ * 🔵 信頼性レベル: 要件定義書に基づく実装
  *
- * @class IamRoleConstruct
+ * @class EndpointsConstruct
  * @extends Construct
- *
- * @example
- * ```typescript
- * // デフォルト設定での使用
- * const iamRoles = new IamRoleConstruct(stack, 'IamRoles', {});
- *
- * // Secret ARN を指定した使用
- * const iamRoles = new IamRoleConstruct(stack, 'IamRoles', {
- *   secretArns: ['arn:aws:secretsmanager:ap-northeast-1:123456789012:secret:my-db-secret-abc123'],
- * });
- *
- * // Task Definition での参照
- * const taskDefinition = new ecs.FargateTaskDefinition(this, 'TaskDef', {
- *   taskRole: iamRoles.taskRole,
- *   executionRole: iamRoles.executionRole,
- * });
- * ```
  */
-export class IamRoleConstruct extends Construct {
-  /**
-   * 【プロパティ】: ECS Task Role
-   *
-   * 【用途】: タスク実行中のアプリケーションが使用する IAM Role
-   * 【権限】:
-   *   - AmazonSSMManagedInstanceCore（ECS Exec 用）
-   *   - secretsmanager:GetSecretValue（DB 認証情報取得用）
-   * 【参照元】: Application Stack の Task Definition 作成時に使用
-   * 🔵 信頼性: REQ-018 より
-   *
-   * @readonly
-   * @type {iam.IRole}
-   */
-  public readonly taskRole: iam.IRole;
+export class EndpointsConstruct extends Construct {
+  // ==========================================================================
+  // 【公開プロパティ】: 作成された VPC Endpoint への参照
+  // 【設計方針】: 外部から各 Endpoint を参照可能にし、追加の設定を可能にする
+  // 🔵 信頼性: note.md の実装インターフェースより
+  // ==========================================================================
 &nbsp;
   /**
-   * 【プロパティ】: ECS Task Execution Role
+   * SSM Interface Endpoint (ssm)
    *
-   * 【用途】: タスク起動時に ECS エージェントが使用する IAM Role
-   * 【権限】:
-   *   - AmazonECSTaskExecutionRolePolicy（ECR Pull, CloudWatch Logs 用）
-   * 【参照元】: Application Stack の Task Definition 作成時に使用
-   * 🔵 信頼性: タスク定義 TASK-0006.md ECS Task Execution Role セクションより
+   * 【機能概要】: AWS Systems Manager Session Manager の API 呼び出し用 Endpoint
+   * 【用途】: ECS Exec で Fargate タスクへの SSH ライクな接続を可能にする
+   * 【配置先】: Private App Subnet (PRIVATE_WITH_EGRESS)
+   * 【関連サービス】: SSM Session Manager, ECS Exec
+   * 【課金】: $0.01/時間 + データ処理料金
    *
-   * @readonly
-   * @type {iam.IRole}
+   * @remarks enableSsm=false の場合は undefined
+   * 🔵 信頼性: 要件定義書 REQ-008 に基づく
    */
-  public readonly executionRole: iam.IRole;
+  public readonly ssmEndpoint?: ec2.IInterfaceVpcEndpoint;
 &nbsp;
   /**
-   * IamRoleConstruct のコンストラクタ
+   * SSM Messages Interface Endpoint (ssmmessages)
    *
-   * 【処理概要】: 2つの IAM Role を作成し、最小権限のポリシーを設定
-   * 【設計方針】: secretArns 未指定または空配列時は DEFAULT_SECRET_ARNS を使用
+   * 【機能概要】: SSM Session Manager のメッセージ送受信用 Endpoint
+   * 【用途】: セッション確立後のコマンド送信・出力受信
+   * 【配置先】: Private App Subnet (PRIVATE_WITH_EGRESS)
+   * 【関連サービス】: SSM Session Manager
+   * 【課金】: $0.01/時間 + データ処理料金
    *
-   * @param {Construct} scope - 親となる Construct
-   * @param {string} id - この Construct の識別子
-   * @param {IamRoleConstructProps} props - IAM Role 設定
+   * @remarks enableSsm=false の場合は undefined
+   * 🔵 信頼性: 要件定義書 REQ-008 に基づく
    */
-  constructor(scope: Construct, id: string, props: IamRoleConstructProps) {
+  public readonly ssmMessagesEndpoint?: ec2.IInterfaceVpcEndpoint;
+&nbsp;
+  /**
+   * EC2 Messages Interface Endpoint (ec2messages)
+   *
+   * 【機能概要】: SSM エージェントのメッセージ通信用 Endpoint
+   * 【用途】: EC2/ECS タスクと SSM サービス間の通信
+   * 【配置先】: Private App Subnet (PRIVATE_WITH_EGRESS)
+   * 【関連サービス】: SSM Agent
+   * 【課金】: $0.01/時間 + データ処理料金
+   *
+   * @remarks enableSsm=false の場合は undefined
+   * 🔵 信頼性: 要件定義書 REQ-008 に基づく
+   */
+  public readonly ec2MessagesEndpoint?: ec2.IInterfaceVpcEndpoint;
+&nbsp;
+  /**
+   * ECR API Interface Endpoint (ecr.api)
+   *
+   * 【機能概要】: Amazon ECR API 呼び出し用 Endpoint
+   * 【用途】: Docker イメージのメタデータ取得、認証トークン取得
+   * 【配置先】: Private App Subnet (PRIVATE_WITH_EGRESS)
+   * 【関連サービス】: Amazon ECR, ECS Fargate
+   * 【課金】: $0.01/時間 + データ処理料金
+   *
+   * @remarks enableEcr=false の場合は undefined
+   * 🔵 信頼性: 要件定義書 REQ-009 に基づく
+   */
+  public readonly ecrApiEndpoint?: ec2.IInterfaceVpcEndpoint;
+&nbsp;
+  /**
+   * ECR Docker Interface Endpoint (ecr.dkr)
+   *
+   * 【機能概要】: Docker イメージの Pull 用 Endpoint
+   * 【用途】: ECS タスク起動時のコンテナイメージ取得
+   * 【配置先】: Private App Subnet (PRIVATE_WITH_EGRESS)
+   * 【関連サービス】: Amazon ECR, Docker Registry
+   * 【課金】: $0.01/時間 + データ処理料金
+   *
+   * @remarks enableEcr=false の場合は undefined
+   * 🔵 信頼性: 要件定義書 REQ-009 に基づく
+   */
+  public readonly ecrDkrEndpoint?: ec2.IInterfaceVpcEndpoint;
+&nbsp;
+  /**
+   * CloudWatch Logs Interface Endpoint (logs)
+   *
+   * 【機能概要】: CloudWatch Logs へのログ送信用 Endpoint
+   * 【用途】: ECS タスクのアプリケーションログを CloudWatch Logs に送信
+   * 【配置先】: Private App Subnet (PRIVATE_WITH_EGRESS)
+   * 【関連サービス】: Amazon CloudWatch Logs, ECS Fargate
+   * 【課金】: $0.01/時間 + データ処理料金
+   *
+   * @remarks enableLogs=false の場合は undefined
+   * 🔵 信頼性: 要件定義書 REQ-010 に基づく
+   */
+  public readonly logsEndpoint?: ec2.IInterfaceVpcEndpoint;
+&nbsp;
+  /**
+   * S3 Gateway Endpoint
+   *
+   * 【機能概要】: Amazon S3 へのアクセス用 Gateway Endpoint
+   * 【用途】: ECR イメージレイヤー取得、アプリケーションの S3 アクセス
+   * 【配置先】: Private App Subnet + Private DB Subnet の Route Table
+   * 【関連サービス】: Amazon S3, Amazon ECR (イメージレイヤー)
+   * 【課金】: 無料（Gateway Endpoint は課金なし）
+   * 【コスト効果】: NAT Gateway 経由の S3 データ転送コストを削減
+   *
+   * @remarks enableS3=false の場合は undefined
+   * 🔵 信頼性: 要件定義書 REQ-011 に基づく
+   */
+  public readonly s3Endpoint?: ec2.IGatewayVpcEndpoint;
+&nbsp;
+  /**
+   * コンストラクタ
+   *
+   * 【処理概要】: Props に基づいて VPC Endpoints を作成
+   * 【設計方針】: フラグが true（またはデフォルト）の場合に Endpoint を作成
+   *
+   * @param scope - 親となる Construct
+   * @param id - このConstruct の識別子
+   * @param props - EndpointsConstruct の Props
+   */
+  constructor(scope: Construct, id: string, props: EndpointsConstructProps) {
     super(scope, id);
 &nbsp;
     // ========================================================================
-    // 【パラメータ処理】: secretArns のデフォルト値適用
-    // 🔵 信頼性: requirements.md エッジケース EC-01, EC-03 より
+    // 【デフォルト値適用】: Props のデフォルト値を適用
+    // 🟡 信頼性: 実装設計から妥当な推測
     // ========================================================================
+    const enableSsm = props.enableSsm ?? true;
+    const enableEcr = props.enableEcr ?? true;
+    const enableLogs = props.enableLogs ?? true;
+    const enableS3 = props.enableS3 ?? true;
 &nbsp;
-    // 【secretArns デフォルト値適用】: undefined または空配列の場合はデフォルト値を使用
-    // 🟡 信頼性: requirements.md エッジケース EC-01 より（妥当な推測を含む）
-    const secretArns =
-      props.secretArns &amp;&amp; props.secretArns.length &gt; 0
-        ? props.secretArns
-        : DEFAULT_SECRET_ARNS;
+    // 【VPC 参照】: 渡された VPC を使用
+    const vpc = props.vpc;
 &nbsp;
-    // ========================================================================
-    // 【ECS Task Role 作成】: タスク実行中のアプリケーション用
-    // 🔵 信頼性: REQ-018、タスク定義 TASK-0006.md より
-    // ========================================================================
-    const taskRole = new iam.Role(this, 'EcsTaskRole', {
-      // 【Trust Relationship 設定】: ecs-tasks.amazonaws.com を信頼
-      // 🔵 信頼性: note.md Trust Relationship 設計より
-      assumedBy: new iam.ServicePrincipal('ecs-tasks.amazonaws.com'),
-&nbsp;
-      // 【説明設定】: 監査・トラブルシューティング用の説明文
-      // 🔵 信頼性: note.md CDKベストプラクティスより
-      description: DESCRIPTION_TASK_ROLE,
-    });
-&nbsp;
-    // 【AmazonSSMManagedInstanceCore ポリシーアタッチ】: ECS Exec 用
-    // 🔵 信頼性: REQ-018 より（Task Role に AmazonSSMManagedInstanceCore 権限を付与）
-    taskRole.addManagedPolicy(
-      iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonSSMManagedInstanceCore')
-    );
-&nbsp;
-    // 【Secrets Manager アクセス権限追加】: DB 認証情報取得用
-    // 🔵 信頼性: TASK-0006.md Secrets Manager アクセス権限セクションより
-    taskRole.addToPolicy(
-      new iam.PolicyStatement({
-        // 【許可設定】: Allow
-        effect: iam.Effect.ALLOW,
-&nbsp;
-        // 【アクション設定】: secretsmanager:GetSecretValue
-        actions: ['secretsmanager:GetSecretValue'],
-&nbsp;
-        // 【リソース設定】: secretArns パラメータで指定された ARN
-        // 🔵 信頼性: note.md セキュリティ考慮事項より
-        resources: secretArns,
-      })
-    );
-&nbsp;
-    // 【プロパティ設定】: taskRole を公開プロパティとして設定
-    // 🔵 信頼性: note.md 型定義インターフェースより
-    this.taskRole = taskRole;
+    // 【Interface Endpoint 配置先】: Private App Subnet (PRIVATE_WITH_EGRESS)
+    // 🔵 信頼性: note.md の配置設計より
+    const interfaceEndpointSubnets: ec2.SubnetSelection = {
+      subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
+    };
 &nbsp;
     // ========================================================================
-    // 【ECS Task Execution Role 作成】: タスク起動時の ECS エージェント用
-    // 🔵 信頼性: TASK-0006.md ECS Task Execution Role セクションより
+    // 【SSM Interface Endpoints 作成】: enableSsm=true の場合に作成
+    // 【対応要件】: REQ-008 - Systems Manager 用 VPC Endpoint を作成
+    // 🔵 信頼性: 要件定義書 REQ-008 に基づく
     // ========================================================================
-    const executionRole = new iam.Role(this, 'EcsTaskExecutionRole', {
-      // 【Trust Relationship 設定】: ecs-tasks.amazonaws.com を信頼
-      // 🔵 信頼性: note.md Trust Relationship 設計より
-      assumedBy: new iam.ServicePrincipal('ecs-tasks.amazonaws.com'),
+    if (enableSsm) {
+      // 【ssm Endpoint】: SSM Session Manager API 用
+      this.ssmEndpoint = vpc.addInterfaceEndpoint(ENDPOINT_IDS.SSM, {
+        service: ec2.InterfaceVpcEndpointAwsService.SSM,
+        subnets: interfaceEndpointSubnets,
+        privateDnsEnabled: true,
+      });
 &nbsp;
-      // 【説明設定】: 監査・トラブルシューティング用の説明文
-      // 🔵 信頼性: note.md CDKベストプラクティスより
-      description: DESCRIPTION_EXECUTION_ROLE,
-    });
+      // 【ssmmessages Endpoint】: SSM Session Manager メッセージ用
+      this.ssmMessagesEndpoint = vpc.addInterfaceEndpoint(ENDPOINT_IDS.SSM_MESSAGES, {
+        service: ec2.InterfaceVpcEndpointAwsService.SSM_MESSAGES,
+        subnets: interfaceEndpointSubnets,
+        privateDnsEnabled: true,
+      });
 &nbsp;
-    // 【AmazonECSTaskExecutionRolePolicy ポリシーアタッチ】: ECR Pull + CloudWatch Logs 用
-    // 🔵 信頼性: TASK-0006.md より（service-role/ プレフィックス付きで指定）
-    executionRole.addManagedPolicy(
-      iam.ManagedPolicy.fromAwsManagedPolicyName(
-        'service-role/AmazonECSTaskExecutionRolePolicy'
-      )
-    );
+      // 【ec2messages Endpoint】: SSM エージェントメッセージ用
+      this.ec2MessagesEndpoint = vpc.addInterfaceEndpoint(ENDPOINT_IDS.EC2_MESSAGES, {
+        service: ec2.InterfaceVpcEndpointAwsService.EC2_MESSAGES,
+        subnets: interfaceEndpointSubnets,
+        privateDnsEnabled: true,
+      });
+    }
 &nbsp;
-    // 【プロパティ設定】: executionRole を公開プロパティとして設定
-    // 🔵 信頼性: note.md 型定義インターフェースより
-    this.executionRole = executionRole;
+    // ========================================================================
+    // 【ECR Interface Endpoints 作成】: enableEcr=true の場合に作成
+    // 【対応要件】: REQ-009 - ECR 用 VPC Endpoint を作成
+    // 🔵 信頼性: 要件定義書 REQ-009 に基づく
+    // ========================================================================
+    if (enableEcr) {
+      // 【ecr.api Endpoint】: ECR API 用（イメージメタデータ取得）
+      this.ecrApiEndpoint = vpc.addInterfaceEndpoint(ENDPOINT_IDS.ECR_API, {
+        service: ec2.InterfaceVpcEndpointAwsService.ECR,
+        subnets: interfaceEndpointSubnets,
+        privateDnsEnabled: true,
+      });
+&nbsp;
+      // 【ecr.dkr Endpoint】: Docker イメージ Pull 用
+      this.ecrDkrEndpoint = vpc.addInterfaceEndpoint(ENDPOINT_IDS.ECR_DKR, {
+        service: ec2.InterfaceVpcEndpointAwsService.ECR_DOCKER,
+        subnets: interfaceEndpointSubnets,
+        privateDnsEnabled: true,
+      });
+    }
+&nbsp;
+    // ========================================================================
+    // 【CloudWatch Logs Interface Endpoint 作成】: enableLogs=true の場合に作成
+    // 【対応要件】: REQ-010 - CloudWatch Logs 用 VPC Endpoint を作成
+    // 🔵 信頼性: 要件定義書 REQ-010 に基づく
+    // ========================================================================
+    if (enableLogs) {
+      // 【logs Endpoint】: ECS タスクのログ送信用
+      this.logsEndpoint = vpc.addInterfaceEndpoint(ENDPOINT_IDS.LOGS, {
+        service: ec2.InterfaceVpcEndpointAwsService.CLOUDWATCH_LOGS,
+        subnets: interfaceEndpointSubnets,
+        privateDnsEnabled: true,
+      });
+    }
+&nbsp;
+    // ========================================================================
+    // 【S3 Gateway Endpoint 作成】: enableS3=true の場合に作成
+    // 【対応要件】: REQ-011 - S3 用 Gateway Endpoint を作成
+    // 【コスト効果】: Gateway Endpoint は無料、NAT Gateway 経由の転送コスト削減
+    // 🔵 信頼性: 要件定義書 REQ-011 に基づく
+    // ========================================================================
+    if (enableS3) {
+      // 【s3 Gateway Endpoint】: ECR イメージレイヤー取得 &amp; S3 アクセス用
+      // 【Route Table 関連付け】: Private App Subnet と Private DB Subnet 両方に関連付け
+      this.s3Endpoint = vpc.addGatewayEndpoint(ENDPOINT_IDS.S3, {
+        service: ec2.GatewayVpcEndpointAwsService.S3,
+        subnets: [
+          { subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS },
+          { subnetType: ec2.SubnetType.PRIVATE_ISOLATED },
+        ],
+      });
+    }
   }
 }
 &nbsp;</pre></td></tr></table></pre>

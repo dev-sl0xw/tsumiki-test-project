@@ -26,7 +26,10 @@
       "Bash(find:*)",
       "Bash(npx ts-node:*)",
       "mcp__sequential-thinking__sequentialthinking",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(gh auth:*)",
+      "Bash(npm run lint)",
+      "Bash(npx eslint:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
