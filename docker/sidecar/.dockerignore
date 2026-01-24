@@ -1,0 +1,49 @@
+# Sidecar Container .dockerignore
+# Exclude unnecessary files from Docker build context
+
+# Documentation
+*.md
+README*
+LICENSE*
+CHANGELOG*
+
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Test files
+test/
+tests/
+*_test.*
+*.test.*
+__tests__/
+
+# CI/CD files
+.github/
+.gitlab-ci.yml
+.travis.yml
+Jenkinsfile
+.circleci/
+
+# Build artifacts
+*.log
+*.tmp
+*.bak
+
+# Local development files
+.env
+.env.*
+docker-compose*.yml
+Makefile
+
+# Scripts not needed in production
+build.sh

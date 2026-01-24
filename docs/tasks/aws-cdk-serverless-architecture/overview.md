@@ -108,8 +108,8 @@ TASK-0005, TASK-0006
 
 | 状態 | タスク | 工数 | タイプ | 信頼性 |
 |------|--------|------|--------|--------|
-| [ ] | [TASK-0012: ECS Cluster Construct 実装](TASK-0012.md) | 4h | TDD | 🔵 |
-| [ ] | [TASK-0013: Sidecar Container イメージ作成](TASK-0013.md) | 4h | DIRECT | 🔵 |
+| [x] | [TASK-0012: ECS Cluster Construct 実装](TASK-0012.md) | 4h | TDD | 🔵 |
+| [x] | [TASK-0013: Sidecar Container イメージ作成](TASK-0013.md) | 4h | DIRECT | 🔵 |
 | [ ] | [TASK-0014: Task Definition Construct 実装](TASK-0014.md) | 8h | TDD | 🔵 |
 | [ ] | [TASK-0015: ECS Service Construct 実装](TASK-0015.md) | 6h | TDD | 🔵 |
 | [ ] | [TASK-0016: ALB Construct 実装](TASK-0016.md) | 6h | TDD | 🔵 |
