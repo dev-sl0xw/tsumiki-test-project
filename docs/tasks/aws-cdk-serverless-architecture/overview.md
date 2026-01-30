@@ -110,9 +110,9 @@ TASK-0005, TASK-0006
 |------|--------|------|--------|--------|
 | [x] | [TASK-0012: ECS Cluster Construct 実装](TASK-0012.md) | 4h | TDD | 🔵 |
 | [x] | [TASK-0013: Sidecar Container イメージ作成](TASK-0013.md) | 4h | DIRECT | 🔵 |
-| [ ] | [TASK-0014: Task Definition Construct 実装](TASK-0014.md) | 8h | TDD | 🔵 |
-| [ ] | [TASK-0015: ECS Service Construct 実装](TASK-0015.md) | 6h | TDD | 🔵 |
-| [ ] | [TASK-0016: ALB Construct 実装](TASK-0016.md) | 6h | TDD | 🔵 |
+| [x] | [TASK-0014: Task Definition Construct 実装](TASK-0014.md) | 8h | TDD | 🔵 |
+| [x] | [TASK-0015: ECS Service Construct 実装](TASK-0015.md) | 6h | TDD | 🔵 |
+| [x] | [TASK-0016: ALB Construct 実装](TASK-0016.md) | 6h | TDD | 🔵 |
 | [ ] | [TASK-0017: Application Stack 統合](TASK-0017.md) | 6h | TDD | 🔵 |
 
 ### 依存関係
