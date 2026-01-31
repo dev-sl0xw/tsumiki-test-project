@@ -1,0 +1,1231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApplicationStack TC-AS-01: スナップショットテスト（devConfig） CloudFormation テンプレートのスナップショットテスト（Dev環境） 1`] = `
+{
+  "Outputs": {
+    "AlbArn": {
+      "Description": "ALB ARN",
+      "Export": {
+        "Name": "dev-AlbArn",
+      },
+      "Value": {
+        "Ref": "Alb6F14D334",
+      },
+    },
+    "AlbDnsName": {
+      "Description": "ALB DNS name",
+      "Export": {
+        "Name": "dev-AlbDnsName",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "Alb6F14D334",
+          "DNSName",
+        ],
+      },
+    },
+    "BackendServiceArn": {
+      "Description": "Backend ECS Service ARN",
+      "Export": {
+        "Name": "dev-BackendServiceArn",
+      },
+      "Value": {
+        "Ref": "BackendService2147DAF9",
+      },
+    },
+    "EcsClusterArn": {
+      "Description": "ECS Cluster ARN",
+      "Export": {
+        "Name": "dev-EcsClusterArn",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "EcsClusterFB9B21B5",
+          "Arn",
+        ],
+      },
+    },
+    "FrontendServiceArn": {
+      "Description": "Frontend ECS Service ARN",
+      "Export": {
+        "Name": "dev-FrontendServiceArn",
+      },
+      "Value": {
+        "Ref": "FrontendService31F14A33",
+      },
+    },
+    "TargetGroupArn": {
+      "Description": "ALB Target Group ARN",
+      "Export": {
+        "Name": "dev-TargetGroupArn",
+      },
+      "Value": {
+        "Ref": "AlbTargetGroup3E290A92",
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "Alb6F14D334": {
+      "Properties": {
+        "LoadBalancerAttributes": [
+          {
+            "Key": "deletion_protection.enabled",
+            "Value": "false",
+          },
+        ],
+        "Name": "dev-alb",
+        "Scheme": "internet-facing",
+        "SecurityGroups": [
+          {
+            "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttTestAlbSgA12C36D3GroupId4DDFE743",
+          },
+        ],
+        "Subnets": [
+          {
+            "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestVpcPublicSubnet1SubnetA7DB1EDF095592DF",
+          },
+          {
+            "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestVpcPublicSubnet2Subnet80A14523FD2CDFFC",
+          },
+        ],
+        "Type": "application",
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+    },
+    "AlbHttpListenerC9825CF4": {
+      "Properties": {
+        "DefaultActions": [
+          {
+            "RedirectConfig": {
+              "Port": "443",
+              "Protocol": "HTTPS",
+              "StatusCode": "HTTP_301",
+            },
+            "Type": "redirect",
+          },
+        ],
+        "LoadBalancerArn": {
+          "Ref": "Alb6F14D334",
+        },
+        "Port": 80,
+        "Protocol": "HTTP",
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::Listener",
+    },
+    "AlbHttpsListener0ED0A51A": {
+      "Properties": {
+        "Certificates": [
+          {
+            "CertificateArn": "arn:aws:acm:ap-northeast-1:123456789012:certificate/test-certificate-id",
+          },
+        ],
+        "DefaultActions": [
+          {
+            "TargetGroupArn": {
+              "Ref": "AlbTargetGroup3E290A92",
+            },
+            "Type": "forward",
+          },
+        ],
+        "LoadBalancerArn": {
+          "Ref": "Alb6F14D334",
+        },
+        "Port": 443,
+        "Protocol": "HTTPS",
+        "SslPolicy": "ELBSecurityPolicy-TLS13-1-2-2021-06",
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::Listener",
+    },
+    "AlbTargetGroup3E290A92": {
+      "Properties": {
+        "HealthCheckIntervalSeconds": 30,
+        "HealthCheckPath": "/health",
+        "HealthCheckTimeoutSeconds": 5,
+        "HealthyThresholdCount": 2,
+        "Port": 80,
+        "Protocol": "HTTP",
+        "TargetGroupAttributes": [
+          {
+            "Key": "stickiness.enabled",
+            "Value": "false",
+          },
+        ],
+        "TargetType": "ip",
+        "UnhealthyThresholdCount": 2,
+        "VpcId": {
+          "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestVpcE77CE67811D13B85",
+        },
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+    },
+    "BackendService2147DAF9": {
+      "Properties": {
+        "Cluster": {
+          "Ref": "EcsClusterFB9B21B5",
+        },
+        "DeploymentConfiguration": {
+          "Alarms": {
+            "AlarmNames": [],
+            "Enable": false,
+            "Rollback": false,
+          },
+          "MaximumPercent": 200,
+          "MinimumHealthyPercent": 50,
+        },
+        "DesiredCount": 2,
+        "EnableECSManagedTags": false,
+        "EnableExecuteCommand": true,
+        "LaunchType": "FARGATE",
+        "NetworkConfiguration": {
+          "AwsvpcConfiguration": {
+            "AssignPublicIp": "DISABLED",
+            "SecurityGroups": [
+              {
+                "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttTestEcsSgAFC72CB1GroupId3D3E41F8",
+              },
+            ],
+            "Subnets": [
+              {
+                "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestVpcPrivateAppSubnet1SubnetCC97D047371AC542",
+              },
+              {
+                "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestVpcPrivateAppSubnet2Subnet4B8E9561B56C2873",
+              },
+            ],
+          },
+        },
+        "ServiceName": "dev-backend-service",
+        "TaskDefinition": {
+          "Ref": "BackendTaskDefinition7347677C",
+        },
+      },
+      "Type": "AWS::ECS::Service",
+    },
+    "BackendTaskDefinition7347677C": {
+      "Properties": {
+        "ContainerDefinitions": [
+          {
+            "Essential": true,
+            "Image": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Select": [
+                      4,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttSnapshotAppRepo9FABDE6FArn0CA4C389",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".dkr.ecr.",
+                  {
+                    "Fn::Select": [
+                      3,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttSnapshotAppRepo9FABDE6FArn0CA4C389",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".",
+                  {
+                    "Ref": "AWS::URLSuffix",
+                  },
+                  "/",
+                  {
+                    "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefSnapshotAppRepo9FABDE6FC5645A9A",
+                  },
+                  ":latest",
+                ],
+              ],
+            },
+            "LogConfiguration": {
+              "LogDriver": "awslogs",
+              "Options": {
+                "awslogs-group": {
+                  "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestLogGroup4EEF7AD49619A187",
+                },
+                "awslogs-region": "ap-northeast-1",
+                "awslogs-stream-prefix": "app",
+              },
+            },
+            "Name": "app",
+            "PortMappings": [
+              {
+                "ContainerPort": 8080,
+                "Protocol": "tcp",
+              },
+            ],
+          },
+          {
+            "Environment": [
+              {
+                "Name": "TARGET_HOST",
+                "Value": "test-aurora-cluster.cluster-xxxxxxxxxxxx.ap-northeast-1.rds.amazonaws.com",
+              },
+              {
+                "Name": "TARGET_PORT",
+                "Value": "3306",
+              },
+              {
+                "Name": "MODE",
+                "Value": "proxy",
+              },
+            ],
+            "Essential": false,
+            "Image": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Select": [
+                      4,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttSnapshotSidecarRepo3FE15417Arn89E69738",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".dkr.ecr.",
+                  {
+                    "Fn::Select": [
+                      3,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttSnapshotSidecarRepo3FE15417Arn89E69738",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".",
+                  {
+                    "Ref": "AWS::URLSuffix",
+                  },
+                  "/",
+                  {
+                    "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefSnapshotSidecarRepo3FE1541768CB613F",
+                  },
+                  ":latest",
+                ],
+              ],
+            },
+            "LogConfiguration": {
+              "LogDriver": "awslogs",
+              "Options": {
+                "awslogs-group": {
+                  "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestLogGroup4EEF7AD49619A187",
+                },
+                "awslogs-region": "ap-northeast-1",
+                "awslogs-stream-prefix": "sidecar",
+              },
+            },
+            "Name": "sidecar",
+          },
+        ],
+        "Cpu": "512",
+        "ExecutionRoleArn": {
+          "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttTestEcsTaskExecutionRoleCBA72D9EArn55E6A30B",
+        },
+        "Family": "SnapshotApplicationStackBackendTaskDefinition13C7AF76",
+        "Memory": "1024",
+        "NetworkMode": "awsvpc",
+        "RequiresCompatibilities": [
+          "FARGATE",
+        ],
+        "TaskRoleArn": {
+          "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttTestEcsTaskRole0E1F2080Arn87CC8DF1",
+        },
+      },
+      "Type": "AWS::ECS::TaskDefinition",
+    },
+    "EcsClusterFB9B21B5": {
+      "Properties": {
+        "ClusterName": "dev-cluster",
+        "ClusterSettings": [
+          {
+            "Name": "containerInsights",
+            "Value": "enhanced",
+          },
+        ],
+      },
+      "Type": "AWS::ECS::Cluster",
+    },
+    "FrontendService31F14A33": {
+      "DependsOn": [
+        "AlbHttpsListener0ED0A51A",
+      ],
+      "Properties": {
+        "Cluster": {
+          "Ref": "EcsClusterFB9B21B5",
+        },
+        "DeploymentConfiguration": {
+          "Alarms": {
+            "AlarmNames": [],
+            "Enable": false,
+            "Rollback": false,
+          },
+          "MaximumPercent": 200,
+          "MinimumHealthyPercent": 50,
+        },
+        "DesiredCount": 2,
+        "EnableECSManagedTags": false,
+        "EnableExecuteCommand": true,
+        "HealthCheckGracePeriodSeconds": 60,
+        "LaunchType": "FARGATE",
+        "LoadBalancers": [
+          {
+            "ContainerName": "app",
+            "ContainerPort": 80,
+            "TargetGroupArn": {
+              "Ref": "AlbTargetGroup3E290A92",
+            },
+          },
+        ],
+        "NetworkConfiguration": {
+          "AwsvpcConfiguration": {
+            "AssignPublicIp": "DISABLED",
+            "SecurityGroups": [
+              {
+                "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttTestEcsSgAFC72CB1GroupId3D3E41F8",
+              },
+            ],
+            "Subnets": [
+              {
+                "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestVpcPrivateAppSubnet1SubnetCC97D047371AC542",
+              },
+              {
+                "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestVpcPrivateAppSubnet2Subnet4B8E9561B56C2873",
+              },
+            ],
+          },
+        },
+        "ServiceName": "dev-frontend-service",
+        "TaskDefinition": {
+          "Ref": "FrontendTaskDefinition26B925CB",
+        },
+      },
+      "Type": "AWS::ECS::Service",
+    },
+    "FrontendTaskDefinition26B925CB": {
+      "Properties": {
+        "ContainerDefinitions": [
+          {
+            "Essential": true,
+            "Image": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Select": [
+                      4,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttSnapshotAppRepo9FABDE6FArn0CA4C389",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".dkr.ecr.",
+                  {
+                    "Fn::Select": [
+                      3,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttSnapshotAppRepo9FABDE6FArn0CA4C389",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".",
+                  {
+                    "Ref": "AWS::URLSuffix",
+                  },
+                  "/",
+                  {
+                    "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefSnapshotAppRepo9FABDE6FC5645A9A",
+                  },
+                  ":latest",
+                ],
+              ],
+            },
+            "LogConfiguration": {
+              "LogDriver": "awslogs",
+              "Options": {
+                "awslogs-group": {
+                  "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestLogGroup4EEF7AD49619A187",
+                },
+                "awslogs-region": "ap-northeast-1",
+                "awslogs-stream-prefix": "app",
+              },
+            },
+            "Name": "app",
+            "PortMappings": [
+              {
+                "ContainerPort": 80,
+                "Protocol": "tcp",
+              },
+            ],
+          },
+          {
+            "Environment": [
+              {
+                "Name": "TARGET_HOST",
+                "Value": "test-aurora-cluster.cluster-xxxxxxxxxxxx.ap-northeast-1.rds.amazonaws.com",
+              },
+              {
+                "Name": "TARGET_PORT",
+                "Value": "3306",
+              },
+              {
+                "Name": "MODE",
+                "Value": "proxy",
+              },
+            ],
+            "Essential": false,
+            "Image": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Select": [
+                      4,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttSnapshotSidecarRepo3FE15417Arn89E69738",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".dkr.ecr.",
+                  {
+                    "Fn::Select": [
+                      3,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttSnapshotSidecarRepo3FE15417Arn89E69738",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".",
+                  {
+                    "Ref": "AWS::URLSuffix",
+                  },
+                  "/",
+                  {
+                    "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefSnapshotSidecarRepo3FE1541768CB613F",
+                  },
+                  ":latest",
+                ],
+              ],
+            },
+            "LogConfiguration": {
+              "LogDriver": "awslogs",
+              "Options": {
+                "awslogs-group": {
+                  "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestLogGroup4EEF7AD49619A187",
+                },
+                "awslogs-region": "ap-northeast-1",
+                "awslogs-stream-prefix": "sidecar",
+              },
+            },
+            "Name": "sidecar",
+          },
+        ],
+        "Cpu": "512",
+        "ExecutionRoleArn": {
+          "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttTestEcsTaskExecutionRoleCBA72D9EArn55E6A30B",
+        },
+        "Family": "SnapshotApplicationStackFrontendTaskDefinition7E7B1871",
+        "Memory": "1024",
+        "NetworkMode": "awsvpc",
+        "RequiresCompatibilities": [
+          "FARGATE",
+        ],
+        "TaskRoleArn": {
+          "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttTestEcsTaskRole0E1F2080Arn87CC8DF1",
+        },
+      },
+      "Type": "AWS::ECS::TaskDefinition",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`ApplicationStack TC-AS-02: スナップショットテスト（prodConfig） CloudFormation テンプレートのスナップショットテスト（Prod環境） 1`] = `
+{
+  "Outputs": {
+    "AlbArn": {
+      "Description": "ALB ARN",
+      "Export": {
+        "Name": "prod-AlbArn",
+      },
+      "Value": {
+        "Ref": "Alb6F14D334",
+      },
+    },
+    "AlbDnsName": {
+      "Description": "ALB DNS name",
+      "Export": {
+        "Name": "prod-AlbDnsName",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "Alb6F14D334",
+          "DNSName",
+        ],
+      },
+    },
+    "BackendServiceArn": {
+      "Description": "Backend ECS Service ARN",
+      "Export": {
+        "Name": "prod-BackendServiceArn",
+      },
+      "Value": {
+        "Ref": "BackendService2147DAF9",
+      },
+    },
+    "EcsClusterArn": {
+      "Description": "ECS Cluster ARN",
+      "Export": {
+        "Name": "prod-EcsClusterArn",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "EcsClusterFB9B21B5",
+          "Arn",
+        ],
+      },
+    },
+    "FrontendServiceArn": {
+      "Description": "Frontend ECS Service ARN",
+      "Export": {
+        "Name": "prod-FrontendServiceArn",
+      },
+      "Value": {
+        "Ref": "FrontendService31F14A33",
+      },
+    },
+    "TargetGroupArn": {
+      "Description": "ALB Target Group ARN",
+      "Export": {
+        "Name": "prod-TargetGroupArn",
+      },
+      "Value": {
+        "Ref": "AlbTargetGroup3E290A92",
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "Alb6F14D334": {
+      "Properties": {
+        "LoadBalancerAttributes": [
+          {
+            "Key": "deletion_protection.enabled",
+            "Value": "false",
+          },
+        ],
+        "Name": "prod-alb",
+        "Scheme": "internet-facing",
+        "SecurityGroups": [
+          {
+            "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttTestAlbSgA12C36D3GroupId4DDFE743",
+          },
+        ],
+        "Subnets": [
+          {
+            "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestVpcPublicSubnet1SubnetA7DB1EDF095592DF",
+          },
+          {
+            "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestVpcPublicSubnet2Subnet80A14523FD2CDFFC",
+          },
+        ],
+        "Type": "application",
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+    },
+    "AlbHttpListenerC9825CF4": {
+      "Properties": {
+        "DefaultActions": [
+          {
+            "RedirectConfig": {
+              "Port": "443",
+              "Protocol": "HTTPS",
+              "StatusCode": "HTTP_301",
+            },
+            "Type": "redirect",
+          },
+        ],
+        "LoadBalancerArn": {
+          "Ref": "Alb6F14D334",
+        },
+        "Port": 80,
+        "Protocol": "HTTP",
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::Listener",
+    },
+    "AlbHttpsListener0ED0A51A": {
+      "Properties": {
+        "Certificates": [
+          {
+            "CertificateArn": "arn:aws:acm:ap-northeast-1:123456789012:certificate/test-certificate-id",
+          },
+        ],
+        "DefaultActions": [
+          {
+            "TargetGroupArn": {
+              "Ref": "AlbTargetGroup3E290A92",
+            },
+            "Type": "forward",
+          },
+        ],
+        "LoadBalancerArn": {
+          "Ref": "Alb6F14D334",
+        },
+        "Port": 443,
+        "Protocol": "HTTPS",
+        "SslPolicy": "ELBSecurityPolicy-TLS13-1-2-2021-06",
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::Listener",
+    },
+    "AlbTargetGroup3E290A92": {
+      "Properties": {
+        "HealthCheckIntervalSeconds": 30,
+        "HealthCheckPath": "/health",
+        "HealthCheckTimeoutSeconds": 5,
+        "HealthyThresholdCount": 2,
+        "Port": 80,
+        "Protocol": "HTTP",
+        "TargetGroupAttributes": [
+          {
+            "Key": "stickiness.enabled",
+            "Value": "false",
+          },
+        ],
+        "TargetType": "ip",
+        "UnhealthyThresholdCount": 2,
+        "VpcId": {
+          "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestVpcE77CE67811D13B85",
+        },
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+    },
+    "BackendService2147DAF9": {
+      "Properties": {
+        "Cluster": {
+          "Ref": "EcsClusterFB9B21B5",
+        },
+        "DeploymentConfiguration": {
+          "Alarms": {
+            "AlarmNames": [],
+            "Enable": false,
+            "Rollback": false,
+          },
+          "MaximumPercent": 200,
+          "MinimumHealthyPercent": 50,
+        },
+        "DesiredCount": 2,
+        "EnableECSManagedTags": false,
+        "EnableExecuteCommand": true,
+        "LaunchType": "FARGATE",
+        "NetworkConfiguration": {
+          "AwsvpcConfiguration": {
+            "AssignPublicIp": "DISABLED",
+            "SecurityGroups": [
+              {
+                "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttTestEcsSgAFC72CB1GroupId3D3E41F8",
+              },
+            ],
+            "Subnets": [
+              {
+                "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestVpcPrivateAppSubnet1SubnetCC97D047371AC542",
+              },
+              {
+                "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestVpcPrivateAppSubnet2Subnet4B8E9561B56C2873",
+              },
+            ],
+          },
+        },
+        "ServiceName": "prod-backend-service",
+        "TaskDefinition": {
+          "Ref": "BackendTaskDefinition7347677C",
+        },
+      },
+      "Type": "AWS::ECS::Service",
+    },
+    "BackendTaskDefinition7347677C": {
+      "Properties": {
+        "ContainerDefinitions": [
+          {
+            "Essential": true,
+            "Image": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Select": [
+                      4,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttProdAppRepo9C84B521ArnBF5AD658",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".dkr.ecr.",
+                  {
+                    "Fn::Select": [
+                      3,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttProdAppRepo9C84B521ArnBF5AD658",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".",
+                  {
+                    "Ref": "AWS::URLSuffix",
+                  },
+                  "/",
+                  {
+                    "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefProdAppRepo9C84B5211AFE7F1C",
+                  },
+                  ":latest",
+                ],
+              ],
+            },
+            "LogConfiguration": {
+              "LogDriver": "awslogs",
+              "Options": {
+                "awslogs-group": {
+                  "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestLogGroup4EEF7AD49619A187",
+                },
+                "awslogs-region": "ap-northeast-1",
+                "awslogs-stream-prefix": "app",
+              },
+            },
+            "Name": "app",
+            "PortMappings": [
+              {
+                "ContainerPort": 8080,
+                "Protocol": "tcp",
+              },
+            ],
+          },
+          {
+            "Environment": [
+              {
+                "Name": "TARGET_HOST",
+                "Value": "prod-aurora-cluster.cluster-xxxxxxxxxxxx.ap-northeast-1.rds.amazonaws.com",
+              },
+              {
+                "Name": "TARGET_PORT",
+                "Value": "3306",
+              },
+              {
+                "Name": "MODE",
+                "Value": "proxy",
+              },
+            ],
+            "Essential": false,
+            "Image": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Select": [
+                      4,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttProdSidecarRepoECED6C0AArnEF85D88F",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".dkr.ecr.",
+                  {
+                    "Fn::Select": [
+                      3,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttProdSidecarRepoECED6C0AArnEF85D88F",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".",
+                  {
+                    "Ref": "AWS::URLSuffix",
+                  },
+                  "/",
+                  {
+                    "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefProdSidecarRepoECED6C0A1E63B839",
+                  },
+                  ":latest",
+                ],
+              ],
+            },
+            "LogConfiguration": {
+              "LogDriver": "awslogs",
+              "Options": {
+                "awslogs-group": {
+                  "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestLogGroup4EEF7AD49619A187",
+                },
+                "awslogs-region": "ap-northeast-1",
+                "awslogs-stream-prefix": "sidecar",
+              },
+            },
+            "Name": "sidecar",
+          },
+        ],
+        "Cpu": "512",
+        "ExecutionRoleArn": {
+          "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttTestEcsTaskExecutionRoleCBA72D9EArn55E6A30B",
+        },
+        "Family": "ProdApplicationStackBackendTaskDefinition280E67C2",
+        "Memory": "1024",
+        "NetworkMode": "awsvpc",
+        "RequiresCompatibilities": [
+          "FARGATE",
+        ],
+        "TaskRoleArn": {
+          "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttTestEcsTaskRole0E1F2080Arn87CC8DF1",
+        },
+      },
+      "Type": "AWS::ECS::TaskDefinition",
+    },
+    "EcsClusterFB9B21B5": {
+      "Properties": {
+        "ClusterName": "prod-cluster",
+        "ClusterSettings": [
+          {
+            "Name": "containerInsights",
+            "Value": "enhanced",
+          },
+        ],
+      },
+      "Type": "AWS::ECS::Cluster",
+    },
+    "FrontendService31F14A33": {
+      "DependsOn": [
+        "AlbHttpsListener0ED0A51A",
+      ],
+      "Properties": {
+        "Cluster": {
+          "Ref": "EcsClusterFB9B21B5",
+        },
+        "DeploymentConfiguration": {
+          "Alarms": {
+            "AlarmNames": [],
+            "Enable": false,
+            "Rollback": false,
+          },
+          "MaximumPercent": 200,
+          "MinimumHealthyPercent": 50,
+        },
+        "DesiredCount": 2,
+        "EnableECSManagedTags": false,
+        "EnableExecuteCommand": true,
+        "HealthCheckGracePeriodSeconds": 60,
+        "LaunchType": "FARGATE",
+        "LoadBalancers": [
+          {
+            "ContainerName": "app",
+            "ContainerPort": 80,
+            "TargetGroupArn": {
+              "Ref": "AlbTargetGroup3E290A92",
+            },
+          },
+        ],
+        "NetworkConfiguration": {
+          "AwsvpcConfiguration": {
+            "AssignPublicIp": "DISABLED",
+            "SecurityGroups": [
+              {
+                "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttTestEcsSgAFC72CB1GroupId3D3E41F8",
+              },
+            ],
+            "Subnets": [
+              {
+                "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestVpcPrivateAppSubnet1SubnetCC97D047371AC542",
+              },
+              {
+                "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestVpcPrivateAppSubnet2Subnet4B8E9561B56C2873",
+              },
+            ],
+          },
+        },
+        "ServiceName": "prod-frontend-service",
+        "TaskDefinition": {
+          "Ref": "FrontendTaskDefinition26B925CB",
+        },
+      },
+      "Type": "AWS::ECS::Service",
+    },
+    "FrontendTaskDefinition26B925CB": {
+      "Properties": {
+        "ContainerDefinitions": [
+          {
+            "Essential": true,
+            "Image": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Select": [
+                      4,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttProdAppRepo9C84B521ArnBF5AD658",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".dkr.ecr.",
+                  {
+                    "Fn::Select": [
+                      3,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttProdAppRepo9C84B521ArnBF5AD658",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".",
+                  {
+                    "Ref": "AWS::URLSuffix",
+                  },
+                  "/",
+                  {
+                    "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefProdAppRepo9C84B5211AFE7F1C",
+                  },
+                  ":latest",
+                ],
+              ],
+            },
+            "LogConfiguration": {
+              "LogDriver": "awslogs",
+              "Options": {
+                "awslogs-group": {
+                  "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestLogGroup4EEF7AD49619A187",
+                },
+                "awslogs-region": "ap-northeast-1",
+                "awslogs-stream-prefix": "app",
+              },
+            },
+            "Name": "app",
+            "PortMappings": [
+              {
+                "ContainerPort": 80,
+                "Protocol": "tcp",
+              },
+            ],
+          },
+          {
+            "Environment": [
+              {
+                "Name": "TARGET_HOST",
+                "Value": "prod-aurora-cluster.cluster-xxxxxxxxxxxx.ap-northeast-1.rds.amazonaws.com",
+              },
+              {
+                "Name": "TARGET_PORT",
+                "Value": "3306",
+              },
+              {
+                "Name": "MODE",
+                "Value": "proxy",
+              },
+            ],
+            "Essential": false,
+            "Image": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Select": [
+                      4,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttProdSidecarRepoECED6C0AArnEF85D88F",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".dkr.ecr.",
+                  {
+                    "Fn::Select": [
+                      3,
+                      {
+                        "Fn::Split": [
+                          ":",
+                          {
+                            "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttProdSidecarRepoECED6C0AArnEF85D88F",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  ".",
+                  {
+                    "Ref": "AWS::URLSuffix",
+                  },
+                  "/",
+                  {
+                    "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefProdSidecarRepoECED6C0A1E63B839",
+                  },
+                  ":latest",
+                ],
+              ],
+            },
+            "LogConfiguration": {
+              "LogDriver": "awslogs",
+              "Options": {
+                "awslogs-group": {
+                  "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestLogGroup4EEF7AD49619A187",
+                },
+                "awslogs-region": "ap-northeast-1",
+                "awslogs-stream-prefix": "sidecar",
+              },
+            },
+            "Name": "sidecar",
+          },
+        ],
+        "Cpu": "512",
+        "ExecutionRoleArn": {
+          "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttTestEcsTaskExecutionRoleCBA72D9EArn55E6A30B",
+        },
+        "Family": "ProdApplicationStackFrontendTaskDefinition6EB8B62A",
+        "Memory": "1024",
+        "NetworkMode": "awsvpc",
+        "RequiresCompatibilities": [
+          "FARGATE",
+        ],
+        "TaskRoleArn": {
+          "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttTestEcsTaskRole0E1F2080Arn87CC8DF1",
+        },
+      },
+      "Type": "AWS::ECS::TaskDefinition",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
