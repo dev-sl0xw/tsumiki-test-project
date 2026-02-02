@@ -1,0 +1,305 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogGroupConstruct スナップショットテスト TC-LOGS-025: Dev 環境テンプレートスナップショット Dev 環境テンプレートがスナップショットと一致すること 1`] = `
+{
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "LogGroupEcsBackendLogGroupC44B54F7": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupEncryptionKey2D813CCF",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/ecs/dev/backend",
+        "RetentionInDays": 3,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "LogGroupEcsFrontendLogGroup0722FE9F": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupEncryptionKey2D813CCF",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/ecs/dev/frontend",
+        "RetentionInDays": 3,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "LogGroupEncryptionKey2D813CCF": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Description": "KMS key for CloudWatch Logs encryption",
+        "EnableKeyRotation": true,
+        "KeyPolicy": {
+          "Statement": [
+            {
+              "Action": "kms:*",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::123456789012:root",
+                    ],
+                  ],
+                },
+              },
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "kms:Encrypt",
+                "kms:Decrypt",
+                "kms:GenerateDataKey",
+              ],
+              "Condition": {
+                "ArnLike": {
+                  "kms:EncryptionContext:aws:logs:arn": "arn:aws:logs:ap-northeast-1:123456789012:*",
+                },
+              },
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "logs.ap-northeast-1.amazonaws.com",
+              },
+              "Resource": "*",
+              "Sid": "Allow CloudWatch Logs to use the key",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::KMS::Key",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "LogGroupRdsLogGroup71237279": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupEncryptionKey2D813CCF",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/rds/dev/aurora",
+        "RetentionInDays": 3,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "LogGroupVpcFlowLogGroup114A51C1": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupEncryptionKey2D813CCF",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/vpc/dev/flow-logs",
+        "RetentionInDays": 3,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Delete",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`LogGroupConstruct スナップショットテスト TC-LOGS-026: Prod 環境テンプレートスナップショット Prod 環境テンプレートがスナップショットと一致すること 1`] = `
+{
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "LogGroupEcsBackendLogGroupC44B54F7": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupEncryptionKey2D813CCF",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/ecs/prod/backend",
+        "RetentionInDays": 30,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "LogGroupEcsFrontendLogGroup0722FE9F": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupEncryptionKey2D813CCF",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/ecs/prod/frontend",
+        "RetentionInDays": 30,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "LogGroupEncryptionKey2D813CCF": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "Description": "KMS key for CloudWatch Logs encryption",
+        "EnableKeyRotation": true,
+        "KeyPolicy": {
+          "Statement": [
+            {
+              "Action": "kms:*",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::123456789012:root",
+                    ],
+                  ],
+                },
+              },
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "kms:Encrypt",
+                "kms:Decrypt",
+                "kms:GenerateDataKey",
+              ],
+              "Condition": {
+                "ArnLike": {
+                  "kms:EncryptionContext:aws:logs:arn": "arn:aws:logs:ap-northeast-1:123456789012:*",
+                },
+              },
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "logs.ap-northeast-1.amazonaws.com",
+              },
+              "Resource": "*",
+              "Sid": "Allow CloudWatch Logs to use the key",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::KMS::Key",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "LogGroupRdsLogGroup71237279": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupEncryptionKey2D813CCF",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/rds/prod/aurora",
+        "RetentionInDays": 30,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "LogGroupVpcFlowLogGroup114A51C1": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupEncryptionKey2D813CCF",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/vpc/prod/flow-logs",
+        "RetentionInDays": 30,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Retain",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
