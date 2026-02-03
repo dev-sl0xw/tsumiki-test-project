@@ -1,0 +1,476 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CloudFrontConstruct スナップショットテスト TC-SNAP-001: CloudFormation テンプレートスナップショット確認 CloudFormation テンプレートがスナップショットと一致すること 1`] = `
+{
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "TestAlb8F0A2B31": {
+      "DependsOn": [
+        "TestVpcPublicSubnet1DefaultRoute6C0F0315",
+        "TestVpcPublicSubnet1RouteTableAssociation7D1DECD9",
+        "TestVpcPublicSubnet2DefaultRoute054DAE0A",
+        "TestVpcPublicSubnet2RouteTableAssociationB386A819",
+      ],
+      "Properties": {
+        "LoadBalancerAttributes": [
+          {
+            "Key": "deletion_protection.enabled",
+            "Value": "false",
+          },
+        ],
+        "Scheme": "internet-facing",
+        "SecurityGroups": [
+          {
+            "Fn::GetAtt": [
+              "TestAlbSecurityGroupA9ADEAB8",
+              "GroupId",
+            ],
+          },
+        ],
+        "Subnets": [
+          {
+            "Ref": "TestVpcPublicSubnet1SubnetA7DB1EDF",
+          },
+          {
+            "Ref": "TestVpcPublicSubnet2Subnet80A14523",
+          },
+        ],
+        "Type": "application",
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+    },
+    "TestAlbSecurityGroupA9ADEAB8": {
+      "Properties": {
+        "GroupDescription": "Automatically created Security Group for ELB TestStackTestAlb3F89D154",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "255.255.255.255/32",
+            "Description": "Disallow all traffic",
+            "FromPort": 252,
+            "IpProtocol": "icmp",
+            "ToPort": 86,
+          },
+        ],
+        "VpcId": {
+          "Ref": "TestVpcE77CE678",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "TestCloudFrontDistribution75CBB9AA": {
+      "Properties": {
+        "DistributionConfig": {
+          "CacheBehaviors": [
+            {
+              "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+              "Compress": true,
+              "PathPattern": "/static/*",
+              "TargetOriginId": "TestStackTestCloudFrontDistributionOrigin2B7890B66",
+              "ViewerProtocolPolicy": "redirect-to-https",
+            },
+            {
+              "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+              "Compress": true,
+              "PathPattern": "/assets/*",
+              "TargetOriginId": "TestStackTestCloudFrontDistributionOrigin2B7890B66",
+              "ViewerProtocolPolicy": "redirect-to-https",
+            },
+            {
+              "AllowedMethods": [
+                "GET",
+                "HEAD",
+                "OPTIONS",
+                "PUT",
+                "PATCH",
+                "POST",
+                "DELETE",
+              ],
+              "CachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
+              "Compress": true,
+              "OriginRequestPolicyId": "216adef6-5c7f-47e4-b989-5492eafa07d3",
+              "PathPattern": "/api/*",
+              "TargetOriginId": "ALBOrigin",
+              "ViewerProtocolPolicy": "redirect-to-https",
+            },
+          ],
+          "CustomErrorResponses": [
+            {
+              "ErrorCachingMinTTL": 10,
+              "ErrorCode": 403,
+              "ResponseCode": 200,
+              "ResponsePagePath": "/error.html",
+            },
+            {
+              "ErrorCachingMinTTL": 10,
+              "ErrorCode": 404,
+              "ResponseCode": 200,
+              "ResponsePagePath": "/error.html",
+            },
+            {
+              "ErrorCachingMinTTL": 0,
+              "ErrorCode": 500,
+              "ResponseCode": 200,
+              "ResponsePagePath": "/error.html",
+            },
+            {
+              "ErrorCachingMinTTL": 0,
+              "ErrorCode": 502,
+              "ResponseCode": 200,
+              "ResponsePagePath": "/error.html",
+            },
+            {
+              "ErrorCachingMinTTL": 0,
+              "ErrorCode": 503,
+              "ResponseCode": 200,
+              "ResponsePagePath": "/error.html",
+            },
+            {
+              "ErrorCachingMinTTL": 0,
+              "ErrorCode": 504,
+              "ResponseCode": 200,
+              "ResponsePagePath": "/error.html",
+            },
+          ],
+          "DefaultCacheBehavior": {
+            "AllowedMethods": [
+              "GET",
+              "HEAD",
+              "OPTIONS",
+              "PUT",
+              "PATCH",
+              "POST",
+              "DELETE",
+            ],
+            "CachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
+            "Compress": true,
+            "OriginRequestPolicyId": "216adef6-5c7f-47e4-b989-5492eafa07d3",
+            "TargetOriginId": "ALBOrigin",
+            "ViewerProtocolPolicy": "redirect-to-https",
+          },
+          "DefaultRootObject": "index.html",
+          "Enabled": true,
+          "HttpVersion": "http2and3",
+          "IPV6Enabled": true,
+          "Origins": [
+            {
+              "CustomOriginConfig": {
+                "HTTPSPort": 443,
+                "OriginProtocolPolicy": "https-only",
+                "OriginSSLProtocols": [
+                  "TLSv1.2",
+                ],
+              },
+              "DomainName": {
+                "Fn::GetAtt": [
+                  "TestAlb8F0A2B31",
+                  "DNSName",
+                ],
+              },
+              "Id": "ALBOrigin",
+              "OriginAccessControlId": {
+                "Fn::GetAtt": [
+                  "TestOAC",
+                  "Id",
+                ],
+              },
+              "S3OriginConfig": {
+                "OriginAccessIdentity": "",
+              },
+            },
+            {
+              "DomainName": {
+                "Fn::GetAtt": [
+                  "TestS3BucketCF069364",
+                  "RegionalDomainName",
+                ],
+              },
+              "Id": "TestStackTestCloudFrontDistributionOrigin2B7890B66",
+              "S3OriginConfig": {
+                "OriginAccessIdentity": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "origin-access-identity/cloudfront/",
+                      {
+                        "Ref": "TestCloudFrontDistributionOrigin2S3OriginC44D8924",
+                      },
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "PriceClass": "PriceClass_200",
+        },
+      },
+      "Type": "AWS::CloudFront::Distribution",
+    },
+    "TestCloudFrontDistributionOrigin2S3OriginC44D8924": {
+      "Properties": {
+        "CloudFrontOriginAccessIdentityConfig": {
+          "Comment": "Identity for TestStackTestCloudFrontDistributionOrigin2B7890B66",
+        },
+      },
+      "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+    },
+    "TestOAC": {
+      "Properties": {
+        "OriginAccessControlConfig": {
+          "Name": "test-oac",
+          "OriginAccessControlOriginType": "s3",
+          "SigningBehavior": "always",
+          "SigningProtocol": "sigv4",
+        },
+      },
+      "Type": "AWS::CloudFront::OriginAccessControl",
+    },
+    "TestS3BucketCF069364": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "BucketName": "test-static-content",
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "TestS3BucketPolicy2D035B69": {
+      "Properties": {
+        "Bucket": {
+          "Ref": "TestS3BucketCF069364",
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "s3:GetObject",
+              "Effect": "Allow",
+              "Principal": {
+                "CanonicalUser": {
+                  "Fn::GetAtt": [
+                    "TestCloudFrontDistributionOrigin2S3OriginC44D8924",
+                    "S3CanonicalUserId",
+                  ],
+                },
+              },
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    {
+                      "Fn::GetAtt": [
+                        "TestS3BucketCF069364",
+                        "Arn",
+                      ],
+                    },
+                    "/*",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+    "TestVpcE77CE678": {
+      "Properties": {
+        "CidrBlock": "10.0.0.0/16",
+        "EnableDnsHostnames": true,
+        "EnableDnsSupport": true,
+        "InstanceTenancy": "default",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "TestStack/TestVpc",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::VPC",
+    },
+    "TestVpcIGW9DD53F70": {
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "TestStack/TestVpc",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::InternetGateway",
+    },
+    "TestVpcPublicSubnet1DefaultRoute6C0F0315": {
+      "DependsOn": [
+        "TestVpcVPCGWF1827B84",
+      ],
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "TestVpcIGW9DD53F70",
+        },
+        "RouteTableId": {
+          "Ref": "TestVpcPublicSubnet1RouteTable4CBFF871",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "TestVpcPublicSubnet1RouteTable4CBFF871": {
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "TestStack/TestVpc/PublicSubnet1",
+          },
+        ],
+        "VpcId": {
+          "Ref": "TestVpcE77CE678",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "TestVpcPublicSubnet1RouteTableAssociation7D1DECD9": {
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "TestVpcPublicSubnet1RouteTable4CBFF871",
+        },
+        "SubnetId": {
+          "Ref": "TestVpcPublicSubnet1SubnetA7DB1EDF",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "TestVpcPublicSubnet1SubnetA7DB1EDF": {
+      "Properties": {
+        "AvailabilityZone": "dummy1a",
+        "CidrBlock": "10.0.0.0/24",
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public",
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          {
+            "Key": "Name",
+            "Value": "TestStack/TestVpc/PublicSubnet1",
+          },
+        ],
+        "VpcId": {
+          "Ref": "TestVpcE77CE678",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "TestVpcPublicSubnet2DefaultRoute054DAE0A": {
+      "DependsOn": [
+        "TestVpcVPCGWF1827B84",
+      ],
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "TestVpcIGW9DD53F70",
+        },
+        "RouteTableId": {
+          "Ref": "TestVpcPublicSubnet2RouteTable75B88314",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "TestVpcPublicSubnet2RouteTable75B88314": {
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "TestStack/TestVpc/PublicSubnet2",
+          },
+        ],
+        "VpcId": {
+          "Ref": "TestVpcE77CE678",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "TestVpcPublicSubnet2RouteTableAssociationB386A819": {
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "TestVpcPublicSubnet2RouteTable75B88314",
+        },
+        "SubnetId": {
+          "Ref": "TestVpcPublicSubnet2Subnet80A14523",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "TestVpcPublicSubnet2Subnet80A14523": {
+      "Properties": {
+        "AvailabilityZone": "dummy1b",
+        "CidrBlock": "10.0.1.0/24",
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public",
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          {
+            "Key": "Name",
+            "Value": "TestStack/TestVpc/PublicSubnet2",
+          },
+        ],
+        "VpcId": {
+          "Ref": "TestVpcE77CE678",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "TestVpcVPCGWF1827B84": {
+      "Properties": {
+        "InternetGatewayId": {
+          "Ref": "TestVpcIGW9DD53F70",
+        },
+        "VpcId": {
+          "Ref": "TestVpcE77CE678",
+        },
+      },
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
