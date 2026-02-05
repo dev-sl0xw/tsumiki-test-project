@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for infra/lib/construct/vpc/endpoints-construct.ts</title>
+    <title>Code coverage report for infra/lib/construct/ecs/ecs-service-construct.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">infra/lib/construct/vpc</a> endpoints-construct.ts</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">infra/lib/construct/ecs</a> ecs-service-construct.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/22</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>25/25</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>22/22</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
@@ -392,7 +392,112 @@
 <a name='L327'></a><a href='#L327'>327</a>
 <a name='L328'></a><a href='#L328'>328</a>
 <a name='L329'></a><a href='#L329'>329</a>
-<a name='L330'></a><a href='#L330'>330</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L330'></a><a href='#L330'>330</a>
+<a name='L331'></a><a href='#L331'>331</a>
+<a name='L332'></a><a href='#L332'>332</a>
+<a name='L333'></a><a href='#L333'>333</a>
+<a name='L334'></a><a href='#L334'>334</a>
+<a name='L335'></a><a href='#L335'>335</a>
+<a name='L336'></a><a href='#L336'>336</a>
+<a name='L337'></a><a href='#L337'>337</a>
+<a name='L338'></a><a href='#L338'>338</a>
+<a name='L339'></a><a href='#L339'>339</a>
+<a name='L340'></a><a href='#L340'>340</a>
+<a name='L341'></a><a href='#L341'>341</a>
+<a name='L342'></a><a href='#L342'>342</a>
+<a name='L343'></a><a href='#L343'>343</a>
+<a name='L344'></a><a href='#L344'>344</a>
+<a name='L345'></a><a href='#L345'>345</a>
+<a name='L346'></a><a href='#L346'>346</a>
+<a name='L347'></a><a href='#L347'>347</a>
+<a name='L348'></a><a href='#L348'>348</a>
+<a name='L349'></a><a href='#L349'>349</a>
+<a name='L350'></a><a href='#L350'>350</a>
+<a name='L351'></a><a href='#L351'>351</a>
+<a name='L352'></a><a href='#L352'>352</a>
+<a name='L353'></a><a href='#L353'>353</a>
+<a name='L354'></a><a href='#L354'>354</a>
+<a name='L355'></a><a href='#L355'>355</a>
+<a name='L356'></a><a href='#L356'>356</a>
+<a name='L357'></a><a href='#L357'>357</a>
+<a name='L358'></a><a href='#L358'>358</a>
+<a name='L359'></a><a href='#L359'>359</a>
+<a name='L360'></a><a href='#L360'>360</a>
+<a name='L361'></a><a href='#L361'>361</a>
+<a name='L362'></a><a href='#L362'>362</a>
+<a name='L363'></a><a href='#L363'>363</a>
+<a name='L364'></a><a href='#L364'>364</a>
+<a name='L365'></a><a href='#L365'>365</a>
+<a name='L366'></a><a href='#L366'>366</a>
+<a name='L367'></a><a href='#L367'>367</a>
+<a name='L368'></a><a href='#L368'>368</a>
+<a name='L369'></a><a href='#L369'>369</a>
+<a name='L370'></a><a href='#L370'>370</a>
+<a name='L371'></a><a href='#L371'>371</a>
+<a name='L372'></a><a href='#L372'>372</a>
+<a name='L373'></a><a href='#L373'>373</a>
+<a name='L374'></a><a href='#L374'>374</a>
+<a name='L375'></a><a href='#L375'>375</a>
+<a name='L376'></a><a href='#L376'>376</a>
+<a name='L377'></a><a href='#L377'>377</a>
+<a name='L378'></a><a href='#L378'>378</a>
+<a name='L379'></a><a href='#L379'>379</a>
+<a name='L380'></a><a href='#L380'>380</a>
+<a name='L381'></a><a href='#L381'>381</a>
+<a name='L382'></a><a href='#L382'>382</a>
+<a name='L383'></a><a href='#L383'>383</a>
+<a name='L384'></a><a href='#L384'>384</a>
+<a name='L385'></a><a href='#L385'>385</a>
+<a name='L386'></a><a href='#L386'>386</a>
+<a name='L387'></a><a href='#L387'>387</a>
+<a name='L388'></a><a href='#L388'>388</a>
+<a name='L389'></a><a href='#L389'>389</a>
+<a name='L390'></a><a href='#L390'>390</a>
+<a name='L391'></a><a href='#L391'>391</a>
+<a name='L392'></a><a href='#L392'>392</a>
+<a name='L393'></a><a href='#L393'>393</a>
+<a name='L394'></a><a href='#L394'>394</a>
+<a name='L395'></a><a href='#L395'>395</a>
+<a name='L396'></a><a href='#L396'>396</a>
+<a name='L397'></a><a href='#L397'>397</a>
+<a name='L398'></a><a href='#L398'>398</a>
+<a name='L399'></a><a href='#L399'>399</a>
+<a name='L400'></a><a href='#L400'>400</a>
+<a name='L401'></a><a href='#L401'>401</a>
+<a name='L402'></a><a href='#L402'>402</a>
+<a name='L403'></a><a href='#L403'>403</a>
+<a name='L404'></a><a href='#L404'>404</a>
+<a name='L405'></a><a href='#L405'>405</a>
+<a name='L406'></a><a href='#L406'>406</a>
+<a name='L407'></a><a href='#L407'>407</a>
+<a name='L408'></a><a href='#L408'>408</a>
+<a name='L409'></a><a href='#L409'>409</a>
+<a name='L410'></a><a href='#L410'>410</a>
+<a name='L411'></a><a href='#L411'>411</a>
+<a name='L412'></a><a href='#L412'>412</a>
+<a name='L413'></a><a href='#L413'>413</a>
+<a name='L414'></a><a href='#L414'>414</a>
+<a name='L415'></a><a href='#L415'>415</a>
+<a name='L416'></a><a href='#L416'>416</a>
+<a name='L417'></a><a href='#L417'>417</a>
+<a name='L418'></a><a href='#L418'>418</a>
+<a name='L419'></a><a href='#L419'>419</a>
+<a name='L420'></a><a href='#L420'>420</a>
+<a name='L421'></a><a href='#L421'>421</a>
+<a name='L422'></a><a href='#L422'>422</a>
+<a name='L423'></a><a href='#L423'>423</a>
+<a name='L424'></a><a href='#L424'>424</a>
+<a name='L425'></a><a href='#L425'>425</a>
+<a name='L426'></a><a href='#L426'>426</a>
+<a name='L427'></a><a href='#L427'>427</a>
+<a name='L428'></a><a href='#L428'>428</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -408,86 +513,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -512,6 +540,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -521,6 +550,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -530,6 +560,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -539,6 +570,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -552,6 +584,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -561,6 +594,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -619,23 +653,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">67x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">66x</span>
-<span class="cline-any cline-yes">66x</span>
-<span class="cline-any cline-yes">66x</span>
-<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -644,23 +671,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -672,16 +695,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -693,9 +713,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -708,12 +726,190 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">127x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">127x</span>
+<span class="cline-any cline-yes">127x</span>
+<span class="cline-any cline-yes">127x</span>
+<span class="cline-any cline-yes">127x</span>
+<span class="cline-any cline-yes">127x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">127x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">127x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">127x</span>
+<span class="cline-any cline-yes">57x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -722,331 +918,429 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * VPC Endpoints Construct 実装
+ * ECS Service Construct 実装
  *
- * TASK-0003: VPC Endpoints Construct 実装
- * フェーズ: TDD Refactor Phase - コード品質の改善
+ * TASK-0015: ECS Service Construct 実装
+ * フェーズ: TDD Refactor Phase - コード品質改善
  *
- * 【機能概要】: VPC Endpoint を一元管理する CDK Construct
- * 【設計方針】: AWS サービスへの VPC 内部通信を最適化し、NAT Gateway 経由のコストを削減
- * 【テスト対応】: TC-VPCE-01 〜 TC-VPCE-18 の 29 テストケースに対応
- * 【改善内容】: Endpoint ID の定数化、JSDoc コメントの強化
- * 🔵 信頼性レベル: 要件定義書 REQ-008 〜 REQ-011 に基づく実装
+ * 【機能概要】: ECS Fargate Service を作成する CDK Construct
+ * 【実装方針】: Frontend/Backend 両対応の汎用 Service Construct
+ * 【テスト対応】: TC-SERVICE-01 〜 TC-SERVICE-19 の全19テストケースに対応
+ * 【リファクタ内容】: JSDoc強化、使用例の追加、コメント品質向上
  *
- * @module EndpointsConstruct
+ * 構成内容:
+ * - ECS Service: Fargate Launch Type (REQ-019)
+ * - ECS Exec: デフォルト有効化 (REQ-019)
+ * - 高可用性: Desired Count 2 以上 (REQ-020)
+ * - ネットワーク: awsvpc モード、Private Subnet (REQ-021)
+ *
+ * 🔵 信頼性レベル: 要件定義書 REQ-019〜021 に基づく実装
+ *
+ * @module ecs/ecs-service-construct
  */
 &nbsp;
+import * as ecs from 'aws-cdk-lib/aws-ecs';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
+import * as elb from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { Construct } from 'constructs';
 &nbsp;
 // ============================================================================
-// 【定数定義】: Endpoint ID の定数化 (DRY 原則)
-// 🔵 信頼性: Refactor フェーズで追加した保守性向上のための定数
+// 【定数定義】: ECS Service 構成のデフォルト値
+// 🔵 信頼性: REQ-019, REQ-020, REQ-021 より
 // ============================================================================
 &nbsp;
 /**
- * VPC Endpoint の CDK Construct ID を定義する定数オブジェクト
+ * 【デフォルト Desired Count】: 高可用性のためのタスク数
  *
- * 【設計方針】: ハードコーディングを避け、一元管理することで保守性を向上
- * 【用途】: vpc.addInterfaceEndpoint() / vpc.addGatewayEndpoint() の ID パラメータ
- * 🔵 信頼性: Refactor フェーズで追加
+ * 【設定値】: 2
+ * 【根拠】: REQ-020, NFR-004 により Multi-AZ 配置で高可用性を確保
+ *
+ * 🔵 信頼性: REQ-020, NFR-004 より
  */
-const ENDPOINT_IDS = {
-  /** SSM Session Manager API 用 Endpoint ID */
-  SSM: 'SsmEndpoint',
-  /** SSM Session Manager メッセージ用 Endpoint ID */
-  SSM_MESSAGES: 'SsmMessagesEndpoint',
-  /** SSM エージェントメッセージ用 Endpoint ID */
-  EC2_MESSAGES: 'Ec2MessagesEndpoint',
-  /** ECR API 用 Endpoint ID */
-  ECR_API: 'EcrApiEndpoint',
-  /** ECR Docker レジストリ用 Endpoint ID */
-  ECR_DKR: 'EcrDkrEndpoint',
-  /** CloudWatch Logs 用 Endpoint ID */
-  LOGS: 'LogsEndpoint',
-  /** S3 Gateway Endpoint ID */
-  S3: 'S3Endpoint',
-} as const;
+const DEFAULT_DESIRED_COUNT = 2;
 &nbsp;
 /**
- * EndpointsConstruct の Props インターフェース
+ * 【デフォルト ECS Exec 有効化】: コンテナ接続機能
  *
- * 【設計方針】: VPC を必須とし、各 Endpoint の有効化フラグをオプションで提供
- * 【デフォルト値】: すべてのフラグはデフォルトで true（全 Endpoint を作成）
- * 🔵 信頼性: note.md の実装インターフェースより
+ * 【設定値】: true（有効）
+ * 【根拠】: REQ-019 により運用・デバッグ目的でのコンテナアクセスが必要
  *
- * @interface EndpointsConstructProps
+ * 🔵 信頼性: REQ-019 より
  */
-export interface EndpointsConstructProps {
+const DEFAULT_ENABLE_EXECUTE_COMMAND = true;
+&nbsp;
+/**
+ * 【デフォルト Minimum Healthy Percent】: Rolling Update 時の最小タスク維持率
+ *
+ * 【設定値】: 50%
+ * 【根拠】: デプロイ中のサービス可用性を維持しつつ、リソース効率を考慮
+ *
+ * 🟡 信頼性: 設計文書から妥当な推測
+ */
+const DEFAULT_MIN_HEALTHY_PERCENT = 50;
+&nbsp;
+/**
+ * 【デフォルト Maximum Percent】: Rolling Update 時の最大タスク許可率
+ *
+ * 【設定値】: 200%
+ * 【根拠】: Blue-Green 風デプロイのため、新旧タスクの同時起動を許可
+ *
+ * 🟡 信頼性: 設計文書から妥当な推測
+ */
+const DEFAULT_MAX_PERCENT = 200;
+&nbsp;
+/**
+ * 【デフォルト Public IP 割り当て】: セキュリティ設定
+ *
+ * 【設定値】: false（無効）
+ * 【根拠】: Private Subnet 配置のため、Public IP は不要
+ *
+ * 🔵 信頼性: architecture.md より
+ */
+const DEFAULT_ASSIGN_PUBLIC_IP = false;
+&nbsp;
+/**
+ * 【App Container 名】: ALB 連携時のターゲットコンテナ名
+ *
+ * 【設定値】: 'app'
+ * 【根拠】: TaskDefinitionConstruct と整合性を取る
+ * 【補足】: attachToApplicationTargetGroup() 使用時、CDK が TaskDefinition から
+ *          最初の essential=true コンテナを自動検出するため、
+ *          現在の実装では明示的に使用していない。将来の拡張用に保持。
+ *
+ * 🔵 信頼性: TC-SERVICE-12 より
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const APP_CONTAINER_NAME = 'app';
+&nbsp;
+/**
+ * 【デフォルト Container Port】: ALB 連携時のターゲットポート
+ *
+ * 【設定値】: 3000
+ * 【根拠】: note.md で指定されたデフォルトポート
+ *
+ * 🔵 信頼性: note.md より
+ */
+const DEFAULT_CONTAINER_PORT = 3000;
+&nbsp;
+// ============================================================================
+// 【インターフェース定義】
+// ============================================================================
+&nbsp;
+/**
+ * EcsServiceConstruct の Props インターフェース
+ *
+ * 【設計方針】: 必須パラメータ + オプショナルパラメータ（デフォルト値提供）
+ * 【再利用性】: Frontend/Backend 両サービスに対応
+ * 【改善内容】: JSDoc強化、各プロパティの使用例追加
+ *
+ * 🔵 信頼性: 要件定義書・設計文書より
+ *
+ * @interface EcsServiceConstructProps
+ */
+export interface EcsServiceConstructProps {
   /**
-   * VPC への参照（必須）
-   * 🔵 信頼性: 要件定義書より必須パラメータ
+   * ECS Cluster (必須)
+   *
+   * 【用途】: Service を配置する Cluster
+   * 【参照元】: EcsClusterConstruct.cluster プロパティから取得
+   *
+   * 🔵 信頼性: REQ-019〜021 より
+   *
+   * @type {ecs.ICluster}
+   * @example
+   * ```typescript
+   * const service = new EcsServiceConstruct(stack, 'Service', {
+   *   cluster: ecsClusterConstruct.cluster,
+   *   // ...
+   * });
+   * ```
    */
-  readonly vpc: ec2.IVpc;
+  readonly cluster: ecs.ICluster;
 &nbsp;
   /**
-   * SSM Endpoints を作成するかどうか
-   * @default true
-   * 🟡 信頼性: 実装設計から妥当な推測
+   * Fargate Task Definition (必須)
+   *
+   * 【用途】: Service が使用する Task Definition
+   * 【参照元】: TaskDefinitionConstruct.taskDefinition プロパティから取得
+   * 【制約】: ECS Exec を使用する場合、Task Role に AmazonSSMManagedInstanceCore が必要
+   *
+   * 🔵 信頼性: REQ-019〜021 より
+   *
+   * @type {ecs.FargateTaskDefinition}
    */
-  readonly enableSsm?: boolean;
+  readonly taskDefinition: ecs.FargateTaskDefinition;
 &nbsp;
   /**
-   * ECR Endpoints を作成するかどうか
-   * @default true
-   * 🟡 信頼性: 実装設計から妥当な推測
+   * Security Group (必須)
+   *
+   * 【用途】: Service のネットワークセキュリティ設定
+   * 【制約】: 最小権限の原則に基づき、必要なポートのみ許可
+   * 【推奨】: ALB Security Group からのインバウンドのみ許可
+   *
+   * 🔵 信頼性: architecture.md より
+   *
+   * @type {ec2.ISecurityGroup}
    */
-  readonly enableEcr?: boolean;
+  readonly securityGroup: ec2.ISecurityGroup;
 &nbsp;
   /**
-   * CloudWatch Logs Endpoint を作成するかどうか
-   * @default true
-   * 🟡 信頼性: 実装設計から妥当な推測
+   * Subnet Selection (必須)
+   *
+   * 【用途】: Service を配置する Subnet
+   * 【推奨】: Private Subnet に配置（セキュリティ確保）
+   * 【注意】: Public Subnet 配置時は assignPublicIp: true を検討
+   *
+   * 🔵 信頼性: architecture.md より
+   *
+   * @type {ec2.SubnetSelection}
+   * @example
+   * ```typescript
+   * subnets: { subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS }
+   * ```
    */
-  readonly enableLogs?: boolean;
+  readonly subnets: ec2.SubnetSelection;
 &nbsp;
   /**
-   * S3 Gateway Endpoint を作成するかどうか
-   * @default true
-   * 🟡 信頼性: 実装設計から妥当な推測
+   * Service 名 (オプション)
+   *
+   * 【用途】: ECS Service の識別名
+   * 【デフォルト】: 自動生成（CDK が論理 ID から生成）
+   * 【制約】: 1〜255文字、英数字・ハイフン・アンダースコアが使用可能
+   * 【命名規則】: `${envName}-${serviceName}` 形式を推奨
+   *
+   * 🟡 信頼性: interfaces.ts から妥当な推測
+   *
+   * @default 自動生成
+   * @type {string}
+   * @example 'frontend-service', 'backend-service', 'dev-api-service'
    */
-  readonly enableS3?: boolean;
+  readonly serviceName?: string;
+&nbsp;
+  /**
+   * Desired Count (オプション)
+   *
+   * 【用途】: 起動するタスク数
+   * 【デフォルト】: 2（高可用性のため）
+   * 【推奨】: 本番環境では 2 以上を推奨
+   *
+   * 🔵 信頼性: REQ-020, NFR-004 より
+   *
+   * @default 2
+   */
+  readonly desiredCount?: number;
+&nbsp;
+  /**
+   * ECS Exec 有効化 (オプション)
+   *
+   * 【用途】: コンテナへの接続を許可
+   * 【デフォルト】: true（運用・デバッグ目的）
+   * 【注意】: 本番環境ではセキュリティポリシーに応じて無効化を検討
+   *
+   * 🔵 信頼性: REQ-019 より
+   *
+   * @default true
+   */
+  readonly enableExecuteCommand?: boolean;
+&nbsp;
+  /**
+   * Minimum Healthy Percent (オプション)
+   *
+   * 【用途】: Rolling Update 時の最小タスク維持率
+   * 【デフォルト】: 50%
+   *
+   * 🟡 信頼性: 設計文書から妥当な推測
+   *
+   * @default 50
+   */
+  readonly minimumHealthyPercent?: number;
+&nbsp;
+  /**
+   * Maximum Percent (オプション)
+   *
+   * 【用途】: Rolling Update 時の最大タスク許可率
+   * 【デフォルト】: 200%
+   *
+   * 🟡 信頼性: 設計文書から妥当な推測
+   *
+   * @default 200
+   */
+  readonly maximumPercent?: number;
+&nbsp;
+  /**
+   * ALB Target Group (オプション)
+   *
+   * 【用途】: ALB からのトラフィックを受け取る設定
+   * 【制約】: 指定時は LoadBalancers 設定が追加される
+   *
+   * 🟡 信頼性: interfaces.ts から妥当な推測
+   *
+   * @default undefined（ALB 連携なし）
+   */
+  readonly targetGroup?: elb.IApplicationTargetGroup;
+&nbsp;
+  /**
+   * Public IP 割り当て (オプション)
+   *
+   * 【用途】: タスクに Public IP を割り当てるか
+   * 【デフォルト】: false（Private Subnet 配置のため不要）
+   * 【注意】: Public Subnet 配置時のみ true を検討
+   *
+   * 🔵 信頼性: architecture.md より
+   *
+   * @default false
+   */
+  readonly assignPublicIp?: boolean;
+&nbsp;
+  /**
+   * Container Port (オプション)
+   *
+   * 【用途】: ALB 連携時のターゲットポート
+   * 【デフォルト】: 3000
+   * 【制約】: targetGroup 指定時に使用
+   *
+   * 🟡 信頼性: note.md より
+   *
+   * @default 3000
+   */
+  readonly containerPort?: number;
 }
 &nbsp;
 /**
- * VPC Endpoints Construct
+ * ECS Service Construct
  *
- * 【機能概要】: VPC Endpoint を一元管理する Construct
- * 【実装方針】: AWS CDK の VPC メソッドを使用して各種 Endpoint を作成
- * 【テスト対応】: TC-VPCE-01 〜 TC-VPCE-18 の全テストケースに対応
+ * 【機能概要】: ECS Fargate Service を作成する Construct
+ * 【実装方針】: Frontend/Backend 両対応の汎用 Service
  *
- * 作成する Endpoint:
- * - SSM Interface Endpoints: ssm, ssmmessages, ec2messages (REQ-008)
- * - ECR Interface Endpoints: ecr.api, ecr.dkr (REQ-009)
- * - CloudWatch Logs Interface Endpoint: logs (REQ-010)
- * - S3 Gateway Endpoint (REQ-011)
+ * アーキテクチャ位置づけ:
+ * ```
+ * VPC Stack → Security Stack → Application Stack
+ *                               ↓
+ *                           ECS Cluster → Task Definition → Service ← 本 Construct
+ *                                                          ↓
+ *                                                       ALB (optional)
+ * ```
  *
  * 🔵 信頼性レベル: 要件定義書に基づく実装
  *
- * @class EndpointsConstruct
+ * @class EcsServiceConstruct
  * @extends Construct
+ *
+ * @example
+ * ```typescript
+ * // デフォルト設定での使用
+ * const ecsService = new EcsServiceConstruct(stack, 'BackendService', {
+ *   cluster: ecsCluster.cluster,
+ *   taskDefinition: taskDef.taskDefinition,
+ *   securityGroup: appSecurityGroup,
+ *   subnets: { subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS },
+ * });
+ *
+ * // ALB 連携での使用
+ * const ecsService = new EcsServiceConstruct(stack, 'FrontendService', {
+ *   cluster: ecsCluster.cluster,
+ *   taskDefinition: taskDef.taskDefinition,
+ *   securityGroup: appSecurityGroup,
+ *   subnets: { subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS },
+ *   targetGroup: albTargetGroup,
+ *   serviceName: 'frontend-service',
+ * });
+ * ```
  */
-export class EndpointsConstruct extends Construct {
-  // ==========================================================================
-  // 【公開プロパティ】: 作成された VPC Endpoint への参照
-  // 【設計方針】: 外部から各 Endpoint を参照可能にし、追加の設定を可能にする
-  // 🔵 信頼性: note.md の実装インターフェースより
-  // ==========================================================================
+export class EcsServiceConstruct extends Construct {
+  /**
+   * 【プロパティ】: ECS Fargate Service
+   *
+   * 【用途】: Auto Scaling、ALB 連携など、後続処理で参照
+   *
+   * 🔵 信頼性: note.md より
+   *
+   * @readonly
+   * @type {ecs.FargateService}
+   */
+  public readonly service: ecs.FargateService;
 &nbsp;
   /**
-   * SSM Interface Endpoint (ssm)
+   * EcsServiceConstruct のコンストラクタ
    *
-   * 【機能概要】: AWS Systems Manager Session Manager の API 呼び出し用 Endpoint
-   * 【用途】: ECS Exec で Fargate タスクへの SSH ライクな接続を可能にする
-   * 【配置先】: Private App Subnet (PRIVATE_WITH_EGRESS)
-   * 【関連サービス】: SSM Session Manager, ECS Exec
-   * 【課金】: $0.01/時間 + データ処理料金
+   * 【処理概要】: Fargate Service を作成
+   * 【設計方針】: デフォルト値を適用しつつ、カスタマイズ可能に
    *
-   * @remarks enableSsm=false の場合は undefined
-   * 🔵 信頼性: 要件定義書 REQ-008 に基づく
+   * @param {Construct} scope - 親となる Construct
+   * @param {string} id - この Construct の識別子
+   * @param {EcsServiceConstructProps} props - ECS Service 設定
    */
-  public readonly ssmEndpoint?: ec2.IInterfaceVpcEndpoint;
-&nbsp;
-  /**
-   * SSM Messages Interface Endpoint (ssmmessages)
-   *
-   * 【機能概要】: SSM Session Manager のメッセージ送受信用 Endpoint
-   * 【用途】: セッション確立後のコマンド送信・出力受信
-   * 【配置先】: Private App Subnet (PRIVATE_WITH_EGRESS)
-   * 【関連サービス】: SSM Session Manager
-   * 【課金】: $0.01/時間 + データ処理料金
-   *
-   * @remarks enableSsm=false の場合は undefined
-   * 🔵 信頼性: 要件定義書 REQ-008 に基づく
-   */
-  public readonly ssmMessagesEndpoint?: ec2.IInterfaceVpcEndpoint;
-&nbsp;
-  /**
-   * EC2 Messages Interface Endpoint (ec2messages)
-   *
-   * 【機能概要】: SSM エージェントのメッセージ通信用 Endpoint
-   * 【用途】: EC2/ECS タスクと SSM サービス間の通信
-   * 【配置先】: Private App Subnet (PRIVATE_WITH_EGRESS)
-   * 【関連サービス】: SSM Agent
-   * 【課金】: $0.01/時間 + データ処理料金
-   *
-   * @remarks enableSsm=false の場合は undefined
-   * 🔵 信頼性: 要件定義書 REQ-008 に基づく
-   */
-  public readonly ec2MessagesEndpoint?: ec2.IInterfaceVpcEndpoint;
-&nbsp;
-  /**
-   * ECR API Interface Endpoint (ecr.api)
-   *
-   * 【機能概要】: Amazon ECR API 呼び出し用 Endpoint
-   * 【用途】: Docker イメージのメタデータ取得、認証トークン取得
-   * 【配置先】: Private App Subnet (PRIVATE_WITH_EGRESS)
-   * 【関連サービス】: Amazon ECR, ECS Fargate
-   * 【課金】: $0.01/時間 + データ処理料金
-   *
-   * @remarks enableEcr=false の場合は undefined
-   * 🔵 信頼性: 要件定義書 REQ-009 に基づく
-   */
-  public readonly ecrApiEndpoint?: ec2.IInterfaceVpcEndpoint;
-&nbsp;
-  /**
-   * ECR Docker Interface Endpoint (ecr.dkr)
-   *
-   * 【機能概要】: Docker イメージの Pull 用 Endpoint
-   * 【用途】: ECS タスク起動時のコンテナイメージ取得
-   * 【配置先】: Private App Subnet (PRIVATE_WITH_EGRESS)
-   * 【関連サービス】: Amazon ECR, Docker Registry
-   * 【課金】: $0.01/時間 + データ処理料金
-   *
-   * @remarks enableEcr=false の場合は undefined
-   * 🔵 信頼性: 要件定義書 REQ-009 に基づく
-   */
-  public readonly ecrDkrEndpoint?: ec2.IInterfaceVpcEndpoint;
-&nbsp;
-  /**
-   * CloudWatch Logs Interface Endpoint (logs)
-   *
-   * 【機能概要】: CloudWatch Logs へのログ送信用 Endpoint
-   * 【用途】: ECS タスクのアプリケーションログを CloudWatch Logs に送信
-   * 【配置先】: Private App Subnet (PRIVATE_WITH_EGRESS)
-   * 【関連サービス】: Amazon CloudWatch Logs, ECS Fargate
-   * 【課金】: $0.01/時間 + データ処理料金
-   *
-   * @remarks enableLogs=false の場合は undefined
-   * 🔵 信頼性: 要件定義書 REQ-010 に基づく
-   */
-  public readonly logsEndpoint?: ec2.IInterfaceVpcEndpoint;
-&nbsp;
-  /**
-   * S3 Gateway Endpoint
-   *
-   * 【機能概要】: Amazon S3 へのアクセス用 Gateway Endpoint
-   * 【用途】: ECR イメージレイヤー取得、アプリケーションの S3 アクセス
-   * 【配置先】: Private App Subnet + Private DB Subnet の Route Table
-   * 【関連サービス】: Amazon S3, Amazon ECR (イメージレイヤー)
-   * 【課金】: 無料（Gateway Endpoint は課金なし）
-   * 【コスト効果】: NAT Gateway 経由の S3 データ転送コストを削減
-   *
-   * @remarks enableS3=false の場合は undefined
-   * 🔵 信頼性: 要件定義書 REQ-011 に基づく
-   */
-  public readonly s3Endpoint?: ec2.IGatewayVpcEndpoint;
-&nbsp;
-  /**
-   * コンストラクタ
-   *
-   * 【処理概要】: Props に基づいて VPC Endpoints を作成
-   * 【設計方針】: フラグが true（またはデフォルト）の場合に Endpoint を作成
-   *
-   * @param scope - 親となる Construct
-   * @param id - このConstruct の識別子
-   * @param props - EndpointsConstruct の Props
-   */
-  constructor(scope: Construct, id: string, props: EndpointsConstructProps) {
+  constructor(scope: Construct, id: string, props: EcsServiceConstructProps) {
     super(scope, id);
 &nbsp;
     // ========================================================================
-    // 【デフォルト値適用】: Props のデフォルト値を適用
-    // 🟡 信頼性: 実装設計から妥当な推測
+    // 【パラメータ解凍】: Props からパラメータを取得し、デフォルト値を適用
+    // 🔵 信頼性: REQ-019, REQ-020 より
     // ========================================================================
-    const enableSsm = props.enableSsm ?? true;
-    const enableEcr = props.enableEcr ?? true;
-    const enableLogs = props.enableLogs ?? true;
-    const enableS3 = props.enableS3 ?? true;
-&nbsp;
-    // 【VPC 参照】: 渡された VPC を使用
-    const vpc = props.vpc;
-&nbsp;
-    // 【Interface Endpoint 配置先】: Private App Subnet (PRIVATE_WITH_EGRESS)
-    // 🔵 信頼性: note.md の配置設計より
-    const interfaceEndpointSubnets: ec2.SubnetSelection = {
-      subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
-    };
+    const desiredCount = props.desiredCount ?? DEFAULT_DESIRED_COUNT;
+    const enableExecuteCommand = props.enableExecuteCommand ?? DEFAULT_ENABLE_EXECUTE_COMMAND;
+    const minimumHealthyPercent = props.minimumHealthyPercent ?? DEFAULT_MIN_HEALTHY_PERCENT;
+    const maximumPercent = props.maximumPercent ?? DEFAULT_MAX_PERCENT;
+    const assignPublicIp = props.assignPublicIp ?? DEFAULT_ASSIGN_PUBLIC_IP;
+    // 【補足】: containerPort は attachToApplicationTargetGroup() が TaskDefinition から
+    // 自動取得するため、現在は使用していない。明示的指定が必要な場合の将来拡張用。
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const containerPort = props.containerPort ?? DEFAULT_CONTAINER_PORT;
 &nbsp;
     // ========================================================================
-    // 【SSM Interface Endpoints 作成】: enableSsm=true の場合に作成
-    // 【対応要件】: REQ-008 - Systems Manager 用 VPC Endpoint を作成
-    // 🔵 信頼性: 要件定義書 REQ-008 に基づく
+    // 【ECS Service 作成】: Fargate Service を作成
+    // 🔵 信頼性: REQ-019, REQ-020, REQ-021 より
     // ========================================================================
-    if (enableSsm) {
-      // 【ssm Endpoint】: SSM Session Manager API 用
-      this.ssmEndpoint = vpc.addInterfaceEndpoint(ENDPOINT_IDS.SSM, {
-        service: ec2.InterfaceVpcEndpointAwsService.SSM,
-        subnets: interfaceEndpointSubnets,
-        privateDnsEnabled: true,
-      });
+    this.service = new ecs.FargateService(this, 'Service', {
+      // 【Cluster 設定】: Service を配置する Cluster
+      // 🔵 信頼性: REQ-019〜021 より
+      cluster: props.cluster,
 &nbsp;
-      // 【ssmmessages Endpoint】: SSM Session Manager メッセージ用
-      this.ssmMessagesEndpoint = vpc.addInterfaceEndpoint(ENDPOINT_IDS.SSM_MESSAGES, {
-        service: ec2.InterfaceVpcEndpointAwsService.SSM_MESSAGES,
-        subnets: interfaceEndpointSubnets,
-        privateDnsEnabled: true,
-      });
+      // 【Task Definition 設定】: Service が使用する Task Definition
+      // 🔵 信頼性: REQ-019〜021 より
+      taskDefinition: props.taskDefinition,
 &nbsp;
-      // 【ec2messages Endpoint】: SSM エージェントメッセージ用
-      this.ec2MessagesEndpoint = vpc.addInterfaceEndpoint(ENDPOINT_IDS.EC2_MESSAGES, {
-        service: ec2.InterfaceVpcEndpointAwsService.EC2_MESSAGES,
-        subnets: interfaceEndpointSubnets,
-        privateDnsEnabled: true,
-      });
-    }
+      // 【Service 名設定】: 指定された名前または undefined（CDK が自動生成）
+      // 🟡 信頼性: interfaces.ts から妥当な推測
+      serviceName: props.serviceName,
 &nbsp;
-    // ========================================================================
-    // 【ECR Interface Endpoints 作成】: enableEcr=true の場合に作成
-    // 【対応要件】: REQ-009 - ECR 用 VPC Endpoint を作成
-    // 🔵 信頼性: 要件定義書 REQ-009 に基づく
-    // ========================================================================
-    if (enableEcr) {
-      // 【ecr.api Endpoint】: ECR API 用（イメージメタデータ取得）
-      this.ecrApiEndpoint = vpc.addInterfaceEndpoint(ENDPOINT_IDS.ECR_API, {
-        service: ec2.InterfaceVpcEndpointAwsService.ECR,
-        subnets: interfaceEndpointSubnets,
-        privateDnsEnabled: true,
-      });
+      // 【Desired Count 設定】: 起動するタスク数
+      // 【高可用性】: デフォルト 2 で Multi-AZ 配置
+      // 🔵 信頼性: REQ-020, NFR-004 より
+      desiredCount: desiredCount,
 &nbsp;
-      // 【ecr.dkr Endpoint】: Docker イメージ Pull 用
-      this.ecrDkrEndpoint = vpc.addInterfaceEndpoint(ENDPOINT_IDS.ECR_DKR, {
-        service: ec2.InterfaceVpcEndpointAwsService.ECR_DOCKER,
-        subnets: interfaceEndpointSubnets,
-        privateDnsEnabled: true,
-      });
-    }
+      // 【ECS Exec 設定】: コンテナ接続機能
+      // 🔵 信頼性: REQ-019 より
+      enableExecuteCommand: enableExecuteCommand,
+&nbsp;
+      // 【デプロイメント設定】: Rolling Update 設定
+      // 🟡 信頼性: 設計文書から妥当な推測
+      minHealthyPercent: minimumHealthyPercent,
+      maxHealthyPercent: maximumPercent,
+&nbsp;
+      // 【Security Group 設定】: ネットワークセキュリティ
+      // 🔵 信頼性: architecture.md より
+      securityGroups: [props.securityGroup],
+&nbsp;
+      // 【VPC Subnet 設定】: Service を配置する Subnet
+      // 🔵 信頼性: architecture.md より
+      vpcSubnets: props.subnets,
+&nbsp;
+      // 【Public IP 設定】: Public IP 割り当て
+      // 🔵 信頼性: architecture.md より
+      assignPublicIp: assignPublicIp,
+    });
 &nbsp;
     // ========================================================================
-    // 【CloudWatch Logs Interface Endpoint 作成】: enableLogs=true の場合に作成
-    // 【対応要件】: REQ-010 - CloudWatch Logs 用 VPC Endpoint を作成
-    // 🔵 信頼性: 要件定義書 REQ-010 に基づく
+    // 【ALB 連携設定】: Target Group 指定時のみ LoadBalancer を設定
+    // 🟡 信頼性: interfaces.ts から妥当な推測
     // ========================================================================
-    if (enableLogs) {
-      // 【logs Endpoint】: ECS タスクのログ送信用
-      this.logsEndpoint = vpc.addInterfaceEndpoint(ENDPOINT_IDS.LOGS, {
-        service: ec2.InterfaceVpcEndpointAwsService.CLOUDWATCH_LOGS,
-        subnets: interfaceEndpointSubnets,
-        privateDnsEnabled: true,
-      });
-    }
+    if (props.targetGroup) {
+      this.service.attachToApplicationTargetGroup(props.targetGroup);
 &nbsp;
-    // ========================================================================
-    // 【S3 Gateway Endpoint 作成】: enableS3=true の場合に作成
-    // 【対応要件】: REQ-011 - S3 用 Gateway Endpoint を作成
-    // 【コスト効果】: Gateway Endpoint は無料、NAT Gateway 経由の転送コスト削減
-    // 🔵 信頼性: 要件定義書 REQ-011 に基づく
-    // ========================================================================
-    if (enableS3) {
-      // 【s3 Gateway Endpoint】: ECR イメージレイヤー取得 &amp; S3 アクセス用
-      // 【Route Table 関連付け】: Private App Subnet と Private DB Subnet 両方に関連付け
-      this.s3Endpoint = vpc.addGatewayEndpoint(ENDPOINT_IDS.S3, {
-        service: ec2.GatewayVpcEndpointAwsService.S3,
-        subnets: [
-          { subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS },
-          { subnetType: ec2.SubnetType.PRIVATE_ISOLATED },
-        ],
-      });
+      // Note: attachToApplicationTargetGroup は内部で LoadBalancers を設定するが、
+      // CloudFormation テンプレートには明示的な設定が必要な場合がある。
+      // CDK L2 Construct が自動的に処理するため、追加設定は不要。
     }
   }
 }

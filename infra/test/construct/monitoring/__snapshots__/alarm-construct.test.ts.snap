@@ -1,0 +1,424 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlarmConstruct スナップショットテスト TC-ALARM-001: Dev 環境 CloudFormation テンプレートスナップショット Dev 環境テンプレートがスナップショットと一致すること 1`] = `
+{
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AlarmAlarmTopic10C291D6": {
+      "Properties": {
+        "KmsMasterKeyId": {
+          "Fn::GetAtt": [
+            "AlarmAlarmTopicKeyF7AB452C",
+            "Arn",
+          ],
+        },
+        "TopicName": "dev-alarm-notifications",
+      },
+      "Type": "AWS::SNS::Topic",
+    },
+    "AlarmAlarmTopicKeyF7AB452C": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Description": "KMS key for dev alarm SNS topic encryption",
+        "EnableKeyRotation": true,
+        "KeyPolicy": {
+          "Statement": [
+            {
+              "Action": "kms:*",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::123456789012:root",
+                    ],
+                  ],
+                },
+              },
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:GenerateDataKey*",
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "cloudwatch.amazonaws.com",
+              },
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::KMS::Key",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "AlarmCPUAlarmfrontendserviceA9ED0220": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmAlarmTopic10C291D6",
+          },
+        ],
+        "AlarmDescription": "ECS CPU 使用率が 80% を超えました (frontend-service)",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "DatapointsToAlarm": 3,
+        "Dimensions": [
+          {
+            "Name": "ClusterName",
+            "Value": "test-cluster",
+          },
+          {
+            "Name": "ServiceName",
+            "Value": "frontend-service",
+          },
+        ],
+        "EvaluationPeriods": 5,
+        "MetricName": "CPUUtilization",
+        "Namespace": "AWS/ECS",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 80,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmMemoryAlarmfrontendserviceAEC4F3FF": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmAlarmTopic10C291D6",
+          },
+        ],
+        "AlarmDescription": "ECS Memory 使用率が 80% を超えました (frontend-service)",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "DatapointsToAlarm": 3,
+        "Dimensions": [
+          {
+            "Name": "ClusterName",
+            "Value": "test-cluster",
+          },
+          {
+            "Name": "ServiceName",
+            "Value": "frontend-service",
+          },
+        ],
+        "EvaluationPeriods": 5,
+        "MetricName": "MemoryUtilization",
+        "Namespace": "AWS/ECS",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 80,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`AlarmConstruct スナップショットテスト TC-ALARM-002: Prod 環境 CloudFormation テンプレートスナップショット Prod 環境テンプレートがスナップショットと一致すること 1`] = `
+{
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AlarmAlarmTopic10C291D6": {
+      "Properties": {
+        "KmsMasterKeyId": {
+          "Fn::GetAtt": [
+            "AlarmAlarmTopicKeyF7AB452C",
+            "Arn",
+          ],
+        },
+        "TopicName": "prod-alarm-notifications",
+      },
+      "Type": "AWS::SNS::Topic",
+    },
+    "AlarmAlarmTopicKeyF7AB452C": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "Description": "KMS key for prod alarm SNS topic encryption",
+        "EnableKeyRotation": true,
+        "KeyPolicy": {
+          "Statement": [
+            {
+              "Action": "kms:*",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::123456789012:root",
+                    ],
+                  ],
+                },
+              },
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:GenerateDataKey*",
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "cloudwatch.amazonaws.com",
+              },
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::KMS::Key",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "AlarmCPUAlarmbackendserviceCD8EAC26": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmAlarmTopic10C291D6",
+          },
+        ],
+        "AlarmDescription": "ECS CPU 使用率が 80% を超えました (backend-service)",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "DatapointsToAlarm": 3,
+        "Dimensions": [
+          {
+            "Name": "ClusterName",
+            "Value": "prod-cluster",
+          },
+          {
+            "Name": "ServiceName",
+            "Value": "backend-service",
+          },
+        ],
+        "EvaluationPeriods": 5,
+        "MetricName": "CPUUtilization",
+        "Namespace": "AWS/ECS",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 80,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmCPUAlarmfrontendserviceA9ED0220": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmAlarmTopic10C291D6",
+          },
+        ],
+        "AlarmDescription": "ECS CPU 使用率が 80% を超えました (frontend-service)",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "DatapointsToAlarm": 3,
+        "Dimensions": [
+          {
+            "Name": "ClusterName",
+            "Value": "prod-cluster",
+          },
+          {
+            "Name": "ServiceName",
+            "Value": "frontend-service",
+          },
+        ],
+        "EvaluationPeriods": 5,
+        "MetricName": "CPUUtilization",
+        "Namespace": "AWS/ECS",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 80,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmErrorAlarm0CCED5325": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmAlarmTopic10C291D6",
+          },
+        ],
+        "AlarmDescription": {
+          "Fn::Join": [
+            "",
+            [
+              "エラーが検出されました (",
+              {
+                "Ref": "TestLogGroup4EEF7AD4",
+              },
+              ")",
+            ],
+          ],
+        },
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "DatapointsToAlarm": 1,
+        "EvaluationPeriods": 1,
+        "MetricName": "prod-ErrorCount-0",
+        "Namespace": "Custom/Application",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 1,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmErrorMetricFilter01A41FC57": {
+      "Properties": {
+        "FilterPattern": "?"ERROR" ?"Exception"",
+        "LogGroupName": {
+          "Ref": "TestLogGroup4EEF7AD4",
+        },
+        "MetricTransformations": [
+          {
+            "MetricName": "prod-ErrorCount-0",
+            "MetricNamespace": "Custom/Application",
+            "MetricValue": "1",
+          },
+        ],
+      },
+      "Type": "AWS::Logs::MetricFilter",
+    },
+    "AlarmMemoryAlarmbackendservice183368B0": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmAlarmTopic10C291D6",
+          },
+        ],
+        "AlarmDescription": "ECS Memory 使用率が 80% を超えました (backend-service)",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "DatapointsToAlarm": 3,
+        "Dimensions": [
+          {
+            "Name": "ClusterName",
+            "Value": "prod-cluster",
+          },
+          {
+            "Name": "ServiceName",
+            "Value": "backend-service",
+          },
+        ],
+        "EvaluationPeriods": 5,
+        "MetricName": "MemoryUtilization",
+        "Namespace": "AWS/ECS",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 80,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmMemoryAlarmfrontendserviceAEC4F3FF": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmAlarmTopic10C291D6",
+          },
+        ],
+        "AlarmDescription": "ECS Memory 使用率が 80% を超えました (frontend-service)",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "DatapointsToAlarm": 3,
+        "Dimensions": [
+          {
+            "Name": "ClusterName",
+            "Value": "prod-cluster",
+          },
+          {
+            "Name": "ServiceName",
+            "Value": "frontend-service",
+          },
+        ],
+        "EvaluationPeriods": 5,
+        "MetricName": "MemoryUtilization",
+        "Namespace": "AWS/ECS",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 80,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "TestLogGroup4EEF7AD4": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "LogGroupName": "/ecs/prod/frontend",
+        "RetentionInDays": 731,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Retain",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;

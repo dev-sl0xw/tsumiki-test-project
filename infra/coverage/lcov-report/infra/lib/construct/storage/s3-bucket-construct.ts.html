@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for infra/lib/construct/database/aurora-construct.ts</title>
+    <title>Code coverage report for infra/lib/construct/storage/s3-bucket-construct.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">infra/lib/construct/database</a> aurora-construct.ts</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">infra/lib/construct/storage</a> s3-bucket-construct.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>36/40</span>
+                <span class='fraction'>51/51</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/10</span>
+                <span class='fraction'>24/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>36/40</span>
+                <span class='fraction'>51/51</span>
             </div>
         
             
@@ -655,21 +655,67 @@
 <a name='L590'></a><a href='#L590'>590</a>
 <a name='L591'></a><a href='#L591'>591</a>
 <a name='L592'></a><a href='#L592'>592</a>
-<a name='L593'></a><a href='#L593'>593</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L593'></a><a href='#L593'>593</a>
+<a name='L594'></a><a href='#L594'>594</a>
+<a name='L595'></a><a href='#L595'>595</a>
+<a name='L596'></a><a href='#L596'>596</a>
+<a name='L597'></a><a href='#L597'>597</a>
+<a name='L598'></a><a href='#L598'>598</a>
+<a name='L599'></a><a href='#L599'>599</a>
+<a name='L600'></a><a href='#L600'>600</a>
+<a name='L601'></a><a href='#L601'>601</a>
+<a name='L602'></a><a href='#L602'>602</a>
+<a name='L603'></a><a href='#L603'>603</a>
+<a name='L604'></a><a href='#L604'>604</a>
+<a name='L605'></a><a href='#L605'>605</a>
+<a name='L606'></a><a href='#L606'>606</a>
+<a name='L607'></a><a href='#L607'>607</a>
+<a name='L608'></a><a href='#L608'>608</a>
+<a name='L609'></a><a href='#L609'>609</a>
+<a name='L610'></a><a href='#L610'>610</a>
+<a name='L611'></a><a href='#L611'>611</a>
+<a name='L612'></a><a href='#L612'>612</a>
+<a name='L613'></a><a href='#L613'>613</a>
+<a name='L614'></a><a href='#L614'>614</a>
+<a name='L615'></a><a href='#L615'>615</a>
+<a name='L616'></a><a href='#L616'>616</a>
+<a name='L617'></a><a href='#L617'>617</a>
+<a name='L618'></a><a href='#L618'>618</a>
+<a name='L619'></a><a href='#L619'>619</a>
+<a name='L620'></a><a href='#L620'>620</a>
+<a name='L621'></a><a href='#L621'>621</a>
+<a name='L622'></a><a href='#L622'>622</a>
+<a name='L623'></a><a href='#L623'>623</a>
+<a name='L624'></a><a href='#L624'>624</a>
+<a name='L625'></a><a href='#L625'>625</a>
+<a name='L626'></a><a href='#L626'>626</a>
+<a name='L627'></a><a href='#L627'>627</a>
+<a name='L628'></a><a href='#L628'>628</a>
+<a name='L629'></a><a href='#L629'>629</a>
+<a name='L630'></a><a href='#L630'>630</a>
+<a name='L631'></a><a href='#L631'>631</a>
+<a name='L632'></a><a href='#L632'>632</a>
+<a name='L633'></a><a href='#L633'>633</a>
+<a name='L634'></a><a href='#L634'>634</a>
+<a name='L635'></a><a href='#L635'>635</a>
+<a name='L636'></a><a href='#L636'>636</a>
+<a name='L637'></a><a href='#L637'>637</a>
+<a name='L638'></a><a href='#L638'>638</a>
+<a name='L639'></a><a href='#L639'>639</a>
+<a name='L640'></a><a href='#L640'>640</a>
+<a name='L641'></a><a href='#L641'>641</a>
+<a name='L642'></a><a href='#L642'>642</a>
+<a name='L643'></a><a href='#L643'>643</a>
+<a name='L644'></a><a href='#L644'>644</a>
+<a name='L645'></a><a href='#L645'>645</a>
+<a name='L646'></a><a href='#L646'>646</a>
+<a name='L647'></a><a href='#L647'>647</a>
+<a name='L648'></a><a href='#L648'>648</a>
+<a name='L649'></a><a href='#L649'>649</a>
+<a name='L650'></a><a href='#L650'>650</a>
+<a name='L651'></a><a href='#L651'>651</a>
+<a name='L652'></a><a href='#L652'>652</a>
+<a name='L653'></a><a href='#L653'>653</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -695,36 +741,9 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -741,14 +760,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -758,8 +769,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -775,26 +784,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -815,6 +819,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -823,24 +828,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -853,17 +854,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -873,6 +874,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -884,6 +886,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -893,87 +896,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1034,7 +958,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1048,7 +971,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1056,19 +978,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1083,7 +1001,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1109,6 +1026,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1144,11 +1062,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1195,26 +1111,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">78x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">78x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">75x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">75x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">75x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1226,7 +1150,203 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">55x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">77x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1248,595 +1368,655 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * Aurora Construct 実装
+ * S3 Bucket Construct 実装
  *
- * TASK-0008: Aurora Construct 実装
- * TASK-0009: Secrets Manager 統合
- * フェーズ: TDD Refactor Phase - コード品質改善
+ * TASK-0018: S3 + OAC Construct 実装
+ * フェーズ: TDD Green Phase - テストを通すための最小実装
  *
- * 【機能概要】: Aurora Serverless v2 MySQL クラスターを構築する CDK Construct
- * 【実装方針】: 最小権限の原則に基づき、セキュアなデータベースを構築
- * 【テスト対応】: TC-AU-01 〜 TC-AU-24、TC-SM-01 〜 TC-SM-10 の全テストケースに対応
- * 【リファクタ内容】: 定数抽出、バリデーション強化、JSDoc 改善、セクション区切りコメント追加
+ * 【機能概要】: 静的コンテンツおよび Sorry Page 提供用の S3 バケット作成
+ * 【実装方針】: パブリックアクセス完全ブロック、CloudFront OAC 経由のみアクセス可能
+ * 【テスト対応】: TC-S3-001 〜 TC-SNAP-001 の全29テストケースに対応
  *
  * 構成内容:
- * - Aurora Serverless v2 クラスター（MySQL 8.0 互換）
- * - ストレージ暗号化（KMS カスタマーマネージドキー）
- * - 自動バックアップ（デフォルト 7 日間）
- * - Private Isolated Subnet 配置
- * - Secrets Manager による認証情報管理
- * - ECS タスク用シークレット取得メソッド（TASK-0009）
+ * - S3 バケット (パブリックアクセスブロック、暗号化、バージョニング) (REQ-031)
+ * - CloudFront OAC (Origin Access Control) (REQ-032)
+ * - CloudFront 署名付きリクエストのみ許可するバケットポリシー (REQ-032)
  *
- * 参照した要件:
- * - REQ-022: Aurora MySQL Serverless v2 を使用
- * - REQ-023: Private DB Subnet に配置
- * - REQ-024: 外部からの直接アクセス遮断
- * - REQ-025: ECS SG からの 3306 のみ許可
- * - REQ-026: Storage Encryption 有効化
- * - REQ-027: 自動バックアップ有効化
- * - SMR-001〜007: Secrets Manager 統合（TASK-0009）
+ * 🔵 信頼性レベル: 要件定義書 REQ-031, REQ-032, NFR-104 に基づく実装
  *
- * 🔵 信頼性レベル: 要件定義書に基づく実装
- *
- * @module AuroraConstruct
+ * @module storage/s3-bucket-construct
  */
 &nbsp;
 import * as cdk from 'aws-cdk-lib';
-import * as ec2 from 'aws-cdk-lib/aws-ec2';
-import * as ecs from 'aws-cdk-lib/aws-ecs';
-import * as kms from 'aws-cdk-lib/aws-kms';
-import * as rds from 'aws-cdk-lib/aws-rds';
-import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
+import * as s3 from 'aws-cdk-lib/aws-s3';
+import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
+import * as iam from 'aws-cdk-lib/aws-iam';
 import { Construct } from 'constructs';
 &nbsp;
 // ============================================================================
-// 【定数定義】: ACU（Aurora Capacity Unit）の制約
-// 🔵 信頼性: note.md Aurora Serverless v2 制約、AWS公式ドキュメントより
+// 【定数定義】: S3 バケット構成のデフォルト値
+// 🔵 信頼性: REQ-031, REQ-032 より
 // ============================================================================
 &nbsp;
 /**
- * 【ACU 最小値】: Aurora Serverless v2 の最小キャパシティ制約
- * 🔵 信頼性: AWS Aurora Serverless v2 仕様より
- */
-const ACU_MIN_VALUE = 0.5;
-&nbsp;
-/**
- * 【ACU 最大値】: Aurora Serverless v2 の最大キャパシティ制約
- * 🔵 信頼性: AWS Aurora Serverless v2 仕様より
- */
-const ACU_MAX_VALUE = 128;
-&nbsp;
-/**
- * 【バックアップ保持期間 最小値】: 自動バックアップの最小保持期間
- * 🔵 信頼性: AWS RDS 仕様より
- */
-const BACKUP_RETENTION_MIN_DAYS = 1;
-&nbsp;
-/**
- * 【バックアップ保持期間 最大値】: 自動バックアップの最大保持期間
- * 🔵 信頼性: AWS RDS 仕様より
- */
-const BACKUP_RETENTION_MAX_DAYS = 35;
-&nbsp;
-// ============================================================================
-// 【定数定義】: ECS シークレット環境変数キー名
-// 🔵 信頼性: TASK-0009 Secrets Manager 統合、SMR-005, SMR-006 より
-// ============================================================================
-&nbsp;
-/**
- * 【ECS 環境変数キー】: データベースパスワード
- * 🔵 信頼性: SMR-005 より（ECS タスク定義で使用）
- */
-const ECS_SECRET_KEY_DB_PASSWORD = 'DB_PASSWORD';
-&nbsp;
-/**
- * 【ECS 環境変数キー】: データベースユーザー名
- * 🔵 信頼性: SMR-005 より（ECS タスク定義で使用）
- */
-const ECS_SECRET_KEY_DB_USERNAME = 'DB_USERNAME';
-&nbsp;
-/**
- * 【ECS 環境変数キー】: データベースホスト
- * 🔵 信頼性: SMR-005 より（ECS タスク定義で使用）
- */
-const ECS_SECRET_KEY_DB_HOST = 'DB_HOST';
-&nbsp;
-/**
- * 【シークレット JSON フィールド】: パスワードフィールド名
- * 🔵 信頼性: Aurora DatabaseSecret の標準フィールド
- */
-const SECRET_FIELD_PASSWORD = 'password';
-&nbsp;
-/**
- * 【シークレット JSON フィールド】: ユーザー名フィールド名
- * 🔵 信頼性: Aurora DatabaseSecret の標準フィールド
- */
-const SECRET_FIELD_USERNAME = 'username';
-&nbsp;
-/**
- * 【シークレット JSON フィールド】: ホストフィールド名
- * 🔵 信頼性: Aurora DatabaseSecret の標準フィールド
- */
-const SECRET_FIELD_HOST = 'host';
-&nbsp;
-// ============================================================================
-// 【定数定義】: デフォルト値
-// 🔵 信頼性: architecture.md データベース層、requirements.md より
-// ============================================================================
-&nbsp;
-/**
- * 【デフォルト最小 ACU】: Serverless v2 の最小キャパシティ
- * 🔵 信頼性: architecture.md データベース層より（0.5 ACU）
- */
-const DEFAULT_MIN_CAPACITY = 0.5;
-&nbsp;
-/**
- * 【デフォルト最大 ACU】: Serverless v2 の最大キャパシティ
- * 🔵 信頼性: architecture.md データベース層より（2 ACU）
- */
-const DEFAULT_MAX_CAPACITY = 2;
-&nbsp;
-/**
- * 【デフォルトデータベース名】: 初期データベース名
- * 🟡 信頼性: interfaces.ts から妥当な推測（'appdb'）
- */
-const DEFAULT_DATABASE_NAME = 'appdb';
-&nbsp;
-/**
- * 【デフォルトバックアップ保持日数】: 自動バックアップの保持期間
- * 🟡 信頼性: architecture.md（7日）より
- */
-const DEFAULT_BACKUP_RETENTION_DAYS = 7;
-&nbsp;
-/**
- * 【マスターユーザー名】: Aurora の管理者ユーザー名
- * 🔵 信頼性: BLEA 参考実装より
- */
-const MASTER_USERNAME = 'dbadmin';
-&nbsp;
-// ============================================================================
-// 【バリデーション関数】: Props の入力値検証
-// 🔵 信頼性: CDK ベストプラクティスより（早期エラー検出）
-// ============================================================================
-&nbsp;
-/**
- * 【ACU バリデーション】: ACU 設定値の妥当性を検証
+ * 【デフォルト バケット名サフィックス】: S3 バケット名のサフィックス
  *
- * 【検証内容】:
- * - minCapacity が ACU_MIN_VALUE 以上である
- * - maxCapacity が ACU_MAX_VALUE 以下である
- * - minCapacity が maxCapacity 以下である
+ * 【設定値】: 'static-content'
+ * 【根拠】: 静的コンテンツ配信用バケットであることを明示
  *
- * 🔵 信頼性: note.md Aurora Serverless v2 制約より
- *
- * @param minCapacity 最小 ACU
- * @param maxCapacity 最大 ACU
- * @throws Error バリデーション失敗時
+ * 🟡 信頼性: 設計文書から妥当な推測
  */
-function validateAcuSettings(minCapacity: number, maxCapacity: number): void {
-  // 【最小 ACU 検証】: Aurora Serverless v2 の下限制約
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (minCapacity &lt; ACU_MIN_VALUE) {
-<span class="cstat-no" title="statement not covered" >    throw new Error(</span>
-      `minCapacity (${minCapacity}) は ${ACU_MIN_VALUE} 以上である必要があります。` +
-        `Aurora Serverless v2 の最小 ACU は ${ACU_MIN_VALUE} です。`
-    );
-  }
-&nbsp;
-  // 【最大 ACU 検証】: Aurora Serverless v2 の上限制約
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (maxCapacity &gt; ACU_MAX_VALUE) {
-<span class="cstat-no" title="statement not covered" >    throw new Error(</span>
-      `maxCapacity (${maxCapacity}) は ${ACU_MAX_VALUE} 以下である必要があります。` +
-        `Aurora Serverless v2 の最大 ACU は ${ACU_MAX_VALUE} です。`
-    );
-  }
-&nbsp;
-  // 【範囲検証】: minCapacity が maxCapacity を超えていないこと
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (minCapacity &gt; maxCapacity) {
-<span class="cstat-no" title="statement not covered" >    throw new Error(</span>
-      `minCapacity (${minCapacity}) は maxCapacity (${maxCapacity}) 以下である必要があります。`
-    );
-  }
-}
+const DEFAULT_BUCKET_NAME_SUFFIX = 'static-content';
 &nbsp;
 /**
- * 【バックアップ保持日数バリデーション】: バックアップ保持期間の妥当性を検証
+ * 【デフォルト バージョニング】: S3 バケットのバージョニング設定
  *
- * 【検証内容】:
- * - backupRetentionDays が 1 以上 35 以下である
+ * 【設定値】: true
+ * 【根拠】: REQ-031 によりバージョニング有効化
  *
- * 🔵 信頼性: AWS RDS 仕様より
- *
- * @param backupRetentionDays バックアップ保持日数
- * @throws Error バリデーション失敗時
+ * 🔵 信頼性: REQ-031 より
  */
-function validateBackupRetentionDays(backupRetentionDays: number): void {
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (
-    backupRetentionDays &lt; BACKUP_RETENTION_MIN_DAYS ||
-    backupRetentionDays &gt; BACKUP_RETENTION_MAX_DAYS
-  ) {
-<span class="cstat-no" title="statement not covered" >    throw new Error(</span>
-      `backupRetentionDays (${backupRetentionDays}) は ${BACKUP_RETENTION_MIN_DAYS}〜${BACKUP_RETENTION_MAX_DAYS} の範囲である必要があります。`
-    );
-  }
-}
+const DEFAULT_VERSIONED = true;
+&nbsp;
+/**
+ * 【デフォルト 削除ポリシー】: Stack 削除時のバケット処理
+ *
+ * 【設定値】: RETAIN
+ * 【根拠】: 本番環境でのデータ保護
+ *
+ * 🟡 信頼性: 設計文書から妥当な推測
+ */
+const DEFAULT_REMOVAL_POLICY = cdk.RemovalPolicy.RETAIN;
+&nbsp;
+/**
+ * 【デフォルト 自動削除】: Stack 削除時のオブジェクト削除
+ *
+ * 【設定値】: false
+ * 【根拠】: 安全なデフォルト
+ *
+ * 🟡 信頼性: 設計文書から妥当な推測
+ */
+const DEFAULT_AUTO_DELETE_OBJECTS = false;
+&nbsp;
+/**
+ * 【envName 最大長】: 環境名の最大文字数
+ *
+ * 【設定値】: 20
+ * 【根拠】: S3 バケット名の制限に基づく妥当な長さ
+ *
+ * 🟡 信頼性: 既存 Construct パターンから妥当な推測
+ */
+const MAX_ENV_NAME_LENGTH = 20;
+&nbsp;
+/**
+ * 【envName 正規表現】: 環境名の許可文字パターン
+ *
+ * 【設定値】: /^[a-z0-9][a-z0-9-]*[a-z0-9]$/
+ * 【根拠】: 小文字英数字とハイフンのみ、ハイフンで開始・終了不可
+ *
+ * 🟡 信頼性: S3 バケット名の制限から妥当な推測
+ */
+const ENV_NAME_PATTERN = /^[a-z0-9][a-z0-9-]*[a-z0-9]$/;
+&nbsp;
+// ============================================================================
+// 【OAC 設定定数】: Origin Access Control のデフォルト設定値
+// 🔵 信頼性: REQ-032 より
+// ============================================================================
+&nbsp;
+/**
+ * 【OAC Signing Behavior】: 署名動作の設定値
+ *
+ * 【設定値】: 'always'
+ * 【根拠】: REQ-032 により常に署名が必要
+ *
+ * 🔵 信頼性: REQ-032 より
+ */
+const OAC_SIGNING_BEHAVIOR = 'always' as const;
+&nbsp;
+/**
+ * 【OAC Signing Protocol】: 署名プロトコルの設定値
+ *
+ * 【設定値】: 'sigv4'
+ * 【根拠】: REQ-032 により AWS Signature Version 4 を使用
+ *
+ * 🔵 信頼性: REQ-032 より
+ */
+const OAC_SIGNING_PROTOCOL = 'sigv4' as const;
+&nbsp;
+/**
+ * 【OAC Origin Type】: Origin タイプの設定値
+ *
+ * 【設定値】: 's3'
+ * 【根拠】: REQ-032 により S3 オリジンを使用
+ *
+ * 🔵 信頼性: REQ-032 より
+ */
+const OAC_ORIGIN_TYPE = 's3' as const;
+&nbsp;
+// ============================================================================
+// 【バケットポリシー定数】: CloudFront アクセス許可設定
+// 🔵 信頼性: REQ-032 より
+// ============================================================================
+&nbsp;
+/**
+ * 【バケットポリシー SID】: ポリシーステートメント識別子
+ *
+ * 【設定値】: 'AllowCloudFrontServicePrincipal'
+ * 【根拠】: CloudFront サービスプリンシパルからのアクセス許可を識別
+ *
+ * 🔵 信頼性: REQ-032 より
+ */
+const BUCKET_POLICY_SID = 'AllowCloudFrontServicePrincipal' as const;
+&nbsp;
+/**
+ * 【CloudFront Service Principal】: CloudFront サービスプリンシパル
+ *
+ * 【設定値】: 'cloudfront.amazonaws.com'
+ * 【根拠】: REQ-032 により CloudFront からのアクセスのみ許可
+ *
+ * 🔵 信頼性: REQ-032 より
+ */
+const CLOUDFRONT_SERVICE_PRINCIPAL = 'cloudfront.amazonaws.com' as const;
+&nbsp;
+/**
+ * 【S3 GetObject Action】: S3 GetObject アクション
+ *
+ * 【設定値】: 's3:GetObject'
+ * 【根拠】: REQ-032 により読み取りアクセスのみ許可
+ *
+ * 🔵 信頼性: REQ-032 より
+ */
+const S3_GET_OBJECT_ACTION = 's3:GetObject' as const;
+&nbsp;
+// ============================================================================
+// 【バリデーションエラーメッセージ】: Props 検証エラーメッセージ
+// 🟡 信頼性: 既存 Construct パターンから妥当な推測
+// ============================================================================
+&nbsp;
+/**
+ * 【envName 空文字エラー】: envName が空の場合のエラーメッセージ
+ *
+ * 🟡 信頼性: 既存 Construct パターンから妥当な推測
+ */
+const ERROR_ENV_NAME_EMPTY = 'envName は必須です。空文字列は指定できません。';
+&nbsp;
+/**
+ * 【envName 長さ超過エラー】: envName が制限を超える場合のエラーメッセージテンプレート
+ *
+ * @param currentLength - 現在の文字数
+ * @returns エラーメッセージ
+ *
+ * 🟡 信頼性: 既存 Construct パターンから妥当な推測
+ */
+const getEnvNameLengthError = (currentLength: number): string =&gt;
+  `envName は ${MAX_ENV_NAME_LENGTH} 文字以下である必要があります。現在: ${currentLength} 文字`;
+&nbsp;
+/**
+ * 【envName 不正文字エラー】: envName に不正な文字が含まれる場合のエラーメッセージ
+ *
+ * 🟡 信頼性: 既存 Construct パターンから妥当な推測
+ */
+const ERROR_ENV_NAME_INVALID_FORMAT =
+  'envName は小文字英数字とハイフンのみで構成され、ハイフンで開始・終了できません。';
 &nbsp;
 // ============================================================================
 // 【インターフェース定義】
-// 🔵 信頼性: requirements.md Props 定義より
 // ============================================================================
 &nbsp;
 /**
- * AuroraConstruct の Props インターフェース
+ * S3BucketConstruct の Props インターフェース
  *
- * 【設計方針】: 必須パラメータとオプションパラメータを明確に分離
- * 【再利用性】: 異なる環境（Dev/Prod）で柔軟に設定可能
+ * 【設計方針】: 必須パラメータ + オプショナルパラメータ（デフォルト値提供）
+ * 【再利用性】: 様々な S3 バケット構成に対応
  *
- * @interface AuroraConstructProps
+ * 🔵 信頼性: 要件定義書・設計文書より
+ *
+ * @interface S3BucketConstructProps
  */
-export interface AuroraConstructProps {
+export interface S3BucketConstructProps {
   /**
-   * 配置先 VPC（必須）
+   * 環境名 (必須)
    *
-   * 【用途】: Aurora クラスターを配置する VPC
-   * 【要件】: VPC Stack から提供される VPC リソース
-   * 🔵 信頼性: TASK-0008.md、architecture.md より
-   */
-  readonly vpc: ec2.IVpc;
-&nbsp;
-  /**
-   * Aurora 用 Security Group（必須）
+   * 【用途】: リソース命名に使用（例: "dev", "prod"）
+   * 【制約】: 小文字英数字とハイフンのみ、1-20文字
    *
-   * 【用途】: Aurora クラスターのネットワークアクセス制御
-   * 【要件】: Security Stack から提供される Security Group（ECS SG からの 3306 のみ許可）
-   * 🔵 信頼性: TASK-0008.md、REQ-024, REQ-025 より
-   */
-  readonly securityGroup: ec2.ISecurityGroup;
-&nbsp;
-  /**
-   * 環境名（必須）
+   * 🔵 信頼性: requirements.md より
    *
-   * 【用途】: リソース命名に使用（例: 'dev', 'prod'）
-   * 🔵 信頼性: REQ-042、architecture.md より
+   * @type {string}
+   * @required
    */
   readonly envName: string;
 &nbsp;
   /**
-   * 最小 ACU（Aurora Capacity Unit）（オプション）
+   * バケット名サフィックス (オプション)
    *
-   * 【用途】: Serverless v2 の最小キャパシティ設定
-   * @default 0.5
-   * @range 0.5 - 128
-   * 🔵 信頼性: architecture.md データベース層（0.5 ACU）
+   * 【用途】: S3 バケット名のカスタマイズ
+   * 【デフォルト】: 'static-content'
+   * 【命名規則】: {envName}-{bucketNameSuffix}-{accountId}
+   *
+   * 🟡 信頼性: 設計文書から妥当な推測
+   *
+   * @type {string}
+   * @default 'static-content'
    */
-  readonly minCapacity?: number;
+  readonly bucketNameSuffix?: string;
 &nbsp;
   /**
-   * 最大 ACU（Aurora Capacity Unit）（オプション）
+   * バージョニング有効化 (オプション)
    *
-   * 【用途】: Serverless v2 の最大キャパシティ設定
-   * @default 2 (コスト優先環境)
-   * @range 0.5 - 128
-   * 🔵 信頼性: architecture.md データベース層（2 ACU）
+   * 【用途】: S3 オブジェクトのバージョン管理
+   * 【デフォルト】: true
+   *
+   * 🔵 信頼性: REQ-031 より
+   *
+   * @type {boolean}
+   * @default true
    */
-  readonly maxCapacity?: number;
+  readonly versioned?: boolean;
 &nbsp;
   /**
-   * データベース名（オプション）
+   * 削除ポリシー (オプション)
    *
-   * 【用途】: Aurora クラスターの初期データベース名
-   * @default 'appdb'
-   * 🟡 信頼性: interfaces.ts から妥当な推測（'appdb'）
+   * 【用途】: Stack 削除時のバケット処理
+   * 【デフォルト】: cdk.RemovalPolicy.RETAIN
+   * 【推奨】: dev 環境は DESTROY、prod 環境は RETAIN
+   *
+   * 🟡 信頼性: 設計文書から妥当な推測
+   *
+   * @type {cdk.RemovalPolicy}
+   * @default cdk.RemovalPolicy.RETAIN
    */
-  readonly databaseName?: string;
+  readonly removalPolicy?: cdk.RemovalPolicy;
 &nbsp;
   /**
-   * バックアップ保持日数（オプション）
+   * 自動削除有効化 (オプション)
    *
-   * 【用途】: 自動バックアップの保持期間設定
-   * @default 7
-   * @range 1 - 35
-   * 🟡 信頼性: architecture.md（7日）、標準設定から推測
+   * 【用途】: Stack 削除時にバケット内オブジェクトも削除
+   * 【デフォルト】: false
+   * 【注意】: removalPolicy: DESTROY と組み合わせて使用
+   *
+   * 🟡 信頼性: 設計文書から妥当な推測
+   *
+   * @type {boolean}
+   * @default false
    */
-  readonly backupRetentionDays?: number;
+  readonly autoDeleteObjects?: boolean;
 }
 &nbsp;
 /**
- * Aurora Construct 実装
+ * S3 Bucket Construct
  *
- * 【機能概要】: Aurora Serverless v2 MySQL クラスターを作成する Construct
- * 【実装方針】: 最小権限の原則に基づき、セキュアなデータベースを構築
- * 【テスト対応】: TC-AU-01 〜 TC-AU-24 の全テストケースに対応
+ * 【機能概要】: 静的コンテンツおよび Sorry Page 提供用の S3 バケットを作成する Construct
+ * 【実装方針】: パブリックアクセス完全ブロック、CloudFront OAC 経由のみアクセス可能
  *
- * セキュリティ設計:
- * - ストレージ暗号化: KMS カスタマーマネージドキーを使用
- * - ネットワーク: Private Isolated Subnet に配置
- * - 認証: Secrets Manager で認証情報を自動生成・管理
- * - アクセス制御: Security Group で ECS からのアクセスのみ許可
+ * アーキテクチャ位置づけ:
+ * ```
+ * VPC Stack → Security Stack → Application Stack → Distribution Stack
+ *                                                     ↓
+ *                                                 S3 Bucket + OAC
+ *                                                     ↑       本 Construct
+ *                                                 CloudFront
+ * ```
  *
- * 🔵 信頼性レベル: 要件定義書に基づく実装
+ * 🔵 信頼性レベル: 要件定義書 REQ-031, REQ-032, NFR-104 に基づく実装
  *
- * @class AuroraConstruct
+ * @class S3BucketConstruct
  * @extends Construct
  *
  * @example
  * ```typescript
- * const aurora = new AuroraConstruct(this, 'Aurora', {
- *   vpc: props.vpc,
- *   securityGroup: props.auroraSecurityGroup,
+ * const s3Construct = new S3BucketConstruct(this, 'S3Bucket', {
  *   envName: 'dev',
- *   minCapacity: 0.5,
- *   maxCapacity: 2,
  * });
  *
- * // 後続リソースでの使用
- * const endpoint = aurora.clusterEndpoint.hostname;
- * const secret = aurora.secret;
+ * // CloudFront Distribution 作成後にバケットポリシーを追加
+ * const cloudfront = new CloudFrontConstruct(this, 'CloudFront', {
+ *   s3Bucket: s3Construct.bucket,
+ *   oac: s3Construct.originAccessControl,
+ * });
+ *
+ * s3Construct.addCloudFrontBucketPolicy(cloudfront.distribution.distributionArn);
  * ```
  */
-export class AuroraConstruct extends Construct {
-  // ==========================================================================
-  // 【公開プロパティ】: 他の Stack から参照可能なリソース
-  // 🔵 信頼性: requirements.md 出力プロパティより
-  // ==========================================================================
-&nbsp;
+export class S3BucketConstruct extends Construct {
   /**
-   * Aurora クラスター
+   * 【プロパティ】: S3 バケット
    *
-   * 【用途】: 作成された DatabaseCluster リソースへの参照
-   * 【参照元】: Database Stack、監視設定
-   * 🔵 信頼性: CDK RDS パターン、BLEA 参考実装より
+   * 【用途】: CloudFront Origin 設定、バケットポリシー追加
+   *
+   * 🔵 信頼性: note.md 公開プロパティより
+   *
+   * @readonly
+   * @type {s3.IBucket}
    */
-  public readonly cluster: rds.DatabaseCluster;
+  public readonly bucket: s3.IBucket;
 &nbsp;
   /**
-   * クラスターエンドポイント
+   * 【プロパティ】: バケット ARN
    *
-   * 【用途】: Writer エンドポイント（接続用）
-   * 【参照元】: ECS タスク定義の環境変数
-   * 🔵 信頼性: dataflow.md 認証情報管理フローより
+   * 【用途】: IAM ポリシー、CloudFormation 出力
+   *
+   * 🔵 信頼性: note.md 公開プロパティより
+   *
+   * @readonly
+   * @type {string}
    */
-  public readonly clusterEndpoint: rds.Endpoint;
+  public readonly bucketArn: string;
 &nbsp;
   /**
-   * 認証情報 Secret
+   * 【プロパティ】: バケットドメイン名
    *
-   * 【用途】: Secrets Manager に保存された DB 認証情報
-   * 【参照元】: ECS タスク定義のシークレット参照
-   * 🔵 信頼性: dataflow.md 認証情報管理フローより
+   * 【用途】: CloudFront Origin 設定
+   * 【形式】: {bucket-name}.s3.{region}.amazonaws.com
+   *
+   * 🔵 信頼性: note.md 公開プロパティより
+   *
+   * @readonly
+   * @type {string}
    */
-  public readonly secret: secretsmanager.ISecret;
+  public readonly bucketDomainName: string;
 &nbsp;
   /**
-   * Security Group
+   * 【プロパティ】: バケット名
    *
-   * 【用途】: Aurora に関連付けられた Security Group
-   * 【参照元】: 追加のルール設定が必要な場合
-   * 🔵 信頼性: REQ-024, REQ-025 より
+   * 【用途】: ログ出力、識別
+   *
+   * 🔵 信頼性: note.md 公開プロパティより
+   *
+   * @readonly
+   * @type {string}
    */
-  public readonly securityGroup: ec2.ISecurityGroup;
+  public readonly bucketName: string;
 &nbsp;
   /**
-   * AuroraConstruct のコンストラクタ
+   * 【プロパティ】: Origin Access Control (OAC)
    *
-   * 【処理概要】: Aurora Serverless v2 MySQL クラスターを作成
-   * 【設計方針】: テストを通すための最小限の実装
+   * 【用途】: CloudFront Distribution 設定
+   *
+   * 🔵 信頼性: note.md 公開プロパティより
+   *
+   * @readonly
+   * @type {cloudfront.CfnOriginAccessControl}
+   */
+  public readonly originAccessControl: cloudfront.CfnOriginAccessControl;
+&nbsp;
+  /**
+   * 【プロパティ】: OAC ID
+   *
+   * 【用途】: CloudFront Distribution OAC 設定
+   *
+   * 🔵 信頼性: note.md 公開プロパティより
+   *
+   * @readonly
+   * @type {string}
+   */
+  public readonly originAccessControlId: string;
+&nbsp;
+  /**
+   * S3BucketConstruct のコンストラクタ
+   *
+   * 【処理概要】: S3 バケット、OAC を作成
+   * 【設計方針】: デフォルト値を適用しつつ、カスタマイズ可能に
    *
    * @param {Construct} scope - 親となる Construct
    * @param {string} id - この Construct の識別子
-   * @param {AuroraConstructProps} props - AuroraConstruct の Props
+   * @param {S3BucketConstructProps} props - S3 バケット設定
    */
-  constructor(scope: Construct, id: string, props: AuroraConstructProps) {
+  constructor(scope: Construct, id: string, props: S3BucketConstructProps) {
     super(scope, id);
 &nbsp;
     // ========================================================================
+    // 【Props バリデーション】: 入力パラメータの検証
+    // 🟡 信頼性: 既存 Construct パターンから妥当な推測
+    // ========================================================================
+    this.validateProps(props);
+&nbsp;
+    // ========================================================================
     // 【パラメータ解凍】: Props からパラメータを取得し、デフォルト値を適用
-    // 🔵 信頼性: requirements.md Props 定義より
+    // 🔵 信頼性: REQ-031 より
     // ========================================================================
-    const {
-      vpc,
-      securityGroup,
-      envName,
-      minCapacity = DEFAULT_MIN_CAPACITY,
-      maxCapacity = DEFAULT_MAX_CAPACITY,
-      databaseName = DEFAULT_DATABASE_NAME,
-      backupRetentionDays = DEFAULT_BACKUP_RETENTION_DAYS,
-    } = props;
+    const bucketNameSuffix = props.bucketNameSuffix ?? DEFAULT_BUCKET_NAME_SUFFIX;
+    const versioned = props.versioned ?? DEFAULT_VERSIONED;
+    const removalPolicy = props.removalPolicy ?? DEFAULT_REMOVAL_POLICY;
+    const autoDeleteObjects = props.autoDeleteObjects ?? DEFAULT_AUTO_DELETE_OBJECTS;
 &nbsp;
     // ========================================================================
-    // 【入力値バリデーション】: Props の妥当性を検証
-    // 🔵 信頼性: CDK ベストプラクティスより（早期エラー検出）
+    // 【バケット名生成】: {envName}-{suffix}-{accountId}
+    // 🟡 信頼性: 設計文書から妥当な推測
     // ========================================================================
-&nbsp;
-    // 【ACU バリデーション】: ACU 設定値が適切な範囲内であることを確認
-    validateAcuSettings(minCapacity, maxCapacity);
-&nbsp;
-    // 【バックアップ保持日数バリデーション】: 保持期間が適切な範囲内であることを確認
-    validateBackupRetentionDays(backupRetentionDays);
-&nbsp;
-    // 【Security Group 保存】: 公開プロパティとして保存
-    this.securityGroup = securityGroup;
+    const bucketName = this.generateBucketName(props.envName, bucketNameSuffix);
 &nbsp;
     // ========================================================================
-    // 【KMS キー作成】: ストレージ暗号化用のカスタマーマネージドキー
-    // 🔵 信頼性: REQ-026、NFR-102 より
+    // 【S3 バケット作成】: 静的コンテンツ配信用バケット
+    // 🔵 信頼性: REQ-031 より
     // ========================================================================
-    const encryptionKey = new kms.Key(this, 'AuroraEncryptionKey', {
-      // 【説明設定】: 監査・トラブルシューティング用
-      description: `Aurora encryption key for ${envName}`,
+    const bucket = new s3.Bucket(this, 'Bucket', {
+      // 【バケット名設定】
+      // 🟡 信頼性: 設計文書から妥当な推測
+      bucketName: bucketName,
 &nbsp;
-      // 【キーローテーション】: 自動ローテーション有効化（セキュリティベストプラクティス）
-      enableKeyRotation: true,
+      // 【パブリックアクセスブロック設定】: 全ブロック
+      // 🔵 信頼性: REQ-031, NFR-104 より
+      blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
 &nbsp;
-      // 【削除保護】: スタック削除時にキーを保持（本番環境での意図しない削除を防止）
-      removalPolicy: cdk.RemovalPolicy.RETAIN,
+      // 【暗号化設定】: S3 マネージド暗号化
+      // 🔵 信頼性: REQ-031 より
+      encryption: s3.BucketEncryption.S3_MANAGED,
+&nbsp;
+      // 【バージョニング設定】
+      // 🔵 信頼性: REQ-031 より
+      versioned: versioned,
+&nbsp;
+      // 【削除ポリシー設定】
+      // 🟡 信頼性: 設計文書から妥当な推測
+      removalPolicy: removalPolicy,
+&nbsp;
+      // 【自動削除設定】
+      // 🟡 信頼性: 設計文書から妥当な推測
+      autoDeleteObjects: autoDeleteObjects,
     });
 &nbsp;
     // ========================================================================
-    // 【Aurora クラスター作成】: Serverless v2 MySQL クラスター
-    // 🔵 信頼性: REQ-022、architecture.md データベース層より
+    // 【OAC 作成】: CloudFront Origin Access Control
+    // 🔵 信頼性: REQ-032 より
     // ========================================================================
-    this.cluster = new rds.DatabaseCluster(this, 'AuroraCluster', {
-      // 【エンジン設定】: Aurora MySQL 3.x (MySQL 8.0 互換)
-      // 🔵 信頼性: REQ-022 より
-      engine: rds.DatabaseClusterEngine.auroraMysql({
-        version: rds.AuroraMysqlEngineVersion.VER_3_05_2,
-      }),
+    const oac = new cloudfront.CfnOriginAccessControl(this, 'OAC', {
+      originAccessControlConfig: {
+        // 【OAC 名設定】
+        // 🟡 信頼性: 設計文書から妥当な推測
+        name: `${props.envName}-oac`,
 &nbsp;
-      // 【認証情報設定】: Secrets Manager で自動生成
-      // 🔵 信頼性: note.md CDK 実装制約より
-      credentials: rds.Credentials.fromGeneratedSecret(MASTER_USERNAME),
+        // 【説明】
+        description: `OAC for ${props.envName} static content bucket`,
 &nbsp;
-      // 【Serverless v2 Writer インスタンス】: Serverless v2 インスタンスタイプ
-      // 🔵 信頼性: REQ-022 より
-      writer: rds.ClusterInstance.serverlessV2('Writer', {
-        publiclyAccessible: false,
-      }),
+        // 【Origin Type 設定】: S3
+        // 🔵 信頼性: REQ-032 より
+        originAccessControlOriginType: OAC_ORIGIN_TYPE,
 &nbsp;
-      // 【Serverless v2 スケーリング設定】: ACU の範囲を設定
-      // 🔵 信頼性: architecture.md データベース層より
-      serverlessV2MinCapacity: minCapacity,
-      serverlessV2MaxCapacity: maxCapacity,
+        // 【署名動作設定】: 常に署名
+        // 🔵 信頼性: REQ-032 より
+        signingBehavior: OAC_SIGNING_BEHAVIOR,
 &nbsp;
-      // 【VPC 設定】: 指定された VPC に配置
-      vpc,
-&nbsp;
-      // 【サブネット設定】: Private Isolated Subnet に配置
-      // 🔵 信頼性: REQ-023、REQ-024 より
-      vpcSubnets: {
-        subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
+        // 【署名プロトコル設定】: SigV4
+        // 🔵 信頼性: REQ-032 より
+        signingProtocol: OAC_SIGNING_PROTOCOL,
       },
-&nbsp;
-      // 【Security Group 設定】: Props で指定された Security Group を使用
-      // 🔵 信頼性: REQ-024、REQ-025 より
-      securityGroups: [securityGroup],
-&nbsp;
-      // 【データベース名】: 初期データベース名
-      // 🟡 信頼性: interfaces.ts から妥当な推測
-      defaultDatabaseName: databaseName,
-&nbsp;
-      // 【ストレージ暗号化】: KMS カスタマーマネージドキーで暗号化
-      // 🔵 信頼性: REQ-026、NFR-102 より
-      storageEncrypted: true,
-      storageEncryptionKey: encryptionKey,
-&nbsp;
-      // 【バックアップ設定】: 自動バックアップの保持期間
-      // 🔵 信頼性: REQ-027 より
-      backup: {
-        retention: cdk.Duration.days(backupRetentionDays),
-      },
-&nbsp;
-      // 【削除保護】: スタック削除時にスナップショットを作成
-      // 🔵 信頼性: BLEA 参考実装より
-      removalPolicy: cdk.RemovalPolicy.SNAPSHOT,
     });
 &nbsp;
     // ========================================================================
-    // 【公開プロパティ設定】: 他の Stack から参照可能なリソースを設定
-    // 🔵 信頼性: requirements.md 出力プロパティより
+    // 【プロパティ設定】: 公開プロパティに値を設定
+    // 🔵 信頼性: note.md 公開プロパティより
     // ========================================================================
-&nbsp;
-    // 【クラスターエンドポイント】: Writer エンドポイント
-    this.clusterEndpoint = this.cluster.clusterEndpoint;
-&nbsp;
-    // 【認証情報 Secret】: Secrets Manager のシークレット
-    // 🔵 信頼性: note.md CDK 実装制約より（credentials.fromGeneratedSecret で自動生成）
-    this.secret = this.cluster.secret!;
+    this.bucket = bucket;
+    this.bucketArn = bucket.bucketArn;
+    this.bucketDomainName = bucket.bucketRegionalDomainName;
+    this.bucketName = bucket.bucketName;
+    this.originAccessControl = oac;
+    this.originAccessControlId = oac.attrId;
   }
 &nbsp;
-  // ==========================================================================
-  // 【公開メソッド】: ECS タスク用シークレット取得
-  // 🔵 信頼性: TASK-0009 Secrets Manager 統合、SMR-006 より
-  // ==========================================================================
-&nbsp;
   /**
-   * ECS タスク定義で使用するシークレットを取得
+   * CloudFront バケットポリシー追加
    *
-   * 【機能概要】:
-   * Aurora の認証情報を ECS タスクで使用可能な形式で返します。
-   * Secrets Manager に保存された Aurora DatabaseSecret から、
-   * 特定のフィールド（password, username, host）を参照する ecs.Secret オブジェクトを生成します。
+   * 【用途】: CloudFront Distribution 作成後にバケットポリシーを追加
+   * 【背景】: S3 と CloudFront の循環参照を解決
    *
-   * 【用途】:
-   * ECS タスク定義の secrets プロパティに設定することで、
-   * コンテナ起動時に環境変数としてデータベース接続情報が注入されます。
+   * 🟡 信頼性: note.md 循環参照対応より
    *
-   * 【返されるキー】:
-   * | キー名       | 参照フィールド | 説明                           |
-   * |--------------|----------------|--------------------------------|
-   * | DB_PASSWORD  | password       | データベース接続パスワード     |
-   * | DB_USERNAME  | username       | データベース接続ユーザー名     |
-   * | DB_HOST      | host           | Aurora クラスターエンドポイント |
-   *
-   * 【セキュリティ】:
-   * - シークレット値はコンテナ起動時に ECS によって安全に注入されます
-   * - 平文での認証情報の受け渡しを回避し、セキュリティを向上させます
-   * - IAM ポリシーによるアクセス制御が適用されます
-   *
-   * 🔵 信頼性レベル: TASK-0009 Secrets Manager 統合、SMR-005, SMR-006 より
-   *
-   * @returns {Record&lt;string, ecs.Secret&gt;} ECS シークレットのマップ
-   *   - キーは環境変数名として使用されます
-   *   - 値は ecs.Secret オブジェクト（Secrets Manager への参照）
+   * @param {string} distributionArn - CloudFront Distribution の ARN (形式: arn:aws:cloudfront::account-id:distribution/distribution-id)
+   * @returns {void}
+   * @throws {Error} distributionArn が空の場合
    *
    * @example
    * ```typescript
-   * // Aurora Construct のインスタンス化
-   * const aurora = new AuroraConstruct(this, 'Aurora', {
-   *   vpc: props.vpc,
-   *   securityGroup: props.auroraSecurityGroup,
+   * // S3BucketConstruct 作成後
+   * const s3Bucket = new S3BucketConstruct(this, 'S3Bucket', {
    *   envName: 'dev',
    * });
    *
-   * // シークレット取得
-   * const secrets = aurora.getSecretsForEcs();
-   *
-   * // ECS タスク定義で使用
-   * const taskDefinition = new ecs.FargateTaskDefinition(this, 'TaskDef', {
-   *   cpu: 256,
-   *   memoryLimitMiB: 512,
+   * // CloudFrontConstruct 作成後
+   * const cloudfront = new CloudFrontConstruct(this, 'CloudFront', {
+   *   s3Bucket: s3Bucket.bucket,
+   *   oac: s3Bucket.originAccessControl,
    * });
    *
-   * taskDefinition.addContainer('App', {
-   *   image: ecs.ContainerImage.fromEcrRepository(repo),
-   *   // シークレットを環境変数として注入
-   *   secrets: secrets,
-   *   // または個別に指定
-   *   // secrets: {
-   *   //   DB_PASSWORD: secrets.DB_PASSWORD,
-   *   //   DB_USERNAME: secrets.DB_USERNAME,
-   *   //   DB_HOST: secrets.DB_HOST,
-   *   // },
-   * });
-   *
-   * // アプリケーション側では以下の環境変数として参照可能:
-   * // - process.env.DB_PASSWORD
-   * // - process.env.DB_USERNAME
-   * // - process.env.DB_HOST
+   * // バケットポリシー追加
+   * s3Bucket.addCloudFrontBucketPolicy(cloudfront.distribution.distributionArn);
    * ```
-   *
-   * @see {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs.Secret.html} ECS Secret
-   * @see {@link https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data-secrets.html} ECS Secrets Manager 統合
    */
-  public getSecretsForEcs(): Record&lt;string, ecs.Secret&gt; {
-    return {
-      // 【DB_PASSWORD】: シークレットの password フィールドを参照
-      // 🔵 信頼性: SMR-005 より
-      [ECS_SECRET_KEY_DB_PASSWORD]: ecs.Secret.fromSecretsManager(
-        this.secret,
-        SECRET_FIELD_PASSWORD
-      ),
+  public addCloudFrontBucketPolicy(distributionArn: string): void {
+    // ========================================================================
+    // 【入力バリデーション】: distributionArn の検証
+    // 🟡 信頼性: 既存 Construct パターンから妥当な推測
+    // ========================================================================
+    if (!distributionArn || distributionArn.length === 0) {
+      throw new Error('distributionArn は必須です。空文字列は指定できません。');
+    }
 &nbsp;
-      // 【DB_USERNAME】: シークレットの username フィールドを参照
-      // 🔵 信頼性: SMR-005 より
-      [ECS_SECRET_KEY_DB_USERNAME]: ecs.Secret.fromSecretsManager(
-        this.secret,
-        SECRET_FIELD_USERNAME
-      ),
+    // ========================================================================
+    // 【バケットポリシー追加】: CloudFront 署名付きリクエストのみ許可
+    // 🔵 信頼性: REQ-032 より
+    // ========================================================================
+    const policyStatement = this.createCloudFrontPolicyStatement(distributionArn);
+    this.bucket.addToResourcePolicy(policyStatement);
+  }
 &nbsp;
-      // 【DB_HOST】: シークレットの host フィールドを参照
-      // 🔵 信頼性: SMR-005 より
-      [ECS_SECRET_KEY_DB_HOST]: ecs.Secret.fromSecretsManager(this.secret, SECRET_FIELD_HOST),
-    };
+  /**
+   * Props バリデーション
+   *
+   * 【用途】: 入力パラメータの妥当性検証
+   * 【検証項目】:
+   * - envName の必須チェック
+   * - envName の長さチェック (最大20文字)
+   * - envName の形式チェック (小文字英数字とハイフンのみ)
+   *
+   * 🟡 信頼性: 既存 Construct パターンから妥当な推測
+   *
+   * @private
+   * @param {S3BucketConstructProps} props - 検証対象の Props
+   * @throws {Error} バリデーションエラー
+   */
+  private validateProps(props: S3BucketConstructProps): void {
+    this.validateEnvName(props.envName);
+  }
+&nbsp;
+  /**
+   * envName バリデーション
+   *
+   * 【用途】: 環境名の妥当性検証
+   * 【検証項目】:
+   * - 必須チェック (空文字列不可)
+   * - 長さチェック (1-20文字)
+   * - 形式チェック (小文字英数字とハイフンのみ、ハイフンで開始・終了不可)
+   *
+   * 🟡 信頼性: 既存 Construct パターンから妥当な推測
+   *
+   * @private
+   * @param {string} envName - 検証対象の環境名
+   * @throws {Error} バリデーションエラー
+   */
+  private validateEnvName(envName: string): void {
+    if (!envName || envName.length === 0) {
+      throw new Error(ERROR_ENV_NAME_EMPTY);
+    }
+&nbsp;
+    if (envName.length &gt; MAX_ENV_NAME_LENGTH) {
+      throw new Error(getEnvNameLengthError(envName.length));
+    }
+&nbsp;
+    if (!ENV_NAME_PATTERN.test(envName)) {
+      throw new Error(ERROR_ENV_NAME_INVALID_FORMAT);
+    }
+  }
+&nbsp;
+  /**
+   * バケット名生成
+   *
+   * 【用途】: S3 バケット名の生成
+   * 【命名規則】: {envName}-{suffix}-{accountId}
+   * 【形式】: 小文字英数字とハイフンのみ
+   *
+   * 🟡 信頼性: 設計文書から妥当な推測
+   *
+   * @private
+   * @param {string} envName - 環境名 (例: 'dev', 'prod')
+   * @param {string} suffix - バケット名サフィックス (例: 'static-content')
+   * @returns {string} 生成されたバケット名
+   *
+   * @example
+   * ```typescript
+   * const bucketName = this.generateBucketName('dev', 'static-content');
+   * // 結果: 'dev-static-content-123456789012'
+   * ```
+   */
+  private generateBucketName(envName: string, suffix: string): string {
+    const accountId = cdk.Stack.of(this).account;
+    return `${envName}-${suffix}-${accountId}`;
+  }
+&nbsp;
+  /**
+   * CloudFront ポリシーステートメント作成
+   *
+   * 【用途】: CloudFront からの S3 アクセスを許可するポリシーステートメントを作成
+   * 【設定内容】:
+   * - Principal: CloudFront サービスプリンシパル
+   * - Action: s3:GetObject (読み取りのみ)
+   * - Condition: 指定された CloudFront Distribution ARN からのアクセスのみ許可
+   *
+   * 🔵 信頼性: REQ-032 より
+   *
+   * @private
+   * @param {string} distributionArn - CloudFront Distribution の ARN
+   * @returns {iam.PolicyStatement} 作成されたポリシーステートメント
+   */
+  private createCloudFrontPolicyStatement(distributionArn: string): iam.PolicyStatement {
+    return new iam.PolicyStatement({
+      // 【Sid 設定】: ポリシーステートメント識別子
+      sid: BUCKET_POLICY_SID,
+&nbsp;
+      // 【Effect 設定】: 許可
+      effect: iam.Effect.ALLOW,
+&nbsp;
+      // 【Principal 設定】: CloudFront サービスプリンシパル
+      // 🔵 信頼性: REQ-032 より
+      principals: [new iam.ServicePrincipal(CLOUDFRONT_SERVICE_PRINCIPAL)],
+&nbsp;
+      // 【Action 設定】: GetObject のみ許可
+      // 🔵 信頼性: REQ-032 より
+      actions: [S3_GET_OBJECT_ACTION],
+&nbsp;
+      // 【Resource 設定】: バケット内の全オブジェクト
+      // 🔵 信頼性: REQ-032 より
+      resources: [`${this.bucket.bucketArn}/*`],
+&nbsp;
+      // 【Condition 設定】: CloudFront Distribution ARN による制限
+      // 🔵 信頼性: REQ-032 より
+      conditions: {
+        StringEquals: {
+          'aws:SourceArn': distributionArn,
+        },
+      },
+    });
   }
 }
 &nbsp;</pre></td></tr></table></pre>

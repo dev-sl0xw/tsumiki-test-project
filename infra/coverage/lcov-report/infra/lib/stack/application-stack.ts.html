@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for infra/lib/construct/database/aurora-construct.ts</title>
+    <title>Code coverage report for infra/lib/stack/application-stack.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">infra/lib/construct/database</a> aurora-construct.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">infra/lib/stack</a> application-stack.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>36/40</span>
+                <span class='fraction'>33/33</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/10</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>36/40</span>
+                <span class='fraction'>33/33</span>
             </div>
         
             
@@ -607,55 +607,7 @@
 <a name='L542'></a><a href='#L542'>542</a>
 <a name='L543'></a><a href='#L543'>543</a>
 <a name='L544'></a><a href='#L544'>544</a>
-<a name='L545'></a><a href='#L545'>545</a>
-<a name='L546'></a><a href='#L546'>546</a>
-<a name='L547'></a><a href='#L547'>547</a>
-<a name='L548'></a><a href='#L548'>548</a>
-<a name='L549'></a><a href='#L549'>549</a>
-<a name='L550'></a><a href='#L550'>550</a>
-<a name='L551'></a><a href='#L551'>551</a>
-<a name='L552'></a><a href='#L552'>552</a>
-<a name='L553'></a><a href='#L553'>553</a>
-<a name='L554'></a><a href='#L554'>554</a>
-<a name='L555'></a><a href='#L555'>555</a>
-<a name='L556'></a><a href='#L556'>556</a>
-<a name='L557'></a><a href='#L557'>557</a>
-<a name='L558'></a><a href='#L558'>558</a>
-<a name='L559'></a><a href='#L559'>559</a>
-<a name='L560'></a><a href='#L560'>560</a>
-<a name='L561'></a><a href='#L561'>561</a>
-<a name='L562'></a><a href='#L562'>562</a>
-<a name='L563'></a><a href='#L563'>563</a>
-<a name='L564'></a><a href='#L564'>564</a>
-<a name='L565'></a><a href='#L565'>565</a>
-<a name='L566'></a><a href='#L566'>566</a>
-<a name='L567'></a><a href='#L567'>567</a>
-<a name='L568'></a><a href='#L568'>568</a>
-<a name='L569'></a><a href='#L569'>569</a>
-<a name='L570'></a><a href='#L570'>570</a>
-<a name='L571'></a><a href='#L571'>571</a>
-<a name='L572'></a><a href='#L572'>572</a>
-<a name='L573'></a><a href='#L573'>573</a>
-<a name='L574'></a><a href='#L574'>574</a>
-<a name='L575'></a><a href='#L575'>575</a>
-<a name='L576'></a><a href='#L576'>576</a>
-<a name='L577'></a><a href='#L577'>577</a>
-<a name='L578'></a><a href='#L578'>578</a>
-<a name='L579'></a><a href='#L579'>579</a>
-<a name='L580'></a><a href='#L580'>580</a>
-<a name='L581'></a><a href='#L581'>581</a>
-<a name='L582'></a><a href='#L582'>582</a>
-<a name='L583'></a><a href='#L583'>583</a>
-<a name='L584'></a><a href='#L584'>584</a>
-<a name='L585'></a><a href='#L585'>585</a>
-<a name='L586'></a><a href='#L586'>586</a>
-<a name='L587'></a><a href='#L587'>587</a>
-<a name='L588'></a><a href='#L588'>588</a>
-<a name='L589'></a><a href='#L589'>589</a>
-<a name='L590'></a><a href='#L590'>590</a>
-<a name='L591'></a><a href='#L591'>591</a>
-<a name='L592'></a><a href='#L592'>592</a>
-<a name='L593'></a><a href='#L593'>593</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L545'></a><a href='#L545'>545</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -678,6 +630,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -685,17 +639,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -706,66 +658,60 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -776,31 +722,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -823,24 +764,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -858,11 +793,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -931,6 +864,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -981,7 +915,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1034,7 +967,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1047,30 +979,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1083,14 +1015,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1104,12 +1037,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1120,12 +1055,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1140,15 +1079,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1161,6 +1100,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1169,78 +1109,42 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1248,595 +1152,547 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * Aurora Construct 実装
+ * Application Stack 実装
  *
- * TASK-0008: Aurora Construct 実装
- * TASK-0009: Secrets Manager 統合
- * フェーズ: TDD Refactor Phase - コード品質改善
+ * TASK-0017: Application Stack 統合
+ * フェーズ: TDD Refactor Phase - 品質改善とリファクタリング完了
  *
- * 【機能概要】: Aurora Serverless v2 MySQL クラスターを構築する CDK Construct
- * 【実装方針】: 最小権限の原則に基づき、セキュアなデータベースを構築
- * 【テスト対応】: TC-AU-01 〜 TC-AU-24、TC-SM-01 〜 TC-SM-10 の全テストケースに対応
- * 【リファクタ内容】: 定数抽出、バリデーション強化、JSDoc 改善、セクション区切りコメント追加
+ * 【機能概要】: ECS Cluster、Task Definition、Service、ALB を統合した Application Stack を作成する
+ * 【実装方針】: 既存の Construct を使用し、他の Stack から参照可能なプロパティを公開
+ * 【セキュリティ】: HTTPS 強制、Private Subnet 配置によるセキュアな構成
+ * 【テスト対応】: TC-AS-01 〜 TC-AS-36 の全テストケースに対応
+ * 【リファクタ内容】: 定数定義の追加、型定義の改善、フェーズ名更新
+ * 🔵 信頼性レベル: 要件定義書 REQ-012 〜 REQ-021、REQ-028 〜 REQ-030 に基づく実装
  *
  * 構成内容:
- * - Aurora Serverless v2 クラスター（MySQL 8.0 互換）
- * - ストレージ暗号化（KMS カスタマーマネージドキー）
- * - 自動バックアップ（デフォルト 7 日間）
- * - Private Isolated Subnet 配置
- * - Secrets Manager による認証情報管理
- * - ECS タスク用シークレット取得メソッド（TASK-0009）
+ * - ECS Cluster (REQ-012)
+ * - Container Insights 有効化 (REQ-013)
+ * - Task Definition (Frontend + Backend) (REQ-014〜018)
+ * - ECS Service (Frontend + Backend) (REQ-019〜021)
+ * - ALB with HTTPS (REQ-028〜030)
  *
- * 参照した要件:
- * - REQ-022: Aurora MySQL Serverless v2 を使用
- * - REQ-023: Private DB Subnet に配置
- * - REQ-024: 外部からの直接アクセス遮断
- * - REQ-025: ECS SG からの 3306 のみ許可
- * - REQ-026: Storage Encryption 有効化
- * - REQ-027: 自動バックアップ有効化
- * - SMR-001〜007: Secrets Manager 統合（TASK-0009）
- *
- * 🔵 信頼性レベル: 要件定義書に基づく実装
- *
- * @module AuroraConstruct
+ * @module ApplicationStack
  */
 &nbsp;
 import * as cdk from 'aws-cdk-lib';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
+import * as ecr from 'aws-cdk-lib/aws-ecr';
 import * as ecs from 'aws-cdk-lib/aws-ecs';
-import * as kms from 'aws-cdk-lib/aws-kms';
-import * as rds from 'aws-cdk-lib/aws-rds';
-import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
+import * as elb from 'aws-cdk-lib/aws-elasticloadbalancingv2';
+import * as iam from 'aws-cdk-lib/aws-iam';
+import * as logs from 'aws-cdk-lib/aws-logs';
 import { Construct } from 'constructs';
+import { EnvironmentConfig } from '../../parameter';
+import { EcsClusterConstruct } from '../construct/ecs/ecs-cluster-construct';
+import { TaskDefinitionConstruct } from '../construct/ecs/task-definition-construct';
+import { EcsServiceConstruct } from '../construct/ecs/ecs-service-construct';
+import { AlbConstruct } from '../construct/alb/alb-construct';
 &nbsp;
 // ============================================================================
-// 【定数定義】: ACU（Aurora Capacity Unit）の制約
-// 🔵 信頼性: note.md Aurora Serverless v2 制約、AWS公式ドキュメントより
-// ============================================================================
-&nbsp;
-/**
- * 【ACU 最小値】: Aurora Serverless v2 の最小キャパシティ制約
- * 🔵 信頼性: AWS Aurora Serverless v2 仕様より
- */
-const ACU_MIN_VALUE = 0.5;
-&nbsp;
-/**
- * 【ACU 最大値】: Aurora Serverless v2 の最大キャパシティ制約
- * 🔵 信頼性: AWS Aurora Serverless v2 仕様より
- */
-const ACU_MAX_VALUE = 128;
-&nbsp;
-/**
- * 【バックアップ保持期間 最小値】: 自動バックアップの最小保持期間
- * 🔵 信頼性: AWS RDS 仕様より
- */
-const BACKUP_RETENTION_MIN_DAYS = 1;
-&nbsp;
-/**
- * 【バックアップ保持期間 最大値】: 自動バックアップの最大保持期間
- * 🔵 信頼性: AWS RDS 仕様より
- */
-const BACKUP_RETENTION_MAX_DAYS = 35;
-&nbsp;
-// ============================================================================
-// 【定数定義】: ECS シークレット環境変数キー名
-// 🔵 信頼性: TASK-0009 Secrets Manager 統合、SMR-005, SMR-006 より
+// 【型定義】
+// 🔵 信頼性: AWS Fargate Task Definition 仕様より
 // ============================================================================
 &nbsp;
 /**
- * 【ECS 環境変数キー】: データベースパスワード
- * 🔵 信頼性: SMR-005 より（ECS タスク定義で使用）
- */
-const ECS_SECRET_KEY_DB_PASSWORD = 'DB_PASSWORD';
-&nbsp;
-/**
- * 【ECS 環境変数キー】: データベースユーザー名
- * 🔵 信頼性: SMR-005 より（ECS タスク定義で使用）
- */
-const ECS_SECRET_KEY_DB_USERNAME = 'DB_USERNAME';
-&nbsp;
-/**
- * 【ECS 環境変数キー】: データベースホスト
- * 🔵 信頼性: SMR-005 より（ECS タスク定義で使用）
- */
-const ECS_SECRET_KEY_DB_HOST = 'DB_HOST';
-&nbsp;
-/**
- * 【シークレット JSON フィールド】: パスワードフィールド名
- * 🔵 信頼性: Aurora DatabaseSecret の標準フィールド
- */
-const SECRET_FIELD_PASSWORD = 'password';
-&nbsp;
-/**
- * 【シークレット JSON フィールド】: ユーザー名フィールド名
- * 🔵 信頼性: Aurora DatabaseSecret の標準フィールド
- */
-const SECRET_FIELD_USERNAME = 'username';
-&nbsp;
-/**
- * 【シークレット JSON フィールド】: ホストフィールド名
- * 🔵 信頼性: Aurora DatabaseSecret の標準フィールド
- */
-const SECRET_FIELD_HOST = 'host';
-&nbsp;
-// ============================================================================
-// 【定数定義】: デフォルト値
-// 🔵 信頼性: architecture.md データベース層、requirements.md より
-// ============================================================================
-&nbsp;
-/**
- * 【デフォルト最小 ACU】: Serverless v2 の最小キャパシティ
- * 🔵 信頼性: architecture.md データベース層より（0.5 ACU）
- */
-const DEFAULT_MIN_CAPACITY = 0.5;
-&nbsp;
-/**
- * 【デフォルト最大 ACU】: Serverless v2 の最大キャパシティ
- * 🔵 信頼性: architecture.md データベース層より（2 ACU）
- */
-const DEFAULT_MAX_CAPACITY = 2;
-&nbsp;
-/**
- * 【デフォルトデータベース名】: 初期データベース名
- * 🟡 信頼性: interfaces.ts から妥当な推測（'appdb'）
- */
-const DEFAULT_DATABASE_NAME = 'appdb';
-&nbsp;
-/**
- * 【デフォルトバックアップ保持日数】: 自動バックアップの保持期間
- * 🟡 信頼性: architecture.md（7日）より
- */
-const DEFAULT_BACKUP_RETENTION_DAYS = 7;
-&nbsp;
-/**
- * 【マスターユーザー名】: Aurora の管理者ユーザー名
- * 🔵 信頼性: BLEA 参考実装より
- */
-const MASTER_USERNAME = 'dbadmin';
-&nbsp;
-// ============================================================================
-// 【バリデーション関数】: Props の入力値検証
-// 🔵 信頼性: CDK ベストプラクティスより（早期エラー検出）
-// ============================================================================
-&nbsp;
-/**
- * 【ACU バリデーション】: ACU 設定値の妥当性を検証
+ * Fargate Task Definition で使用可能な CPU 値
  *
- * 【検証内容】:
- * - minCapacity が ACU_MIN_VALUE 以上である
- * - maxCapacity が ACU_MAX_VALUE 以下である
- * - minCapacity が maxCapacity 以下である
- *
- * 🔵 信頼性: note.md Aurora Serverless v2 制約より
- *
- * @param minCapacity 最小 ACU
- * @param maxCapacity 最大 ACU
- * @throws Error バリデーション失敗時
+ * 【用途】: TaskDefinitionConstruct の cpu パラメータの型安全な指定
+ * 【値】: 256 (0.25 vCPU), 512 (0.5 vCPU), 1024 (1 vCPU), 2048 (2 vCPU), 4096 (4 vCPU)
+ * 🔵 信頼性: AWS Fargate Task Definition 仕様より
  */
-function validateAcuSettings(minCapacity: number, maxCapacity: number): void {
-  // 【最小 ACU 検証】: Aurora Serverless v2 の下限制約
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (minCapacity &lt; ACU_MIN_VALUE) {
-<span class="cstat-no" title="statement not covered" >    throw new Error(</span>
-      `minCapacity (${minCapacity}) は ${ACU_MIN_VALUE} 以上である必要があります。` +
-        `Aurora Serverless v2 の最小 ACU は ${ACU_MIN_VALUE} です。`
-    );
-  }
+type FargateCpuValue = 256 | 512 | 1024 | 2048 | 4096;
 &nbsp;
-  // 【最大 ACU 検証】: Aurora Serverless v2 の上限制約
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (maxCapacity &gt; ACU_MAX_VALUE) {
-<span class="cstat-no" title="statement not covered" >    throw new Error(</span>
-      `maxCapacity (${maxCapacity}) は ${ACU_MAX_VALUE} 以下である必要があります。` +
-        `Aurora Serverless v2 の最大 ACU は ${ACU_MAX_VALUE} です。`
-    );
-  }
-&nbsp;
-  // 【範囲検証】: minCapacity が maxCapacity を超えていないこと
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (minCapacity &gt; maxCapacity) {
-<span class="cstat-no" title="statement not covered" >    throw new Error(</span>
-      `minCapacity (${minCapacity}) は maxCapacity (${maxCapacity}) 以下である必要があります。`
-    );
-  }
-}
+// ============================================================================
+// 【定数定義】
+// 🔵 信頼性: アーキテクチャ設計・AWS ベストプラクティスより
+// ============================================================================
 &nbsp;
 /**
- * 【バックアップ保持日数バリデーション】: バックアップ保持期間の妥当性を検証
+ * Frontend コンテナのポート番号
  *
- * 【検証内容】:
- * - backupRetentionDays が 1 以上 35 以下である
- *
- * 🔵 信頼性: AWS RDS 仕様より
- *
- * @param backupRetentionDays バックアップ保持日数
- * @throws Error バリデーション失敗時
+ * 【値】: 80 (HTTP)
+ * 【用途】: Frontend Service のコンテナポートおよび Target Group のターゲットポート
+ * 🔵 信頼性: アーキテクチャ設計より
  */
-function validateBackupRetentionDays(backupRetentionDays: number): void {
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (
-    backupRetentionDays &lt; BACKUP_RETENTION_MIN_DAYS ||
-    backupRetentionDays &gt; BACKUP_RETENTION_MAX_DAYS
-  ) {
-<span class="cstat-no" title="statement not covered" >    throw new Error(</span>
-      `backupRetentionDays (${backupRetentionDays}) は ${BACKUP_RETENTION_MIN_DAYS}〜${BACKUP_RETENTION_MAX_DAYS} の範囲である必要があります。`
-    );
-  }
-}
+const FRONTEND_CONTAINER_PORT = 80;
+&nbsp;
+/**
+ * Backend コンテナのポート番号
+ *
+ * 【値】: 8080
+ * 【用途】: Backend Service のコンテナポート（内部 API）
+ * 🔵 信頼性: アーキテクチャ設計より
+ */
+const BACKEND_CONTAINER_PORT = 8080;
+&nbsp;
+/**
+ * ヘルスチェックパス
+ *
+ * 【値】: '/health'
+ * 【用途】: ALB Target Group のヘルスチェックエンドポイント
+ * 🔵 信頼性: アーキテクチャ設計・ヘルスチェックベストプラクティスより
+ */
+const HEALTH_CHECK_PATH = '/health';
+&nbsp;
+/**
+ * Sidecar コンテナのモード
+ *
+ * 【値】: 'proxy'
+ * 【用途】: TaskDefinitionConstruct に渡す Sidecar の動作モード
+ * 🔵 信頼性: TASK-0013 Sidecar Container 設計より
+ */
+const SIDECAR_MODE = 'proxy';
 &nbsp;
 // ============================================================================
 // 【インターフェース定義】
-// 🔵 信頼性: requirements.md Props 定義より
+// 🔵 信頼性: タスク定義書・設計文書より
 // ============================================================================
 &nbsp;
 /**
- * AuroraConstruct の Props インターフェース
+ * ApplicationStack の Props インターフェース
  *
- * 【設計方針】: 必須パラメータとオプションパラメータを明確に分離
+ * 【設計方針】: VPC、Security Group、IAM Role、ECR Repository、EnvironmentConfig を
+ *              必須パラメータとして受け取り、Stack の設定を行う
  * 【再利用性】: 異なる環境（Dev/Prod）で柔軟に設定可能
+ * 🔵 信頼性: タスク定義書 TASK-0017 より
  *
- * @interface AuroraConstructProps
+ * @interface ApplicationStackProps
+ * @extends cdk.StackProps
  */
-export interface AuroraConstructProps {
+export interface ApplicationStackProps extends cdk.StackProps {
   /**
-   * 配置先 VPC（必須）
+   * VPC への参照（必須）
    *
-   * 【用途】: Aurora クラスターを配置する VPC
-   * 【要件】: VPC Stack から提供される VPC リソース
-   * 🔵 信頼性: TASK-0008.md、architecture.md より
+   * 【用途】: ECS Service、ALB を VPC 内に配置するために必要
+   * 【ECS 配置先】: Private App Subnet
+   * 【ALB 配置先】: Public Subnet
+   * 🔵 信頼性: REQ-028、architecture.md より必須パラメータ
    */
   readonly vpc: ec2.IVpc;
 &nbsp;
   /**
-   * Aurora 用 Security Group（必須）
+   * ECS 用 Security Group（必須）
    *
-   * 【用途】: Aurora クラスターのネットワークアクセス制御
-   * 【要件】: Security Stack から提供される Security Group（ECS SG からの 3306 のみ許可）
-   * 🔵 信頼性: TASK-0008.md、REQ-024, REQ-025 より
+   * 【用途】: ECS Service のネットワークアクセス制御
+   * 【設定内容】: ALB からのトラフィックのみ許可
+   * 🔵 信頼性: architecture.md より必須パラメータ
    */
-  readonly securityGroup: ec2.ISecurityGroup;
+  readonly ecsSecurityGroup: ec2.ISecurityGroup;
 &nbsp;
   /**
-   * 環境名（必須）
+   * ALB 用 Security Group（必須）
    *
-   * 【用途】: リソース命名に使用（例: 'dev', 'prod'）
-   * 🔵 信頼性: REQ-042、architecture.md より
+   * 【用途】: ALB のネットワークアクセス制御
+   * 【設定内容】: インターネットからの HTTP/HTTPS トラフィック許可
+   * 🔵 信頼性: architecture.md より必須パラメータ
    */
-  readonly envName: string;
+  readonly albSecurityGroup: ec2.ISecurityGroup;
 &nbsp;
   /**
-   * 最小 ACU（Aurora Capacity Unit）（オプション）
+   * ECS Task Role（必須）
    *
-   * 【用途】: Serverless v2 の最小キャパシティ設定
-   * @default 0.5
-   * @range 0.5 - 128
-   * 🔵 信頼性: architecture.md データベース層（0.5 ACU）
+   * 【用途】: ECS タスクが AWS サービスにアクセスするための IAM Role
+   * 【必要権限】: SSM (ECS Exec)、S3、その他アプリ必要権限
+   * 🔵 信頼性: REQ-019 (ECS Exec)、architecture.md より必須パラメータ
    */
-  readonly minCapacity?: number;
+  readonly ecsTaskRole: iam.IRole;
 &nbsp;
   /**
-   * 最大 ACU（Aurora Capacity Unit）（オプション）
+   * ECS Task Execution Role（必須）
    *
-   * 【用途】: Serverless v2 の最大キャパシティ設定
-   * @default 2 (コスト優先環境)
-   * @range 0.5 - 128
-   * 🔵 信頼性: architecture.md データベース層（2 ACU）
+   * 【用途】: ECS Agent がタスクを起動するための IAM Role
+   * 【必要権限】: ECR Pull、CloudWatch Logs、Secrets Manager
+   * 🔵 信頼性: architecture.md より必須パラメータ
    */
-  readonly maxCapacity?: number;
+  readonly ecsTaskExecutionRole: iam.IRole;
 &nbsp;
   /**
-   * データベース名（オプション）
+   * DB エンドポイント（必須）
    *
-   * 【用途】: Aurora クラスターの初期データベース名
-   * @default 'appdb'
-   * 🟡 信頼性: interfaces.ts から妥当な推測（'appdb'）
+   * 【用途】: Aurora クラスターの Writer エンドポイント
+   * 【参照元】: DatabaseStack.dbEndpoint
+   * 🔵 信頼性: architecture.md Stack 依存関係より
    */
-  readonly databaseName?: string;
+  readonly dbEndpoint: string;
 &nbsp;
   /**
-   * バックアップ保持日数（オプション）
+   * DB ポート（必須）
    *
-   * 【用途】: 自動バックアップの保持期間設定
-   * @default 7
-   * @range 1 - 35
-   * 🟡 信頼性: architecture.md（7日）、標準設定から推測
+   * 【用途】: Aurora クラスターの接続ポート (3306)
+   * 【参照元】: DatabaseStack.dbPort
+   * 🔵 信頼性: architecture.md Stack 依存関係より
    */
-  readonly backupRetentionDays?: number;
+  readonly dbPort: number;
+&nbsp;
+  /**
+   * App Container 用 ECR Repository（必須）
+   *
+   * 【用途】: アプリケーションコンテナイメージの格納先
+   * 🔵 信頼性: TASK-0014 Task Definition 要件より
+   */
+  readonly appRepository: ecr.IRepository;
+&nbsp;
+  /**
+   * Sidecar Container 用 ECR Repository（必須）
+   *
+   * 【用途】: Sidecar コンテナイメージの格納先
+   * 🔵 信頼性: TASK-0014 Task Definition 要件より
+   */
+  readonly sidecarRepository: ecr.IRepository;
+&nbsp;
+  /**
+   * CloudWatch Logs Log Group（必須）
+   *
+   * 【用途】: ECS タスクのログ出力先
+   * 🔵 信頼性: TASK-0014 Task Definition 要件より
+   */
+  readonly logGroup: logs.ILogGroup;
+&nbsp;
+  /**
+   * ACM 証明書 ARN（必須）
+   *
+   * 【用途】: ALB HTTPS Listener の TLS 終端
+   * 🔵 信頼性: REQ-030 より必須パラメータ
+   */
+  readonly certificateArn: string;
+&nbsp;
+  /**
+   * 環境設定（必須）
+   *
+   * 【用途】: 環境名、タスク設定などを提供
+   * 【設定項目】: envName、taskCpu、taskMemory、desiredCount
+   * 🔵 信頼性: タスク定義書より必須パラメータ
+   */
+  readonly config: EnvironmentConfig;
 }
 &nbsp;
 /**
- * Aurora Construct 実装
+ * Application Stack
  *
- * 【機能概要】: Aurora Serverless v2 MySQL クラスターを作成する Construct
- * 【実装方針】: 最小権限の原則に基づき、セキュアなデータベースを構築
- * 【テスト対応】: TC-AU-01 〜 TC-AU-24 の全テストケースに対応
+ * 【機能概要】: ECS Cluster、Task Definition、Service、ALB を統合した CDK Stack
+ * 【実装方針】: 既存の Construct を使用し、他の Stack から参照可能なプロパティを公開
+ * 【テスト対応】: TC-AS-01 〜 TC-AS-36 の全テストケースに対応
  *
- * セキュリティ設計:
- * - ストレージ暗号化: KMS カスタマーマネージドキーを使用
- * - ネットワーク: Private Isolated Subnet に配置
- * - 認証: Secrets Manager で認証情報を自動生成・管理
- * - アクセス制御: Security Group で ECS からのアクセスのみ許可
+ * 構成内容:
+ * - ECS Cluster with Container Insights (REQ-012, REQ-013)
+ * - Frontend Task Definition with Sidecar (REQ-014〜018)
+ * - Backend Task Definition with Sidecar (REQ-014〜018)
+ * - Frontend ECS Service with ECS Exec (REQ-019〜021)
+ * - Backend ECS Service with ECS Exec (REQ-019〜021)
+ * - Internet-facing ALB with HTTPS (REQ-028〜030)
  *
- * 🔵 信頼性レベル: 要件定義書に基づく実装
+ * 🔵 信頼性レベル: 要件定義書 REQ-012〜021、REQ-028〜030 に基づく実装
  *
- * @class AuroraConstruct
- * @extends Construct
+ * @class ApplicationStack
+ * @extends cdk.Stack
  *
  * @example
  * ```typescript
- * const aurora = new AuroraConstruct(this, 'Aurora', {
- *   vpc: props.vpc,
- *   securityGroup: props.auroraSecurityGroup,
- *   envName: 'dev',
- *   minCapacity: 0.5,
- *   maxCapacity: 2,
+ * const applicationStack = new ApplicationStack(app, 'ApplicationStack', {
+ *   vpc: vpcStack.vpc,
+ *   ecsSecurityGroup: securityStack.ecsSecurityGroup,
+ *   albSecurityGroup: securityStack.albSecurityGroup,
+ *   ecsTaskRole: securityStack.ecsTaskRole,
+ *   ecsTaskExecutionRole: securityStack.ecsTaskExecutionRole,
+ *   dbEndpoint: databaseStack.dbEndpoint,
+ *   dbPort: databaseStack.dbPort,
+ *   appRepository: appRepo,
+ *   sidecarRepository: sidecarRepo,
+ *   logGroup: logGroup,
+ *   certificateArn: 'arn:aws:acm:...',
+ *   config: devConfig,
+ *   env: {
+ *     account: config.account,
+ *     region: config.region,
+ *   },
  * });
- *
- * // 後続リソースでの使用
- * const endpoint = aurora.clusterEndpoint.hostname;
- * const secret = aurora.secret;
  * ```
  */
-export class AuroraConstruct extends Construct {
+export class ApplicationStack extends cdk.Stack {
   // ==========================================================================
   // 【公開プロパティ】: 他の Stack から参照可能なリソース
-  // 🔵 信頼性: requirements.md 出力プロパティより
+  // 【設計方針】: インターフェース型を使用して柔軟性を確保
+  // 🔵 信頼性: タスク定義書・CDK ベストプラクティスより
   // ==========================================================================
 &nbsp;
   /**
-   * Aurora クラスター
+   * ECS Cluster
    *
-   * 【用途】: 作成された DatabaseCluster リソースへの参照
-   * 【参照元】: Database Stack、監視設定
-   * 🔵 信頼性: CDK RDS パターン、BLEA 参考実装より
+   * 【用途】: 作成された ECS クラスターへの参照
+   * 【参照元】: 監視設定、Auto Scaling
+   * 🔵 信頼性: タスク定義書 TASK-0017、note.md 公開プロパティより
+   *
+   * @readonly
+   * @type {ecs.ICluster}
    */
-  public readonly cluster: rds.DatabaseCluster;
+  public readonly cluster: ecs.ICluster;
 &nbsp;
   /**
-   * クラスターエンドポイント
+   * Frontend Task Definition
    *
-   * 【用途】: Writer エンドポイント（接続用）
-   * 【参照元】: ECS タスク定義の環境変数
-   * 🔵 信頼性: dataflow.md 認証情報管理フローより
+   * 【用途】: Frontend Service 用の Task Definition
+   * 【参照元】: Service 設定、監視設定
+   * 🔵 信頼性: タスク定義書 TASK-0017、note.md 公開プロパティより
+   *
+   * @readonly
+   * @type {ecs.FargateTaskDefinition}
    */
-  public readonly clusterEndpoint: rds.Endpoint;
+  public readonly frontendTaskDefinition: ecs.FargateTaskDefinition;
 &nbsp;
   /**
-   * 認証情報 Secret
+   * Backend Task Definition
    *
-   * 【用途】: Secrets Manager に保存された DB 認証情報
-   * 【参照元】: ECS タスク定義のシークレット参照
-   * 🔵 信頼性: dataflow.md 認証情報管理フローより
+   * 【用途】: Backend Service 用の Task Definition
+   * 【参照元】: Service 設定、監視設定
+   * 🔵 信頼性: タスク定義書 TASK-0017、note.md 公開プロパティより
+   *
+   * @readonly
+   * @type {ecs.FargateTaskDefinition}
    */
-  public readonly secret: secretsmanager.ISecret;
+  public readonly backendTaskDefinition: ecs.FargateTaskDefinition;
 &nbsp;
   /**
-   * Security Group
+   * Frontend ECS Service
    *
-   * 【用途】: Aurora に関連付けられた Security Group
-   * 【参照元】: 追加のルール設定が必要な場合
-   * 🔵 信頼性: REQ-024, REQ-025 より
+   * 【用途】: Frontend Fargate Service への参照
+   * 【参照元】: Auto Scaling、監視設定
+   * 🔵 信頼性: タスク定義書 TASK-0017、note.md 公開プロパティより
+   *
+   * @readonly
+   * @type {ecs.FargateService}
    */
-  public readonly securityGroup: ec2.ISecurityGroup;
+  public readonly frontendService: ecs.FargateService;
 &nbsp;
   /**
-   * AuroraConstruct のコンストラクタ
+   * Backend ECS Service
    *
-   * 【処理概要】: Aurora Serverless v2 MySQL クラスターを作成
-   * 【設計方針】: テストを通すための最小限の実装
+   * 【用途】: Backend Fargate Service への参照
+   * 【参照元】: Auto Scaling、監視設定
+   * 🔵 信頼性: タスク定義書 TASK-0017、note.md 公開プロパティより
    *
-   * @param {Construct} scope - 親となる Construct
-   * @param {string} id - この Construct の識別子
-   * @param {AuroraConstructProps} props - AuroraConstruct の Props
+   * @readonly
+   * @type {ecs.FargateService}
    */
-  constructor(scope: Construct, id: string, props: AuroraConstructProps) {
-    super(scope, id);
+  public readonly backendService: ecs.FargateService;
+&nbsp;
+  /**
+   * Application Load Balancer
+   *
+   * 【用途】: Internet-facing ALB への参照
+   * 【参照元】: Route 53、WAF、監視設定
+   * 🔵 信頼性: タスク定義書 TASK-0017、note.md 公開プロパティより
+   *
+   * @readonly
+   * @type {elb.IApplicationLoadBalancer}
+   */
+  public readonly loadBalancer: elb.IApplicationLoadBalancer;
+&nbsp;
+  /**
+   * ALB Target Group
+   *
+   * 【用途】: ALB の Target Group への参照
+   * 【参照元】: Auto Scaling、監視設定
+   * 🔵 信頼性: タスク定義書 TASK-0017、note.md 公開プロパティより
+   *
+   * @readonly
+   * @type {elb.IApplicationTargetGroup}
+   */
+  public readonly targetGroup: elb.IApplicationTargetGroup;
+&nbsp;
+  /**
+   * ALB DNS Name
+   *
+   * 【用途】: ALB の DNS 名
+   * 【参照元】: Route 53 CNAME、CloudFront Origin
+   * 🔵 信頼性: タスク定義書 TASK-0017、note.md 公開プロパティより
+   *
+   * @readonly
+   * @type {string}
+   */
+  public readonly dnsName: string;
+&nbsp;
+  /**
+   * ApplicationStack のコンストラクタ
+   *
+   * 【処理概要】: ECS Cluster、Task Definition、Service、ALB Construct を作成し、
+   *              プロパティを公開、CfnOutput を生成
+   * 【設計方針】: 既存 Construct を組み合わせて Stack を構成
+   *
+   * @param {Construct} scope - 親となる Construct (通常は App)
+   * @param {string} id - この Stack の識別子
+   * @param {ApplicationStackProps} props - ApplicationStack の Props
+   */
+  constructor(scope: Construct, id: string, props: ApplicationStackProps) {
+    super(scope, id, props);
 &nbsp;
     // ========================================================================
-    // 【パラメータ解凍】: Props からパラメータを取得し、デフォルト値を適用
-    // 🔵 信頼性: requirements.md Props 定義より
+    // 【ECS Cluster 作成】: Fargate 専用 ECS クラスターを作成
+    // 【設定】: Container Insights 有効化
+    // 🔵 信頼性: REQ-012、REQ-013 より
     // ========================================================================
-    const {
-      vpc,
-      securityGroup,
-      envName,
-      minCapacity = DEFAULT_MIN_CAPACITY,
-      maxCapacity = DEFAULT_MAX_CAPACITY,
-      databaseName = DEFAULT_DATABASE_NAME,
-      backupRetentionDays = DEFAULT_BACKUP_RETENTION_DAYS,
-    } = props;
-&nbsp;
-    // ========================================================================
-    // 【入力値バリデーション】: Props の妥当性を検証
-    // 🔵 信頼性: CDK ベストプラクティスより（早期エラー検出）
-    // ========================================================================
-&nbsp;
-    // 【ACU バリデーション】: ACU 設定値が適切な範囲内であることを確認
-    validateAcuSettings(minCapacity, maxCapacity);
-&nbsp;
-    // 【バックアップ保持日数バリデーション】: 保持期間が適切な範囲内であることを確認
-    validateBackupRetentionDays(backupRetentionDays);
-&nbsp;
-    // 【Security Group 保存】: 公開プロパティとして保存
-    this.securityGroup = securityGroup;
-&nbsp;
-    // ========================================================================
-    // 【KMS キー作成】: ストレージ暗号化用のカスタマーマネージドキー
-    // 🔵 信頼性: REQ-026、NFR-102 より
-    // ========================================================================
-    const encryptionKey = new kms.Key(this, 'AuroraEncryptionKey', {
-      // 【説明設定】: 監査・トラブルシューティング用
-      description: `Aurora encryption key for ${envName}`,
-&nbsp;
-      // 【キーローテーション】: 自動ローテーション有効化（セキュリティベストプラクティス）
-      enableKeyRotation: true,
-&nbsp;
-      // 【削除保護】: スタック削除時にキーを保持（本番環境での意図しない削除を防止）
-      removalPolicy: cdk.RemovalPolicy.RETAIN,
+    const ecsCluster = new EcsClusterConstruct(this, 'EcsCluster', {
+      vpc: props.vpc,
+      clusterName: `${props.config.envName}-cluster`,
+      containerInsights: true,
     });
 &nbsp;
+    this.cluster = ecsCluster.cluster;
+&nbsp;
     // ========================================================================
-    // 【Aurora クラスター作成】: Serverless v2 MySQL クラスター
-    // 🔵 信頼性: REQ-022、architecture.md データベース層より
+    // 【Frontend Task Definition 作成】: App + Sidecar コンテナ構成
+    // 【設定】: CPU 0.5 vCPU、Memory 1 GB
+    // 🔵 信頼性: REQ-014〜018 より
     // ========================================================================
-    this.cluster = new rds.DatabaseCluster(this, 'AuroraCluster', {
-      // 【エンジン設定】: Aurora MySQL 3.x (MySQL 8.0 互換)
-      // 🔵 信頼性: REQ-022 より
-      engine: rds.DatabaseClusterEngine.auroraMysql({
-        version: rds.AuroraMysqlEngineVersion.VER_3_05_2,
-      }),
+    // 【CPU 値の型安全な変換】🔵 AWS Fargate 仕様より
+    const taskCpu = props.config.taskCpu as FargateCpuValue;
 &nbsp;
-      // 【認証情報設定】: Secrets Manager で自動生成
-      // 🔵 信頼性: note.md CDK 実装制約より
-      credentials: rds.Credentials.fromGeneratedSecret(MASTER_USERNAME),
-&nbsp;
-      // 【Serverless v2 Writer インスタンス】: Serverless v2 インスタンスタイプ
-      // 🔵 信頼性: REQ-022 より
-      writer: rds.ClusterInstance.serverlessV2('Writer', {
-        publiclyAccessible: false,
-      }),
-&nbsp;
-      // 【Serverless v2 スケーリング設定】: ACU の範囲を設定
-      // 🔵 信頼性: architecture.md データベース層より
-      serverlessV2MinCapacity: minCapacity,
-      serverlessV2MaxCapacity: maxCapacity,
-&nbsp;
-      // 【VPC 設定】: 指定された VPC に配置
-      vpc,
-&nbsp;
-      // 【サブネット設定】: Private Isolated Subnet に配置
-      // 🔵 信頼性: REQ-023、REQ-024 より
-      vpcSubnets: {
-        subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
-      },
-&nbsp;
-      // 【Security Group 設定】: Props で指定された Security Group を使用
-      // 🔵 信頼性: REQ-024、REQ-025 より
-      securityGroups: [securityGroup],
-&nbsp;
-      // 【データベース名】: 初期データベース名
-      // 🟡 信頼性: interfaces.ts から妥当な推測
-      defaultDatabaseName: databaseName,
-&nbsp;
-      // 【ストレージ暗号化】: KMS カスタマーマネージドキーで暗号化
-      // 🔵 信頼性: REQ-026、NFR-102 より
-      storageEncrypted: true,
-      storageEncryptionKey: encryptionKey,
-&nbsp;
-      // 【バックアップ設定】: 自動バックアップの保持期間
-      // 🔵 信頼性: REQ-027 より
-      backup: {
-        retention: cdk.Duration.days(backupRetentionDays),
-      },
-&nbsp;
-      // 【削除保護】: スタック削除時にスナップショットを作成
-      // 🔵 信頼性: BLEA 参考実装より
-      removalPolicy: cdk.RemovalPolicy.SNAPSHOT,
+    const frontendTaskDefinition = new TaskDefinitionConstruct(this, 'FrontendTaskDefinition', {
+      appRepository: props.appRepository,
+      sidecarRepository: props.sidecarRepository,
+      logGroup: props.logGroup,
+      auroraEndpoint: props.dbEndpoint,
+      auroraPort: props.dbPort,
+      taskRole: props.ecsTaskRole,
+      executionRole: props.ecsTaskExecutionRole,
+      cpu: taskCpu,
+      memoryMiB: props.config.taskMemory,
+      appContainerPort: FRONTEND_CONTAINER_PORT,
+      sidecarMode: SIDECAR_MODE,
     });
 &nbsp;
+    this.frontendTaskDefinition = frontendTaskDefinition.taskDefinition;
+&nbsp;
     // ========================================================================
-    // 【公開プロパティ設定】: 他の Stack から参照可能なリソースを設定
-    // 🔵 信頼性: requirements.md 出力プロパティより
+    // 【Backend Task Definition 作成】: App + Sidecar コンテナ構成
+    // 【設定】: CPU 0.5 vCPU、Memory 1 GB
+    // 🔵 信頼性: REQ-014〜018 より
+    // ========================================================================
+    const backendTaskDefinition = new TaskDefinitionConstruct(this, 'BackendTaskDefinition', {
+      appRepository: props.appRepository,
+      sidecarRepository: props.sidecarRepository,
+      logGroup: props.logGroup,
+      auroraEndpoint: props.dbEndpoint,
+      auroraPort: props.dbPort,
+      taskRole: props.ecsTaskRole,
+      executionRole: props.ecsTaskExecutionRole,
+      cpu: taskCpu,
+      memoryMiB: props.config.taskMemory,
+      appContainerPort: BACKEND_CONTAINER_PORT,
+      sidecarMode: SIDECAR_MODE,
+    });
+&nbsp;
+    this.backendTaskDefinition = backendTaskDefinition.taskDefinition;
+&nbsp;
+    // ========================================================================
+    // 【ALB 作成】: Internet-facing ALB with HTTPS
+    // 【設定】: HTTP→HTTPS リダイレクト、ACM 証明書 TLS 終端
+    // 🔵 信頼性: REQ-028〜030 より
+    // ========================================================================
+    const alb = new AlbConstruct(this, 'Alb', {
+      vpc: props.vpc,
+      securityGroup: props.albSecurityGroup,
+      certificateArn: props.certificateArn,
+      loadBalancerName: `${props.config.envName}-alb`,
+      targetPort: FRONTEND_CONTAINER_PORT,
+      healthCheckPath: HEALTH_CHECK_PATH,
+      enableHttpToHttpsRedirect: true,
+      internetFacing: true,
+    });
+&nbsp;
+    this.loadBalancer = alb.loadBalancer;
+    this.targetGroup = alb.targetGroup;
+    this.dnsName = alb.dnsName;
+&nbsp;
+    // ========================================================================
+    // 【Frontend ECS Service 作成】: Fargate Service with ECS Exec
+    // 【設定】: Desired Count 2 以上、Private Subnet 配置、ALB Target Group 連携
+    // 🔵 信頼性: REQ-019〜021 より
+    // ========================================================================
+    const frontendService = new EcsServiceConstruct(this, 'FrontendService', {
+      cluster: ecsCluster.cluster,
+      taskDefinition: frontendTaskDefinition.taskDefinition,
+      securityGroup: props.ecsSecurityGroup,
+      subnets: props.vpc.selectSubnets({
+        subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
+      }),
+      serviceName: `${props.config.envName}-frontend-service`,
+      desiredCount: props.config.desiredCount,
+      enableExecuteCommand: true,
+      targetGroup: alb.targetGroup,
+      assignPublicIp: false,
+      containerPort: FRONTEND_CONTAINER_PORT,
+    });
+&nbsp;
+    this.frontendService = frontendService.service;
+&nbsp;
+    // ========================================================================
+    // 【Backend ECS Service 作成】: Fargate Service with ECS Exec
+    // 【設定】: Desired Count 2 以上、Private Subnet 配置
+    // 🔵 信頼性: REQ-019〜021 より
+    // ========================================================================
+    const backendService = new EcsServiceConstruct(this, 'BackendService', {
+      cluster: ecsCluster.cluster,
+      taskDefinition: backendTaskDefinition.taskDefinition,
+      securityGroup: props.ecsSecurityGroup,
+      subnets: props.vpc.selectSubnets({
+        subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
+      }),
+      serviceName: `${props.config.envName}-backend-service`,
+      desiredCount: props.config.desiredCount,
+      enableExecuteCommand: true,
+      assignPublicIp: false,
+      containerPort: BACKEND_CONTAINER_PORT,
+    });
+&nbsp;
+    this.backendService = backendService.service;
+&nbsp;
+    // ========================================================================
+    // 【CfnOutput 生成】: クロススタック参照用エクスポートを作成
+    // 【用途】: 他の Stack からの参照、CloudFormation Outputs 確認
+    // 🔵 信頼性: CDK ベストプラクティスより
     // ========================================================================
 &nbsp;
-    // 【クラスターエンドポイント】: Writer エンドポイント
-    this.clusterEndpoint = this.cluster.clusterEndpoint;
+    // 【ALB DNS Name エクスポート】
+    new cdk.CfnOutput(this, 'AlbDnsName', {
+      value: this.dnsName,
+      description: 'ALB DNS name',
+      exportName: `${props.config.envName}-AlbDnsName`,
+    });
 &nbsp;
-    // 【認証情報 Secret】: Secrets Manager のシークレット
-    // 🔵 信頼性: note.md CDK 実装制約より（credentials.fromGeneratedSecret で自動生成）
-    this.secret = this.cluster.secret!;
-  }
+    // 【ALB ARN エクスポート】
+    new cdk.CfnOutput(this, 'AlbArn', {
+      value: this.loadBalancer.loadBalancerArn,
+      description: 'ALB ARN',
+      exportName: `${props.config.envName}-AlbArn`,
+    });
 &nbsp;
-  // ==========================================================================
-  // 【公開メソッド】: ECS タスク用シークレット取得
-  // 🔵 信頼性: TASK-0009 Secrets Manager 統合、SMR-006 より
-  // ==========================================================================
+    // 【ECS Cluster ARN エクスポート】
+    new cdk.CfnOutput(this, 'EcsClusterArn', {
+      value: this.cluster.clusterArn,
+      description: 'ECS Cluster ARN',
+      exportName: `${props.config.envName}-EcsClusterArn`,
+    });
 &nbsp;
-  /**
-   * ECS タスク定義で使用するシークレットを取得
-   *
-   * 【機能概要】:
-   * Aurora の認証情報を ECS タスクで使用可能な形式で返します。
-   * Secrets Manager に保存された Aurora DatabaseSecret から、
-   * 特定のフィールド（password, username, host）を参照する ecs.Secret オブジェクトを生成します。
-   *
-   * 【用途】:
-   * ECS タスク定義の secrets プロパティに設定することで、
-   * コンテナ起動時に環境変数としてデータベース接続情報が注入されます。
-   *
-   * 【返されるキー】:
-   * | キー名       | 参照フィールド | 説明                           |
-   * |--------------|----------------|--------------------------------|
-   * | DB_PASSWORD  | password       | データベース接続パスワード     |
-   * | DB_USERNAME  | username       | データベース接続ユーザー名     |
-   * | DB_HOST      | host           | Aurora クラスターエンドポイント |
-   *
-   * 【セキュリティ】:
-   * - シークレット値はコンテナ起動時に ECS によって安全に注入されます
-   * - 平文での認証情報の受け渡しを回避し、セキュリティを向上させます
-   * - IAM ポリシーによるアクセス制御が適用されます
-   *
-   * 🔵 信頼性レベル: TASK-0009 Secrets Manager 統合、SMR-005, SMR-006 より
-   *
-   * @returns {Record&lt;string, ecs.Secret&gt;} ECS シークレットのマップ
-   *   - キーは環境変数名として使用されます
-   *   - 値は ecs.Secret オブジェクト（Secrets Manager への参照）
-   *
-   * @example
-   * ```typescript
-   * // Aurora Construct のインスタンス化
-   * const aurora = new AuroraConstruct(this, 'Aurora', {
-   *   vpc: props.vpc,
-   *   securityGroup: props.auroraSecurityGroup,
-   *   envName: 'dev',
-   * });
-   *
-   * // シークレット取得
-   * const secrets = aurora.getSecretsForEcs();
-   *
-   * // ECS タスク定義で使用
-   * const taskDefinition = new ecs.FargateTaskDefinition(this, 'TaskDef', {
-   *   cpu: 256,
-   *   memoryLimitMiB: 512,
-   * });
-   *
-   * taskDefinition.addContainer('App', {
-   *   image: ecs.ContainerImage.fromEcrRepository(repo),
-   *   // シークレットを環境変数として注入
-   *   secrets: secrets,
-   *   // または個別に指定
-   *   // secrets: {
-   *   //   DB_PASSWORD: secrets.DB_PASSWORD,
-   *   //   DB_USERNAME: secrets.DB_USERNAME,
-   *   //   DB_HOST: secrets.DB_HOST,
-   *   // },
-   * });
-   *
-   * // アプリケーション側では以下の環境変数として参照可能:
-   * // - process.env.DB_PASSWORD
-   * // - process.env.DB_USERNAME
-   * // - process.env.DB_HOST
-   * ```
-   *
-   * @see {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs.Secret.html} ECS Secret
-   * @see {@link https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data-secrets.html} ECS Secrets Manager 統合
-   */
-  public getSecretsForEcs(): Record&lt;string, ecs.Secret&gt; {
-    return {
-      // 【DB_PASSWORD】: シークレットの password フィールドを参照
-      // 🔵 信頼性: SMR-005 より
-      [ECS_SECRET_KEY_DB_PASSWORD]: ecs.Secret.fromSecretsManager(
-        this.secret,
-        SECRET_FIELD_PASSWORD
-      ),
+    // 【Frontend Service ARN エクスポート】
+    new cdk.CfnOutput(this, 'FrontendServiceArn', {
+      value: this.frontendService.serviceArn,
+      description: 'Frontend ECS Service ARN',
+      exportName: `${props.config.envName}-FrontendServiceArn`,
+    });
 &nbsp;
-      // 【DB_USERNAME】: シークレットの username フィールドを参照
-      // 🔵 信頼性: SMR-005 より
-      [ECS_SECRET_KEY_DB_USERNAME]: ecs.Secret.fromSecretsManager(
-        this.secret,
-        SECRET_FIELD_USERNAME
-      ),
+    // 【Backend Service ARN エクスポート】
+    new cdk.CfnOutput(this, 'BackendServiceArn', {
+      value: this.backendService.serviceArn,
+      description: 'Backend ECS Service ARN',
+      exportName: `${props.config.envName}-BackendServiceArn`,
+    });
 &nbsp;
-      // 【DB_HOST】: シークレットの host フィールドを参照
-      // 🔵 信頼性: SMR-005 より
-      [ECS_SECRET_KEY_DB_HOST]: ecs.Secret.fromSecretsManager(this.secret, SECRET_FIELD_HOST),
-    };
+    // 【Target Group ARN エクスポート】
+    new cdk.CfnOutput(this, 'TargetGroupArn', {
+      value: this.targetGroup.targetGroupArn,
+      description: 'ALB Target Group ARN',
+      exportName: `${props.config.envName}-TargetGroupArn`,
+    });
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -1848,14 +1704,14 @@ export class AuroraConstruct extends Construct {
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
                 at 2026-02-05T13:32:39.211Z
             </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="../../../sorter.js"></script>
+        <script src="../../../block-navigation.js"></script>
     </body>
 </html>
     
