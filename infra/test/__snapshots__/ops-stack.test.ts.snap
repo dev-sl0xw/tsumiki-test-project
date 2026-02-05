@@ -1,0 +1,3442 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OpsStack TC-OS-01: スナップショットテスト（devConfig） CloudFormation テンプレートのスナップショットテスト（Dev環境） 1`] = `
+{
+  "Outputs": {
+    "AlarmTopicArn": {
+      "Description": "SNS Topic ARN for alarm notifications",
+      "Export": {
+        "Name": "dev-AlarmTopicArn",
+      },
+      "Value": {
+        "Ref": "AlarmsAlarmTopic58991614",
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AlarmsAlarmTopic58991614": {
+      "Properties": {
+        "KmsMasterKeyId": {
+          "Fn::GetAtt": [
+            "AlarmsAlarmTopicKeyD10DE76C",
+            "Arn",
+          ],
+        },
+        "TopicName": "dev-alarm-notifications",
+      },
+      "Type": "AWS::SNS::Topic",
+    },
+    "AlarmsAlarmTopicKeyD10DE76C": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Description": "KMS key for dev alarm SNS topic encryption",
+        "EnableKeyRotation": true,
+        "KeyPolicy": {
+          "Statement": [
+            {
+              "Action": "kms:*",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::123456789012:root",
+                    ],
+                  ],
+                },
+              },
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:GenerateDataKey*",
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "cloudwatch.amazonaws.com",
+              },
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:GenerateDataKey*",
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "codestar-notifications.amazonaws.com",
+              },
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::KMS::Key",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "AlarmsAlarmTopicPolicyF670A8B4": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sns:Publish",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "codestar-notifications.amazonaws.com",
+              },
+              "Resource": {
+                "Ref": "AlarmsAlarmTopic58991614",
+              },
+              "Sid": "0",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Topics": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+      },
+      "Type": "AWS::SNS::TopicPolicy",
+    },
+    "AlarmsCPUAlarmdevbackendE2C3C2C8": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": "ECS CPU 使用率が 80% を超えました (dev-backend)",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "DatapointsToAlarm": 3,
+        "Dimensions": [
+          {
+            "Name": "ClusterName",
+            "Value": {
+              "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestEcsCluster79A1866E56DB91A9",
+            },
+          },
+          {
+            "Name": "ServiceName",
+            "Value": "dev-backend",
+          },
+        ],
+        "EvaluationPeriods": 5,
+        "MetricName": "CPUUtilization",
+        "Namespace": "AWS/ECS",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 80,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmsCPUAlarmdevfrontend68C0D4A1": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": "ECS CPU 使用率が 80% を超えました (dev-frontend)",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "DatapointsToAlarm": 3,
+        "Dimensions": [
+          {
+            "Name": "ClusterName",
+            "Value": {
+              "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestEcsCluster79A1866E56DB91A9",
+            },
+          },
+          {
+            "Name": "ServiceName",
+            "Value": "dev-frontend",
+          },
+        ],
+        "EvaluationPeriods": 5,
+        "MetricName": "CPUUtilization",
+        "Namespace": "AWS/ECS",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 80,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmsErrorAlarm04B50E99A": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": {
+          "Fn::Join": [
+            "",
+            [
+              "エラーが検出されました (",
+              {
+                "Ref": "LogGroupsEcsFrontendLogGroup1F82DF7B",
+              },
+              ")",
+            ],
+          ],
+        },
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "DatapointsToAlarm": 1,
+        "EvaluationPeriods": 1,
+        "MetricName": "dev-ErrorCount-0",
+        "Namespace": "Custom/Application",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 1,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmsErrorAlarm1E95F740B": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": {
+          "Fn::Join": [
+            "",
+            [
+              "エラーが検出されました (",
+              {
+                "Ref": "LogGroupsEcsBackendLogGroup653D868B",
+              },
+              ")",
+            ],
+          ],
+        },
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "DatapointsToAlarm": 1,
+        "EvaluationPeriods": 1,
+        "MetricName": "dev-ErrorCount-1",
+        "Namespace": "Custom/Application",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 1,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmsErrorAlarm2A6AA0E08": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": {
+          "Fn::Join": [
+            "",
+            [
+              "エラーが検出されました (",
+              {
+                "Ref": "LogGroupsRdsLogGroupFDC88E64",
+              },
+              ")",
+            ],
+          ],
+        },
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "DatapointsToAlarm": 1,
+        "EvaluationPeriods": 1,
+        "MetricName": "dev-ErrorCount-2",
+        "Namespace": "Custom/Application",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 1,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmsErrorAlarm338A35EAF": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": {
+          "Fn::Join": [
+            "",
+            [
+              "エラーが検出されました (",
+              {
+                "Ref": "LogGroupsVpcFlowLogGroup246FFFDA",
+              },
+              ")",
+            ],
+          ],
+        },
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "DatapointsToAlarm": 1,
+        "EvaluationPeriods": 1,
+        "MetricName": "dev-ErrorCount-3",
+        "Namespace": "Custom/Application",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 1,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmsErrorMetricFilter026CB13DC": {
+      "Properties": {
+        "FilterPattern": "?"ERROR" ?"Exception"",
+        "LogGroupName": {
+          "Ref": "LogGroupsEcsFrontendLogGroup1F82DF7B",
+        },
+        "MetricTransformations": [
+          {
+            "MetricName": "dev-ErrorCount-0",
+            "MetricNamespace": "Custom/Application",
+            "MetricValue": "1",
+          },
+        ],
+      },
+      "Type": "AWS::Logs::MetricFilter",
+    },
+    "AlarmsErrorMetricFilter1463273CB": {
+      "Properties": {
+        "FilterPattern": "?"ERROR" ?"Exception"",
+        "LogGroupName": {
+          "Ref": "LogGroupsEcsBackendLogGroup653D868B",
+        },
+        "MetricTransformations": [
+          {
+            "MetricName": "dev-ErrorCount-1",
+            "MetricNamespace": "Custom/Application",
+            "MetricValue": "1",
+          },
+        ],
+      },
+      "Type": "AWS::Logs::MetricFilter",
+    },
+    "AlarmsErrorMetricFilter2400523AD": {
+      "Properties": {
+        "FilterPattern": "?"ERROR" ?"Exception"",
+        "LogGroupName": {
+          "Ref": "LogGroupsRdsLogGroupFDC88E64",
+        },
+        "MetricTransformations": [
+          {
+            "MetricName": "dev-ErrorCount-2",
+            "MetricNamespace": "Custom/Application",
+            "MetricValue": "1",
+          },
+        ],
+      },
+      "Type": "AWS::Logs::MetricFilter",
+    },
+    "AlarmsErrorMetricFilter3267C98A5": {
+      "Properties": {
+        "FilterPattern": "?"ERROR" ?"Exception"",
+        "LogGroupName": {
+          "Ref": "LogGroupsVpcFlowLogGroup246FFFDA",
+        },
+        "MetricTransformations": [
+          {
+            "MetricName": "dev-ErrorCount-3",
+            "MetricNamespace": "Custom/Application",
+            "MetricValue": "1",
+          },
+        ],
+      },
+      "Type": "AWS::Logs::MetricFilter",
+    },
+    "AlarmsMemoryAlarmdevbackend9900F6E1": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": "ECS Memory 使用率が 80% を超えました (dev-backend)",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "DatapointsToAlarm": 3,
+        "Dimensions": [
+          {
+            "Name": "ClusterName",
+            "Value": {
+              "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestEcsCluster79A1866E56DB91A9",
+            },
+          },
+          {
+            "Name": "ServiceName",
+            "Value": "dev-backend",
+          },
+        ],
+        "EvaluationPeriods": 5,
+        "MetricName": "MemoryUtilization",
+        "Namespace": "AWS/ECS",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 80,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmsMemoryAlarmdevfrontendAB115F33": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": "ECS Memory 使用率が 80% を超えました (dev-frontend)",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "DatapointsToAlarm": 3,
+        "Dimensions": [
+          {
+            "Name": "ClusterName",
+            "Value": {
+              "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestEcsCluster79A1866E56DB91A9",
+            },
+          },
+          {
+            "Name": "ServiceName",
+            "Value": "dev-frontend",
+          },
+        ],
+        "EvaluationPeriods": 5,
+        "MetricName": "MemoryUtilization",
+        "Namespace": "AWS/ECS",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 80,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "CodeBuildProjectA0FF5539": {
+      "Properties": {
+        "Artifacts": {
+          "Type": "CODEPIPELINE",
+        },
+        "Cache": {
+          "Type": "NO_CACHE",
+        },
+        "EncryptionKey": {
+          "Fn::GetAtt": [
+            "CodePipelineArtifactsBucketEncryptionKey63438C13",
+            "Arn",
+          ],
+        },
+        "Environment": {
+          "ComputeType": "BUILD_GENERAL1_SMALL",
+          "Image": "aws/codebuild/standard:7.0",
+          "ImagePullCredentialsType": "CODEBUILD",
+          "PrivilegedMode": true,
+          "Type": "LINUX_CONTAINER",
+        },
+        "Name": "dev-app-build",
+        "ServiceRole": {
+          "Fn::GetAtt": [
+            "CodeBuildProjectRole81089C6A",
+            "Arn",
+          ],
+        },
+        "Source": {
+          "Type": "CODEPIPELINE",
+        },
+      },
+      "Type": "AWS::CodeBuild::Project",
+    },
+    "CodeBuildProjectRole81089C6A": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "codebuild.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CodeBuildProjectRoleDefaultPolicyF28E00BB": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":logs:ap-northeast-1:123456789012:log-group:/aws/codebuild/",
+                      {
+                        "Ref": "CodeBuildProjectA0FF5539",
+                      },
+                    ],
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":logs:ap-northeast-1:123456789012:log-group:/aws/codebuild/",
+                      {
+                        "Ref": "CodeBuildProjectA0FF5539",
+                      },
+                      ":*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "codebuild:CreateReportGroup",
+                "codebuild:CreateReport",
+                "codebuild:UpdateReport",
+                "codebuild:BatchPutTestCases",
+                "codebuild:BatchPutCodeCoverages",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":codebuild:ap-northeast-1:123456789012:report-group/",
+                    {
+                      "Ref": "CodeBuildProjectA0FF5539",
+                    },
+                    "-*",
+                  ],
+                ],
+              },
+            },
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "CodePipelineArtifactsBucket50820E0E",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "CodePipelineArtifactsBucket50820E0E",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:DescribeKey",
+                "kms:Encrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineArtifactsBucketEncryptionKey63438C13",
+                  "Arn",
+                ],
+              },
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:Encrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineArtifactsBucketEncryptionKey63438C13",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CodeBuildProjectRoleDefaultPolicyF28E00BB",
+        "Roles": [
+          {
+            "Ref": "CodeBuildProjectRole81089C6A",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CodeCommitRepository9FB6CD94": {
+      "Properties": {
+        "RepositoryDescription": "Application source code repository for dev",
+        "RepositoryName": "dev-app-repository",
+      },
+      "Type": "AWS::CodeCommit::Repository",
+    },
+    "CodeCommitRepositorySnapshotOpsStackCodePipeline82B1B709mainEventRule7CB426A9": {
+      "Properties": {
+        "EventPattern": {
+          "detail": {
+            "event": [
+              "referenceCreated",
+              "referenceUpdated",
+            ],
+            "referenceName": [
+              "main",
+            ],
+          },
+          "detail-type": [
+            "CodeCommit Repository State Change",
+          ],
+          "resources": [
+            {
+              "Fn::GetAtt": [
+                "CodeCommitRepository9FB6CD94",
+                "Arn",
+              ],
+            },
+          ],
+          "source": [
+            "aws.codecommit",
+          ],
+        },
+        "State": "ENABLED",
+        "Targets": [
+          {
+            "Arn": {
+              "Fn::Join": [
+                "",
+                [
+                  "arn:",
+                  {
+                    "Ref": "AWS::Partition",
+                  },
+                  ":codepipeline:ap-northeast-1:123456789012:",
+                  {
+                    "Ref": "CodePipeline87CD40FF",
+                  },
+                ],
+              ],
+            },
+            "Id": "Target0",
+            "RoleArn": {
+              "Fn::GetAtt": [
+                "CodePipelineEventsRoleB2BA45A4",
+                "Arn",
+              ],
+            },
+          },
+        ],
+      },
+      "Type": "AWS::Events::Rule",
+    },
+    "CodePipeline87CD40FF": {
+      "DependsOn": [
+        "CodePipelineRoleDefaultPolicyD96F7CA1",
+        "CodePipelineRoleCF80F684",
+      ],
+      "Properties": {
+        "ArtifactStore": {
+          "EncryptionKey": {
+            "Id": {
+              "Fn::GetAtt": [
+                "CodePipelineArtifactsBucketEncryptionKey63438C13",
+                "Arn",
+              ],
+            },
+            "Type": "KMS",
+          },
+          "Location": {
+            "Ref": "CodePipelineArtifactsBucket50820E0E",
+          },
+          "Type": "S3",
+        },
+        "Name": "dev-app-pipeline",
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "CodePipelineRoleCF80F684",
+            "Arn",
+          ],
+        },
+        "Stages": [
+          {
+            "Actions": [
+              {
+                "ActionTypeId": {
+                  "Category": "Source",
+                  "Owner": "AWS",
+                  "Provider": "CodeCommit",
+                  "Version": "1",
+                },
+                "Configuration": {
+                  "BranchName": "main",
+                  "PollForSourceChanges": false,
+                  "RepositoryName": {
+                    "Fn::GetAtt": [
+                      "CodeCommitRepository9FB6CD94",
+                      "Name",
+                    ],
+                  },
+                },
+                "Name": "Source",
+                "OutputArtifacts": [
+                  {
+                    "Name": "SourceOutput",
+                  },
+                ],
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "CodePipelineSourceCodePipelineActionRole5FE0EE90",
+                    "Arn",
+                  ],
+                },
+                "RunOrder": 1,
+              },
+            ],
+            "Name": "Source",
+          },
+          {
+            "Actions": [
+              {
+                "ActionTypeId": {
+                  "Category": "Build",
+                  "Owner": "AWS",
+                  "Provider": "CodeBuild",
+                  "Version": "1",
+                },
+                "Configuration": {
+                  "ProjectName": {
+                    "Ref": "CodeBuildProjectA0FF5539",
+                  },
+                },
+                "InputArtifacts": [
+                  {
+                    "Name": "SourceOutput",
+                  },
+                ],
+                "Name": "Build",
+                "OutputArtifacts": [
+                  {
+                    "Name": "BuildOutput",
+                  },
+                ],
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "CodePipelineBuildCodePipelineActionRoleB1D0E769",
+                    "Arn",
+                  ],
+                },
+                "RunOrder": 1,
+              },
+            ],
+            "Name": "Build",
+          },
+          {
+            "Actions": [
+              {
+                "ActionTypeId": {
+                  "Category": "Deploy",
+                  "Owner": "AWS",
+                  "Provider": "ECS",
+                  "Version": "1",
+                },
+                "Configuration": {
+                  "ClusterName": {
+                    "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputRefTestEcsCluster79A1866E56DB91A9",
+                  },
+                  "DeploymentTimeout": 60,
+                  "ServiceName": {
+                    "Fn::ImportValue": "SnapshotPrereqStack:ExportsOutputFnGetAttFrontendServiceBC94BA93NameC081D229",
+                  },
+                },
+                "InputArtifacts": [
+                  {
+                    "Name": "BuildOutput",
+                  },
+                ],
+                "Name": "Deploy",
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "CodePipelineDeployCodePipelineActionRole65C96441",
+                    "Arn",
+                  ],
+                },
+                "RunOrder": 1,
+              },
+            ],
+            "Name": "Deploy",
+          },
+        ],
+      },
+      "Type": "AWS::CodePipeline::Pipeline",
+    },
+    "CodePipelineArtifactsBucket50820E0E": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "KMSMasterKeyID": {
+                  "Fn::GetAtt": [
+                    "CodePipelineArtifactsBucketEncryptionKey63438C13",
+                    "Arn",
+                  ],
+                },
+                "SSEAlgorithm": "aws:kms",
+              },
+            },
+          ],
+        },
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true,
+        },
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "CodePipelineArtifactsBucketEncryptionKey63438C13": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "KeyPolicy": {
+          "Statement": [
+            {
+              "Action": "kms:*",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::123456789012:root",
+                    ],
+                  ],
+                },
+              },
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::KMS::Key",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "CodePipelineArtifactsBucketEncryptionKeyAliasA0F7F42D": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "AliasName": "alias/codepipeline-snapshotopsstackcodepipeline82b1b709",
+        "TargetKeyId": {
+          "Fn::GetAtt": [
+            "CodePipelineArtifactsBucketEncryptionKey63438C13",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::KMS::Alias",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "CodePipelineArtifactsBucketPolicy75562889": {
+      "Properties": {
+        "Bucket": {
+          "Ref": "CodePipelineArtifactsBucket50820E0E",
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "s3:*",
+              "Condition": {
+                "Bool": {
+                  "aws:SecureTransport": "false",
+                },
+              },
+              "Effect": "Deny",
+              "Principal": {
+                "AWS": "*",
+              },
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "CodePipelineArtifactsBucket50820E0E",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "CodePipelineArtifactsBucket50820E0E",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+    "CodePipelineBuildCodePipelineActionRoleB1D0E769": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::GetAtt": [
+                    "CodePipelineRoleCF80F684",
+                    "Arn",
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CodePipelineBuildCodePipelineActionRoleDefaultPolicy13803EDE": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodeBuildProjectA0FF5539",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CodePipelineBuildCodePipelineActionRoleDefaultPolicy13803EDE",
+        "Roles": [
+          {
+            "Ref": "CodePipelineBuildCodePipelineActionRoleB1D0E769",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CodePipelineDeployCodePipelineActionRole65C96441": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::GetAtt": [
+                    "CodePipelineRoleCF80F684",
+                    "Arn",
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CodePipelineDeployCodePipelineActionRoleDefaultPolicyD03BF687": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "ecs:DescribeServices",
+                "ecs:DescribeTaskDefinition",
+                "ecs:DescribeTasks",
+                "ecs:ListTasks",
+                "ecs:RegisterTaskDefinition",
+                "ecs:TagResource",
+                "ecs:UpdateService",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            {
+              "Action": "iam:PassRole",
+              "Condition": {
+                "StringEqualsIfExists": {
+                  "iam:PassedToService": [
+                    "ec2.amazonaws.com",
+                    "ecs-tasks.amazonaws.com",
+                  ],
+                },
+              },
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "CodePipelineArtifactsBucket50820E0E",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "CodePipelineArtifactsBucket50820E0E",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:DescribeKey",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineArtifactsBucketEncryptionKey63438C13",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CodePipelineDeployCodePipelineActionRoleDefaultPolicyD03BF687",
+        "Roles": [
+          {
+            "Ref": "CodePipelineDeployCodePipelineActionRole65C96441",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CodePipelineEventsRoleB2BA45A4": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "events.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CodePipelineEventsRoleDefaultPolicy711FB3E5": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "codepipeline:StartPipelineExecution",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":codepipeline:ap-northeast-1:123456789012:",
+                    {
+                      "Ref": "CodePipeline87CD40FF",
+                    },
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CodePipelineEventsRoleDefaultPolicy711FB3E5",
+        "Roles": [
+          {
+            "Ref": "CodePipelineEventsRoleB2BA45A4",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CodePipelineNotificationRule7A6635E8": {
+      "Properties": {
+        "DetailType": "FULL",
+        "EventTypeIds": [
+          "codepipeline-pipeline-pipeline-execution-started",
+          "codepipeline-pipeline-pipeline-execution-succeeded",
+          "codepipeline-pipeline-pipeline-execution-failed",
+        ],
+        "Name": "SnapshotOpsStackCodePipelineNotificationRule9E06E230",
+        "Resource": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":codepipeline:ap-northeast-1:123456789012:",
+              {
+                "Ref": "CodePipeline87CD40FF",
+              },
+            ],
+          ],
+        },
+        "Targets": [
+          {
+            "TargetAddress": {
+              "Ref": "AlarmsAlarmTopic58991614",
+            },
+            "TargetType": "SNS",
+          },
+        ],
+      },
+      "Type": "AWS::CodeStarNotifications::NotificationRule",
+    },
+    "CodePipelineRoleCF80F684": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "codepipeline.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CodePipelineRoleDefaultPolicyD96F7CA1": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "CodePipelineArtifactsBucket50820E0E",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "CodePipelineArtifactsBucket50820E0E",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:DescribeKey",
+                "kms:Encrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineArtifactsBucketEncryptionKey63438C13",
+                  "Arn",
+                ],
+              },
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineSourceCodePipelineActionRole5FE0EE90",
+                  "Arn",
+                ],
+              },
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineBuildCodePipelineActionRoleB1D0E769",
+                  "Arn",
+                ],
+              },
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineDeployCodePipelineActionRole65C96441",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CodePipelineRoleDefaultPolicyD96F7CA1",
+        "Roles": [
+          {
+            "Ref": "CodePipelineRoleCF80F684",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CodePipelineSourceCodePipelineActionRole5FE0EE90": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::GetAtt": [
+                    "CodePipelineRoleCF80F684",
+                    "Arn",
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CodePipelineSourceCodePipelineActionRoleDefaultPolicy99143514": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "CodePipelineArtifactsBucket50820E0E",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "CodePipelineArtifactsBucket50820E0E",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:DescribeKey",
+                "kms:Encrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineArtifactsBucketEncryptionKey63438C13",
+                  "Arn",
+                ],
+              },
+            },
+            {
+              "Action": [
+                "codecommit:GetBranch",
+                "codecommit:GetCommit",
+                "codecommit:UploadArchive",
+                "codecommit:GetUploadArchiveStatus",
+                "codecommit:CancelUploadArchive",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodeCommitRepository9FB6CD94",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CodePipelineSourceCodePipelineActionRoleDefaultPolicy99143514",
+        "Roles": [
+          {
+            "Ref": "CodePipelineSourceCodePipelineActionRole5FE0EE90",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "LogGroupsEcsBackendLogGroup653D868B": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupsEncryptionKey8F2E65C6",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/ecs/dev/backend",
+        "RetentionInDays": 3,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "LogGroupsEcsFrontendLogGroup1F82DF7B": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupsEncryptionKey8F2E65C6",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/ecs/dev/frontend",
+        "RetentionInDays": 3,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "LogGroupsEncryptionKey8F2E65C6": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Description": "KMS key for CloudWatch Logs encryption",
+        "EnableKeyRotation": true,
+        "KeyPolicy": {
+          "Statement": [
+            {
+              "Action": "kms:*",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::123456789012:root",
+                    ],
+                  ],
+                },
+              },
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "kms:Encrypt",
+                "kms:Decrypt",
+                "kms:GenerateDataKey",
+              ],
+              "Condition": {
+                "ArnLike": {
+                  "kms:EncryptionContext:aws:logs:arn": "arn:aws:logs:ap-northeast-1:123456789012:*",
+                },
+              },
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "logs.ap-northeast-1.amazonaws.com",
+              },
+              "Resource": "*",
+              "Sid": "Allow CloudWatch Logs to use the key",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::KMS::Key",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "LogGroupsRdsLogGroupFDC88E64": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupsEncryptionKey8F2E65C6",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/rds/dev/aurora",
+        "RetentionInDays": 3,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "LogGroupsVpcFlowLogGroup246FFFDA": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupsEncryptionKey8F2E65C6",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/vpc/dev/flow-logs",
+        "RetentionInDays": 3,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Delete",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`OpsStack TC-OS-02: スナップショットテスト（prodConfig） CloudFormation テンプレートのスナップショットテスト（Prod環境） 1`] = `
+{
+  "Outputs": {
+    "AlarmTopicArn": {
+      "Description": "SNS Topic ARN for alarm notifications",
+      "Export": {
+        "Name": "prod-AlarmTopicArn",
+      },
+      "Value": {
+        "Ref": "AlarmsAlarmTopic58991614",
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AlarmsAlarmTopic58991614": {
+      "Properties": {
+        "KmsMasterKeyId": {
+          "Fn::GetAtt": [
+            "AlarmsAlarmTopicKeyD10DE76C",
+            "Arn",
+          ],
+        },
+        "TopicName": "prod-alarm-notifications",
+      },
+      "Type": "AWS::SNS::Topic",
+    },
+    "AlarmsAlarmTopicKeyD10DE76C": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "Description": "KMS key for prod alarm SNS topic encryption",
+        "EnableKeyRotation": true,
+        "KeyPolicy": {
+          "Statement": [
+            {
+              "Action": "kms:*",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::123456789012:root",
+                    ],
+                  ],
+                },
+              },
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:GenerateDataKey*",
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "cloudwatch.amazonaws.com",
+              },
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:GenerateDataKey*",
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "codestar-notifications.amazonaws.com",
+              },
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::KMS::Key",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "AlarmsAlarmTopicPolicyF670A8B4": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sns:Publish",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "codestar-notifications.amazonaws.com",
+              },
+              "Resource": {
+                "Ref": "AlarmsAlarmTopic58991614",
+              },
+              "Sid": "0",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Topics": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+      },
+      "Type": "AWS::SNS::TopicPolicy",
+    },
+    "AlarmsCPUAlarmprodbackendC638BF06": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": "ECS CPU 使用率が 80% を超えました (prod-backend)",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "DatapointsToAlarm": 3,
+        "Dimensions": [
+          {
+            "Name": "ClusterName",
+            "Value": {
+              "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestEcsCluster79A1866E56DB91A9",
+            },
+          },
+          {
+            "Name": "ServiceName",
+            "Value": "prod-backend",
+          },
+        ],
+        "EvaluationPeriods": 5,
+        "MetricName": "CPUUtilization",
+        "Namespace": "AWS/ECS",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 80,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmsCPUAlarmprodfrontendFF98C341": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": "ECS CPU 使用率が 80% を超えました (prod-frontend)",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "DatapointsToAlarm": 3,
+        "Dimensions": [
+          {
+            "Name": "ClusterName",
+            "Value": {
+              "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestEcsCluster79A1866E56DB91A9",
+            },
+          },
+          {
+            "Name": "ServiceName",
+            "Value": "prod-frontend",
+          },
+        ],
+        "EvaluationPeriods": 5,
+        "MetricName": "CPUUtilization",
+        "Namespace": "AWS/ECS",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 80,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmsErrorAlarm04B50E99A": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": {
+          "Fn::Join": [
+            "",
+            [
+              "エラーが検出されました (",
+              {
+                "Ref": "LogGroupsEcsFrontendLogGroup1F82DF7B",
+              },
+              ")",
+            ],
+          ],
+        },
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "DatapointsToAlarm": 1,
+        "EvaluationPeriods": 1,
+        "MetricName": "prod-ErrorCount-0",
+        "Namespace": "Custom/Application",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 1,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmsErrorAlarm1E95F740B": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": {
+          "Fn::Join": [
+            "",
+            [
+              "エラーが検出されました (",
+              {
+                "Ref": "LogGroupsEcsBackendLogGroup653D868B",
+              },
+              ")",
+            ],
+          ],
+        },
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "DatapointsToAlarm": 1,
+        "EvaluationPeriods": 1,
+        "MetricName": "prod-ErrorCount-1",
+        "Namespace": "Custom/Application",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 1,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmsErrorAlarm2A6AA0E08": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": {
+          "Fn::Join": [
+            "",
+            [
+              "エラーが検出されました (",
+              {
+                "Ref": "LogGroupsRdsLogGroupFDC88E64",
+              },
+              ")",
+            ],
+          ],
+        },
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "DatapointsToAlarm": 1,
+        "EvaluationPeriods": 1,
+        "MetricName": "prod-ErrorCount-2",
+        "Namespace": "Custom/Application",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 1,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmsErrorAlarm338A35EAF": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": {
+          "Fn::Join": [
+            "",
+            [
+              "エラーが検出されました (",
+              {
+                "Ref": "LogGroupsVpcFlowLogGroup246FFFDA",
+              },
+              ")",
+            ],
+          ],
+        },
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "DatapointsToAlarm": 1,
+        "EvaluationPeriods": 1,
+        "MetricName": "prod-ErrorCount-3",
+        "Namespace": "Custom/Application",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 1,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmsErrorMetricFilter026CB13DC": {
+      "Properties": {
+        "FilterPattern": "?"ERROR" ?"Exception"",
+        "LogGroupName": {
+          "Ref": "LogGroupsEcsFrontendLogGroup1F82DF7B",
+        },
+        "MetricTransformations": [
+          {
+            "MetricName": "prod-ErrorCount-0",
+            "MetricNamespace": "Custom/Application",
+            "MetricValue": "1",
+          },
+        ],
+      },
+      "Type": "AWS::Logs::MetricFilter",
+    },
+    "AlarmsErrorMetricFilter1463273CB": {
+      "Properties": {
+        "FilterPattern": "?"ERROR" ?"Exception"",
+        "LogGroupName": {
+          "Ref": "LogGroupsEcsBackendLogGroup653D868B",
+        },
+        "MetricTransformations": [
+          {
+            "MetricName": "prod-ErrorCount-1",
+            "MetricNamespace": "Custom/Application",
+            "MetricValue": "1",
+          },
+        ],
+      },
+      "Type": "AWS::Logs::MetricFilter",
+    },
+    "AlarmsErrorMetricFilter2400523AD": {
+      "Properties": {
+        "FilterPattern": "?"ERROR" ?"Exception"",
+        "LogGroupName": {
+          "Ref": "LogGroupsRdsLogGroupFDC88E64",
+        },
+        "MetricTransformations": [
+          {
+            "MetricName": "prod-ErrorCount-2",
+            "MetricNamespace": "Custom/Application",
+            "MetricValue": "1",
+          },
+        ],
+      },
+      "Type": "AWS::Logs::MetricFilter",
+    },
+    "AlarmsErrorMetricFilter3267C98A5": {
+      "Properties": {
+        "FilterPattern": "?"ERROR" ?"Exception"",
+        "LogGroupName": {
+          "Ref": "LogGroupsVpcFlowLogGroup246FFFDA",
+        },
+        "MetricTransformations": [
+          {
+            "MetricName": "prod-ErrorCount-3",
+            "MetricNamespace": "Custom/Application",
+            "MetricValue": "1",
+          },
+        ],
+      },
+      "Type": "AWS::Logs::MetricFilter",
+    },
+    "AlarmsMemoryAlarmprodbackend77DF98BF": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": "ECS Memory 使用率が 80% を超えました (prod-backend)",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "DatapointsToAlarm": 3,
+        "Dimensions": [
+          {
+            "Name": "ClusterName",
+            "Value": {
+              "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestEcsCluster79A1866E56DB91A9",
+            },
+          },
+          {
+            "Name": "ServiceName",
+            "Value": "prod-backend",
+          },
+        ],
+        "EvaluationPeriods": 5,
+        "MetricName": "MemoryUtilization",
+        "Namespace": "AWS/ECS",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 80,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "AlarmsMemoryAlarmprodfrontend9D063E9A": {
+      "Properties": {
+        "AlarmActions": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+        "AlarmDescription": "ECS Memory 使用率が 80% を超えました (prod-frontend)",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "DatapointsToAlarm": 3,
+        "Dimensions": [
+          {
+            "Name": "ClusterName",
+            "Value": {
+              "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestEcsCluster79A1866E56DB91A9",
+            },
+          },
+          {
+            "Name": "ServiceName",
+            "Value": "prod-frontend",
+          },
+        ],
+        "EvaluationPeriods": 5,
+        "MetricName": "MemoryUtilization",
+        "Namespace": "AWS/ECS",
+        "Period": 300,
+        "Statistic": "Average",
+        "Threshold": 80,
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "ChatbotChatbotRole9A47BC97": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "chatbot.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Description": "IAM Role for prod AWS Chatbot",
+        "RoleName": "prod-chatbot-role",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "ChatbotChatbotRoleDefaultPolicy0120FBE2": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "cloudwatch:Describe*",
+                "cloudwatch:Get*",
+                "cloudwatch:List*",
+                "logs:Describe*",
+                "logs:Get*",
+                "logs:FilterLogEvents",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "ChatbotChatbotRoleDefaultPolicy0120FBE2",
+        "Roles": [
+          {
+            "Ref": "ChatbotChatbotRole9A47BC97",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "ChatbotSlackChannelB6114F2F": {
+      "Properties": {
+        "ConfigurationName": "prod-alarm-notifications",
+        "IamRoleArn": {
+          "Fn::GetAtt": [
+            "ChatbotChatbotRole9A47BC97",
+            "Arn",
+          ],
+        },
+        "LoggingLevel": "INFO",
+        "SlackChannelId": "C12345678",
+        "SlackWorkspaceId": "T12345678",
+        "SnsTopicArns": [
+          {
+            "Ref": "AlarmsAlarmTopic58991614",
+          },
+        ],
+      },
+      "Type": "AWS::Chatbot::SlackChannelConfiguration",
+    },
+    "CodeBuildProjectA0FF5539": {
+      "Properties": {
+        "Artifacts": {
+          "Type": "CODEPIPELINE",
+        },
+        "Cache": {
+          "Type": "NO_CACHE",
+        },
+        "EncryptionKey": {
+          "Fn::GetAtt": [
+            "CodePipelineArtifactsBucketEncryptionKey63438C13",
+            "Arn",
+          ],
+        },
+        "Environment": {
+          "ComputeType": "BUILD_GENERAL1_SMALL",
+          "Image": "aws/codebuild/standard:7.0",
+          "ImagePullCredentialsType": "CODEBUILD",
+          "PrivilegedMode": true,
+          "Type": "LINUX_CONTAINER",
+        },
+        "Name": "prod-app-build",
+        "ServiceRole": {
+          "Fn::GetAtt": [
+            "CodeBuildProjectRole81089C6A",
+            "Arn",
+          ],
+        },
+        "Source": {
+          "Type": "CODEPIPELINE",
+        },
+      },
+      "Type": "AWS::CodeBuild::Project",
+    },
+    "CodeBuildProjectRole81089C6A": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "codebuild.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CodeBuildProjectRoleDefaultPolicyF28E00BB": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":logs:ap-northeast-1:123456789012:log-group:/aws/codebuild/",
+                      {
+                        "Ref": "CodeBuildProjectA0FF5539",
+                      },
+                    ],
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":logs:ap-northeast-1:123456789012:log-group:/aws/codebuild/",
+                      {
+                        "Ref": "CodeBuildProjectA0FF5539",
+                      },
+                      ":*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "codebuild:CreateReportGroup",
+                "codebuild:CreateReport",
+                "codebuild:UpdateReport",
+                "codebuild:BatchPutTestCases",
+                "codebuild:BatchPutCodeCoverages",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":codebuild:ap-northeast-1:123456789012:report-group/",
+                    {
+                      "Ref": "CodeBuildProjectA0FF5539",
+                    },
+                    "-*",
+                  ],
+                ],
+              },
+            },
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "CodePipelineArtifactsBucket50820E0E",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "CodePipelineArtifactsBucket50820E0E",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:DescribeKey",
+                "kms:Encrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineArtifactsBucketEncryptionKey63438C13",
+                  "Arn",
+                ],
+              },
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:Encrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineArtifactsBucketEncryptionKey63438C13",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CodeBuildProjectRoleDefaultPolicyF28E00BB",
+        "Roles": [
+          {
+            "Ref": "CodeBuildProjectRole81089C6A",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CodeCommitRepository9FB6CD94": {
+      "Properties": {
+        "RepositoryDescription": "Application source code repository for prod",
+        "RepositoryName": "prod-app-repository",
+      },
+      "Type": "AWS::CodeCommit::Repository",
+    },
+    "CodeCommitRepositoryProdOpsStackCodePipeline33ACF0CFmainEventRuleE45279EC": {
+      "Properties": {
+        "EventPattern": {
+          "detail": {
+            "event": [
+              "referenceCreated",
+              "referenceUpdated",
+            ],
+            "referenceName": [
+              "main",
+            ],
+          },
+          "detail-type": [
+            "CodeCommit Repository State Change",
+          ],
+          "resources": [
+            {
+              "Fn::GetAtt": [
+                "CodeCommitRepository9FB6CD94",
+                "Arn",
+              ],
+            },
+          ],
+          "source": [
+            "aws.codecommit",
+          ],
+        },
+        "State": "ENABLED",
+        "Targets": [
+          {
+            "Arn": {
+              "Fn::Join": [
+                "",
+                [
+                  "arn:",
+                  {
+                    "Ref": "AWS::Partition",
+                  },
+                  ":codepipeline:ap-northeast-1:123456789012:",
+                  {
+                    "Ref": "CodePipeline87CD40FF",
+                  },
+                ],
+              ],
+            },
+            "Id": "Target0",
+            "RoleArn": {
+              "Fn::GetAtt": [
+                "CodePipelineEventsRoleB2BA45A4",
+                "Arn",
+              ],
+            },
+          },
+        ],
+      },
+      "Type": "AWS::Events::Rule",
+    },
+    "CodePipeline87CD40FF": {
+      "DependsOn": [
+        "CodePipelineRoleDefaultPolicyD96F7CA1",
+        "CodePipelineRoleCF80F684",
+      ],
+      "Properties": {
+        "ArtifactStore": {
+          "EncryptionKey": {
+            "Id": {
+              "Fn::GetAtt": [
+                "CodePipelineArtifactsBucketEncryptionKey63438C13",
+                "Arn",
+              ],
+            },
+            "Type": "KMS",
+          },
+          "Location": {
+            "Ref": "CodePipelineArtifactsBucket50820E0E",
+          },
+          "Type": "S3",
+        },
+        "Name": "prod-app-pipeline",
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "CodePipelineRoleCF80F684",
+            "Arn",
+          ],
+        },
+        "Stages": [
+          {
+            "Actions": [
+              {
+                "ActionTypeId": {
+                  "Category": "Source",
+                  "Owner": "AWS",
+                  "Provider": "CodeCommit",
+                  "Version": "1",
+                },
+                "Configuration": {
+                  "BranchName": "main",
+                  "PollForSourceChanges": false,
+                  "RepositoryName": {
+                    "Fn::GetAtt": [
+                      "CodeCommitRepository9FB6CD94",
+                      "Name",
+                    ],
+                  },
+                },
+                "Name": "Source",
+                "OutputArtifacts": [
+                  {
+                    "Name": "SourceOutput",
+                  },
+                ],
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "CodePipelineSourceCodePipelineActionRole5FE0EE90",
+                    "Arn",
+                  ],
+                },
+                "RunOrder": 1,
+              },
+            ],
+            "Name": "Source",
+          },
+          {
+            "Actions": [
+              {
+                "ActionTypeId": {
+                  "Category": "Build",
+                  "Owner": "AWS",
+                  "Provider": "CodeBuild",
+                  "Version": "1",
+                },
+                "Configuration": {
+                  "ProjectName": {
+                    "Ref": "CodeBuildProjectA0FF5539",
+                  },
+                },
+                "InputArtifacts": [
+                  {
+                    "Name": "SourceOutput",
+                  },
+                ],
+                "Name": "Build",
+                "OutputArtifacts": [
+                  {
+                    "Name": "BuildOutput",
+                  },
+                ],
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "CodePipelineBuildCodePipelineActionRoleB1D0E769",
+                    "Arn",
+                  ],
+                },
+                "RunOrder": 1,
+              },
+            ],
+            "Name": "Build",
+          },
+          {
+            "Actions": [
+              {
+                "ActionTypeId": {
+                  "Category": "Deploy",
+                  "Owner": "AWS",
+                  "Provider": "ECS",
+                  "Version": "1",
+                },
+                "Configuration": {
+                  "ClusterName": {
+                    "Fn::ImportValue": "ProdPrereqStack:ExportsOutputRefTestEcsCluster79A1866E56DB91A9",
+                  },
+                  "DeploymentTimeout": 60,
+                  "ServiceName": {
+                    "Fn::ImportValue": "ProdPrereqStack:ExportsOutputFnGetAttFrontendServiceBC94BA93NameC081D229",
+                  },
+                },
+                "InputArtifacts": [
+                  {
+                    "Name": "BuildOutput",
+                  },
+                ],
+                "Name": "Deploy",
+                "RoleArn": {
+                  "Fn::GetAtt": [
+                    "CodePipelineDeployCodePipelineActionRole65C96441",
+                    "Arn",
+                  ],
+                },
+                "RunOrder": 1,
+              },
+            ],
+            "Name": "Deploy",
+          },
+        ],
+      },
+      "Type": "AWS::CodePipeline::Pipeline",
+    },
+    "CodePipelineArtifactsBucket50820E0E": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "KMSMasterKeyID": {
+                  "Fn::GetAtt": [
+                    "CodePipelineArtifactsBucketEncryptionKey63438C13",
+                    "Arn",
+                  ],
+                },
+                "SSEAlgorithm": "aws:kms",
+              },
+            },
+          ],
+        },
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true,
+        },
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "CodePipelineArtifactsBucketEncryptionKey63438C13": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "KeyPolicy": {
+          "Statement": [
+            {
+              "Action": "kms:*",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::123456789012:root",
+                    ],
+                  ],
+                },
+              },
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::KMS::Key",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "CodePipelineArtifactsBucketEncryptionKeyAliasA0F7F42D": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "AliasName": "alias/codepipeline-prodopsstackcodepipeline33acf0cf",
+        "TargetKeyId": {
+          "Fn::GetAtt": [
+            "CodePipelineArtifactsBucketEncryptionKey63438C13",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::KMS::Alias",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "CodePipelineArtifactsBucketPolicy75562889": {
+      "Properties": {
+        "Bucket": {
+          "Ref": "CodePipelineArtifactsBucket50820E0E",
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "s3:*",
+              "Condition": {
+                "Bool": {
+                  "aws:SecureTransport": "false",
+                },
+              },
+              "Effect": "Deny",
+              "Principal": {
+                "AWS": "*",
+              },
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "CodePipelineArtifactsBucket50820E0E",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "CodePipelineArtifactsBucket50820E0E",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+    "CodePipelineBuildCodePipelineActionRoleB1D0E769": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::GetAtt": [
+                    "CodePipelineRoleCF80F684",
+                    "Arn",
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CodePipelineBuildCodePipelineActionRoleDefaultPolicy13803EDE": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "codebuild:BatchGetBuilds",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodeBuildProjectA0FF5539",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CodePipelineBuildCodePipelineActionRoleDefaultPolicy13803EDE",
+        "Roles": [
+          {
+            "Ref": "CodePipelineBuildCodePipelineActionRoleB1D0E769",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CodePipelineDeployCodePipelineActionRole65C96441": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::GetAtt": [
+                    "CodePipelineRoleCF80F684",
+                    "Arn",
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CodePipelineDeployCodePipelineActionRoleDefaultPolicyD03BF687": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "ecs:DescribeServices",
+                "ecs:DescribeTaskDefinition",
+                "ecs:DescribeTasks",
+                "ecs:ListTasks",
+                "ecs:RegisterTaskDefinition",
+                "ecs:TagResource",
+                "ecs:UpdateService",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            {
+              "Action": "iam:PassRole",
+              "Condition": {
+                "StringEqualsIfExists": {
+                  "iam:PassedToService": [
+                    "ec2.amazonaws.com",
+                    "ecs-tasks.amazonaws.com",
+                  ],
+                },
+              },
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "CodePipelineArtifactsBucket50820E0E",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "CodePipelineArtifactsBucket50820E0E",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:DescribeKey",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineArtifactsBucketEncryptionKey63438C13",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CodePipelineDeployCodePipelineActionRoleDefaultPolicyD03BF687",
+        "Roles": [
+          {
+            "Ref": "CodePipelineDeployCodePipelineActionRole65C96441",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CodePipelineEventsRoleB2BA45A4": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "events.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CodePipelineEventsRoleDefaultPolicy711FB3E5": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "codepipeline:StartPipelineExecution",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":codepipeline:ap-northeast-1:123456789012:",
+                    {
+                      "Ref": "CodePipeline87CD40FF",
+                    },
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CodePipelineEventsRoleDefaultPolicy711FB3E5",
+        "Roles": [
+          {
+            "Ref": "CodePipelineEventsRoleB2BA45A4",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CodePipelineNotificationRule7A6635E8": {
+      "Properties": {
+        "DetailType": "FULL",
+        "EventTypeIds": [
+          "codepipeline-pipeline-pipeline-execution-started",
+          "codepipeline-pipeline-pipeline-execution-succeeded",
+          "codepipeline-pipeline-pipeline-execution-failed",
+        ],
+        "Name": "ProdOpsStackCodePipelineNotificationRuleEAE40097",
+        "Resource": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":codepipeline:ap-northeast-1:123456789012:",
+              {
+                "Ref": "CodePipeline87CD40FF",
+              },
+            ],
+          ],
+        },
+        "Targets": [
+          {
+            "TargetAddress": {
+              "Ref": "AlarmsAlarmTopic58991614",
+            },
+            "TargetType": "SNS",
+          },
+        ],
+      },
+      "Type": "AWS::CodeStarNotifications::NotificationRule",
+    },
+    "CodePipelineRoleCF80F684": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "codepipeline.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CodePipelineRoleDefaultPolicyD96F7CA1": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "CodePipelineArtifactsBucket50820E0E",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "CodePipelineArtifactsBucket50820E0E",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:DescribeKey",
+                "kms:Encrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineArtifactsBucketEncryptionKey63438C13",
+                  "Arn",
+                ],
+              },
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineSourceCodePipelineActionRole5FE0EE90",
+                  "Arn",
+                ],
+              },
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineBuildCodePipelineActionRoleB1D0E769",
+                  "Arn",
+                ],
+              },
+            },
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineDeployCodePipelineActionRole65C96441",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CodePipelineRoleDefaultPolicyD96F7CA1",
+        "Roles": [
+          {
+            "Ref": "CodePipelineRoleCF80F684",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "CodePipelineSourceCodePipelineActionRole5FE0EE90": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::GetAtt": [
+                    "CodePipelineRoleCF80F684",
+                    "Arn",
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "CodePipelineSourceCodePipelineActionRoleDefaultPolicy99143514": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "CodePipelineArtifactsBucket50820E0E",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "CodePipelineArtifactsBucket50820E0E",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "kms:Decrypt",
+                "kms:DescribeKey",
+                "kms:Encrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodePipelineArtifactsBucketEncryptionKey63438C13",
+                  "Arn",
+                ],
+              },
+            },
+            {
+              "Action": [
+                "codecommit:GetBranch",
+                "codecommit:GetCommit",
+                "codecommit:UploadArchive",
+                "codecommit:GetUploadArchiveStatus",
+                "codecommit:CancelUploadArchive",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "CodeCommitRepository9FB6CD94",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "CodePipelineSourceCodePipelineActionRoleDefaultPolicy99143514",
+        "Roles": [
+          {
+            "Ref": "CodePipelineSourceCodePipelineActionRole5FE0EE90",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "LogExportArchiveBucket153FFE85": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256",
+              },
+            },
+          ],
+        },
+        "LifecycleConfiguration": {
+          "Rules": [
+            {
+              "Status": "Enabled",
+              "Transitions": [
+                {
+                  "StorageClass": "GLACIER",
+                  "TransitionInDays": 30,
+                },
+              ],
+            },
+          ],
+        },
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true,
+        },
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "LogExportDeliveryStream107F7004": {
+      "Properties": {
+        "DeliveryStreamType": "DirectPut",
+        "S3DestinationConfiguration": {
+          "BucketARN": {
+            "Fn::GetAtt": [
+              "LogExportArchiveBucket153FFE85",
+              "Arn",
+            ],
+          },
+          "BufferingHints": {
+            "IntervalInSeconds": 300,
+            "SizeInMBs": 5,
+          },
+          "RoleARN": {
+            "Fn::GetAtt": [
+              "LogExportFirehoseRole730FBF23",
+              "Arn",
+            ],
+          },
+        },
+      },
+      "Type": "AWS::KinesisFirehose::DeliveryStream",
+    },
+    "LogExportFirehoseRole730FBF23": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "firehose.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "LogExportFirehoseRoleDefaultPolicy4214B850": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "LogExportArchiveBucket153FFE85",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "LogExportArchiveBucket153FFE85",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "LogExportFirehoseRoleDefaultPolicy4214B850",
+        "Roles": [
+          {
+            "Ref": "LogExportFirehoseRole730FBF23",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "LogExportSubscriptionFilter0F72430E0": {
+      "Properties": {
+        "DestinationArn": {
+          "Fn::GetAtt": [
+            "LogExportDeliveryStream107F7004",
+            "Arn",
+          ],
+        },
+        "FilterPattern": "",
+        "LogGroupName": {
+          "Ref": "LogGroupsEcsFrontendLogGroup1F82DF7B",
+        },
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "LogExportSubscriptionRoleD4B8C8D2",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Logs::SubscriptionFilter",
+    },
+    "LogExportSubscriptionFilter175403F93": {
+      "Properties": {
+        "DestinationArn": {
+          "Fn::GetAtt": [
+            "LogExportDeliveryStream107F7004",
+            "Arn",
+          ],
+        },
+        "FilterPattern": "",
+        "LogGroupName": {
+          "Ref": "LogGroupsEcsBackendLogGroup653D868B",
+        },
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "LogExportSubscriptionRoleD4B8C8D2",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Logs::SubscriptionFilter",
+    },
+    "LogExportSubscriptionFilter26A711B50": {
+      "Properties": {
+        "DestinationArn": {
+          "Fn::GetAtt": [
+            "LogExportDeliveryStream107F7004",
+            "Arn",
+          ],
+        },
+        "FilterPattern": "",
+        "LogGroupName": {
+          "Ref": "LogGroupsRdsLogGroupFDC88E64",
+        },
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "LogExportSubscriptionRoleD4B8C8D2",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Logs::SubscriptionFilter",
+    },
+    "LogExportSubscriptionFilter30248A7B0": {
+      "Properties": {
+        "DestinationArn": {
+          "Fn::GetAtt": [
+            "LogExportDeliveryStream107F7004",
+            "Arn",
+          ],
+        },
+        "FilterPattern": "",
+        "LogGroupName": {
+          "Ref": "LogGroupsVpcFlowLogGroup246FFFDA",
+        },
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "LogExportSubscriptionRoleD4B8C8D2",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Logs::SubscriptionFilter",
+    },
+    "LogExportSubscriptionRoleD4B8C8D2": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "logs.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "LogExportSubscriptionRoleDefaultPolicy972AE32D": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "firehose:PutRecord",
+                "firehose:PutRecordBatch",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "LogExportDeliveryStream107F7004",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "LogExportSubscriptionRoleDefaultPolicy972AE32D",
+        "Roles": [
+          {
+            "Ref": "LogExportSubscriptionRoleD4B8C8D2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "LogGroupsEcsBackendLogGroup653D868B": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupsEncryptionKey8F2E65C6",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/ecs/prod/backend",
+        "RetentionInDays": 30,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "LogGroupsEcsFrontendLogGroup1F82DF7B": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupsEncryptionKey8F2E65C6",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/ecs/prod/frontend",
+        "RetentionInDays": 30,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "LogGroupsEncryptionKey8F2E65C6": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "Description": "KMS key for CloudWatch Logs encryption",
+        "EnableKeyRotation": true,
+        "KeyPolicy": {
+          "Statement": [
+            {
+              "Action": "kms:*",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::123456789012:root",
+                    ],
+                  ],
+                },
+              },
+              "Resource": "*",
+            },
+            {
+              "Action": [
+                "kms:Encrypt",
+                "kms:Decrypt",
+                "kms:GenerateDataKey",
+              ],
+              "Condition": {
+                "ArnLike": {
+                  "kms:EncryptionContext:aws:logs:arn": "arn:aws:logs:ap-northeast-1:123456789012:*",
+                },
+              },
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "logs.ap-northeast-1.amazonaws.com",
+              },
+              "Resource": "*",
+              "Sid": "Allow CloudWatch Logs to use the key",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::KMS::Key",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "LogGroupsRdsLogGroupFDC88E64": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupsEncryptionKey8F2E65C6",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/rds/prod/aurora",
+        "RetentionInDays": 30,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "LogGroupsVpcFlowLogGroup246FFFDA": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "KmsKeyId": {
+          "Fn::GetAtt": [
+            "LogGroupsEncryptionKey8F2E65C6",
+            "Arn",
+          ],
+        },
+        "LogGroupName": "/vpc/prod/flow-logs",
+        "RetentionInDays": 30,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Retain",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
