@@ -138,10 +138,10 @@ TASK-0010 (Database Stack)
 
 | 状態 | タスク | 工数 | タイプ | 信頼性 |
 |------|--------|------|--------|--------|
-| [ ] | [TASK-0018: S3 + OAC Construct 実装](TASK-0018.md) | 4h | TDD | 🔵 |
-| [ ] | [TASK-0019: CloudFront Construct 実装](TASK-0019.md) | 6h | TDD | 🔵 |
-| [ ] | [TASK-0020: Distribution Stack 統合](TASK-0020.md) | 4h | TDD | 🔵 |
-| [ ] | [TASK-0021: CloudWatch Logs 設定](TASK-0021.md) | 4h | TDD | 🔵 |
+| [x] | [TASK-0018: S3 + OAC Construct 実装](TASK-0018.md) ✅ | 4h | TDD | 🔵 |
+| [x] | [TASK-0019: CloudFront Construct 実装](TASK-0019.md) ✅ | 6h | TDD | 🔵 |
+| [x] | [TASK-0020: Distribution Stack 統合](TASK-0020.md) ✅ | 4h | TDD | 🔵 |
+| [x] | [TASK-0021: CloudWatch Logs 設定](TASK-0021.md) ✅ | 4h | TDD | 🔵 |
 | [ ] | [TASK-0022: CloudWatch Alarms + Chatbot 設定](TASK-0022.md) | 6h | TDD | 🔵 |
 | [ ] | [TASK-0023: CI/CD Pipeline 構築](TASK-0023.md) | 8h | TDD | 🟡 |
 | [ ] | [TASK-0024: Ops Stack 統合 + 最終統合テスト](TASK-0024.md) | 8h | TDD | 🔵 |
